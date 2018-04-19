@@ -1,0 +1,59 @@
+\begin{center}
+\begin{tikzpicture}
+
+% Ebene 0 {{{
+  \UMLClassAlterName
+    {0}
+    {0}
+    {
+      \textbf{Gericht}
+        \nodepart{second}
+      Name: String \\
+      Details: String \\
+      Preis: double
+    }
+    {gericht}
+    {minimum width=6cm,text width=2.75cm}
+
+  \UMLClassRelativeToAlterName
+    {right=3 of gericht}
+    {\textbf{Zutat}\nodepart{second}Name: String}
+    {zutat}
+    {minimum width=5cm}
+% }}}
+
+% Ebene -1 {{{
+  \UMLClassRelativeToAlterName
+    {below=3 of gericht}
+    {\textbf{Speise}\nodepart{second}Name: String}
+    {speise}
+    {minimum width=5cm}
+% }}}
+
+% Ebene -2 {{{
+  \UMLClassRelativeToAlterName
+    {below=3 of speise}
+    {
+      \textbf{Zubereitungsanleitung}
+        \nodepart{second}
+      Anleitung: String
+    }
+    {za}
+    {minimum width=6cm,fill=red!25}
+
+  \UMLClassRelativeToAlterName
+    {right=3 of za}
+    {\textbf{Zutatenangabe}\nodepart{second}Menge: int}
+    {zutatenangabe}
+    {minimum width=5cm,fill=red!25}
+% }}}
+
+% Verbindungen {{{
+  \draw (gericht.south) -- (speise.north);
+  \draw (speise.south) -- (za.north);
+  \draw (zutatenangabe.west) -- (za.east);
+  \draw (zutatenangabe.north) -- (zutat.south);
+% }}}
+
+\end{tikzpicture}
+\end{center}

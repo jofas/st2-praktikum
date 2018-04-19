@@ -1,0 +1,158 @@
+\documentclass[12pt, twoside]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[colorlinks=true, linkcolor=black]{hyperref} % Links
+\usepackage{makeidx} % Indexierung
+\usepackage{siunitx}
+\usepackage[ngerman]{babel} % deutsche Sonderzeichen
+\usepackage[utf8]{inputenc}
+\usepackage{geometry} % Dokumentendesign wie Seiten- oder Zeilenabstand bestimmen
+
+% Graphiken
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfcore}
+\usepackage{pgfopts}
+\usepackage{pgf}
+\usepackage{ifthen}
+\usepackage{booktabs}
+
+% Tabellen
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{colortbl} % Tabellen faerben
+\usepackage{multirow}
+\usepackage{diagbox} % Tabellenzelle diagonal splitten
+
+\usepackage{xcolor} % Farben
+\usepackage[framemethod=tikz]{mdframed} % Hintergrunderstellung
+\usepackage{enumitem} % Enumerate mit Buchstaben nummerierbar machen
+\usepackage{pdfpages}
+\usepackage{listings} % Source-Code darstellen
+\usepackage{eurosym} % Eurosymbol
+\usepackage[square,numbers]{natbib}
+\usepackage{here} % figure an richtiger Stelle positionieren
+\usepackage{verbatim} % Blockkommentare mit \begin{comment}...\end{comment}
+\usepackage{ulem} % \sout{} (durchgestrichener Text)
+
+% BibLaTex
+\bibliographystyle{acm}
+
+% mdframed Style
+\mdfdefinestyle{codebox}{
+	linewidth=2.5pt,
+	linecolor=codebordercolor,
+	backgroundcolor=codecolor,
+	shadow=true,
+	shadowcolor=black!40!white,
+	fontcolor=black,
+	everyline=true,
+}
+
+% Seitenabstaende
+\geometry{left=15mm,right=15mm,top=15mm,bottom=20mm}
+
+% TikZ Bibliotheken
+\usetikzlibrary{
+    arrows,
+    arrows.meta,
+    decorations,
+    backgrounds,
+    positioning,
+    fit,
+    petri,
+    shadows,
+    datavisualization.formats.functions,
+    calc,
+    shapes.multipart
+}
+
+% Fuer ERM "Kraehenfuss-Notation"
+\tikzset{
+    sep_tip/.tip = {Kite[white,length=0.1,sep=16pt]}
+}
+\tikzset{
+    one /.tip = {|[scale=2]Square[length=8pt,width=1pt]}
+}
+\tikzset{
+    c_one /.tip = {Circle[fill=white,scale=1.5]one}
+}
+\tikzset{
+    n /.tip = {
+        |[scale=2,sep=-2pt]
+        Straight Barb[reversed,length=10pt,width=15pt,sep=-12pt]
+        Square[length=12pt,width=1pt]
+    }
+}
+\tikzset{
+    cn /.tip = {Circle[fill=white,scale=1.5]n}
+}
+\tikzset{
+    entity/.style={
+        rectangle split,
+        rectangle split ignore empty parts=true,
+        rectangle split parts=2,label=#1,
+        rounded corners,
+        solid,
+        draw}
+}
+\tikzset{
+    eerm-subtype/.style={
+        semicircle,
+        fill=white,
+        draw,
+        label=\textbf{#1}
+    }
+}
+
+
+\pgfplotsset{width=7cm,compat=1.15}
+
+\definecolor{codecolor}{HTML}{EEEEEE}
+\definecolor{codebordercolor}{HTML}{CCCCCC}
+
+% Standardeinstellungen fuer Source-Code
+\lstset{
+    language=C,
+    breaklines=true,
+    keepspaces=true,
+    keywordstyle=\bfseries\color{green!70!black},
+    basicstyle=\ttfamily\color{black},
+    commentstyle=\itshape\color{purple},
+    identifierstyle=\color{blue},
+    stringstyle=\color{orange},
+    showstringspaces=false,
+    rulecolor=\color{black},
+    tabsize=2,
+    escapeinside={\%*}{*\%},
+}
+
+\include{uml}
+
+\begin{document}
+
+% Custom Titelseite
+\begin{titlepage}
+	\begin{center}
+		{\Huge{\underline{\textbf{Softwaretechnik II $-$ Praktikum}}}} \\
+	\vspace{3cm}
+		{\Huge{\textbf{Subsystem 4 $-$ Zubereitung}}} \\
+	\vspace{3cm}
+		{\Huge{Eine Dokumentation von:}} \\
+	\vspace{2cm}
+		\huge{J. Fa{\ss}bender} \\
+	\vspace{.5cm}
+		\huge{J. Gobelet} \\
+	\vspace{.5cm}
+		\huge{L. Gobelet} \\
+	\vspace{.5cm}
+		\huge{E. G\"odel}
+	\end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\include{ms1/ms1}
+
+\end{document}
