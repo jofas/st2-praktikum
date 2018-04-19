@@ -19,7 +19,7 @@
     {right=3 of gericht}
     {\textbf{Zutat}\nodepart{second}Name: String}
     {zutat}
-    {minimum width=5cm}
+    {minimum width=6cm}
 % }}}
 
 % Ebene -1 {{{
@@ -27,7 +27,7 @@
     {below=3 of gericht}
     {\textbf{Speise}\nodepart{second}Name: String}
     {speise}
-    {minimum width=5cm}
+    {minimum width=6cm}
 % }}}
 
 % Ebene -2 {{{
@@ -45,15 +45,34 @@
     {right=3 of za}
     {\textbf{Zutatenangabe}\nodepart{second}Menge: int}
     {zutatenangabe}
-    {minimum width=5cm,fill=red!25}
+    {minimum width=6cm,fill=red!25}
 % }}}
 
 % Verbindungen {{{
-  \draw (gericht.south) -- (speise.north);
-  \draw (speise.south) -- (za.north);
-  \draw (zutatenangabe.west) -- (za.east);
+  % gericht -- speise {{{
+  \draw[umlaggreg-] (gericht.south) -- (speise.north);
+  \node[below left=.25 of gericht.south] {*};
+  \node[above left=.25 of speise.north] {*};
+  \node[left] at ($(gericht)!.5!(speise)$) {Teil von};
+  % }}}
+  % speise -- za {{{
+  \draw[umlcompo-] (speise.south) -- (za.north);
+  \node[below left=.25 of speise.south] {1};
+  \node[above left=.25 of za.north] {1};
+  \node[left] at ($(speise)!.5!(za)$) {beschreibt};
+  % }}}
+  % zutatenangabe -- za {{{
+  \draw[-umlcompo] (zutatenangabe.west) -- (za.east);
+  \node[above left=.25 of zutatenangabe.west] {1..*};
+  \node[above right=.25 of za.east] {1};
+  \node[below] at ($(zutatenangabe)!.5!(za)$) {ben\"otigt};
+  % }}}
+  % zutatenangabe -- zutat {{{
   \draw (zutatenangabe.north) -- (zutat.south);
+  \node[above left=.25 of zutatenangabe.north] {*};
+  \node[below left=.25 of zutat.south] {1};
+  \node[left] at ($(zutatenangabe)!.5!(zutat)$) {ben\"otigt};
+  % }}}
 % }}}
-
 \end{tikzpicture}
 \end{center}
