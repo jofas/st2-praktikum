@@ -31,8 +31,8 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent arg0) {
-		// Hier wird einmal Kartoffelbrei mit Möhren u
-		// und einmal Kartoffelbrei mit Erbsen als Gericht erstellt
+		/* Hier wird einmal Kartoffelbrei mit Möhren 
+		 und einmal Kartoffelbrei mit Erbsen als Gericht erstellt*/
 		
 		// Die Sachen werden zur besseren Nachvollziehbarkeit in Hashmaps gespeichert.
 		
@@ -42,7 +42,7 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 			Zutat z = new Zutat(s);
 			zutaten.put(s, z);
 		}
-		// Zutaten persitieren
+		// Zutaten persistieren
 		zutatRepository.saveAll(zutaten.values());
 	
 		// schließlich die einzelnen Speisen erstellen
@@ -113,6 +113,6 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 		gerichtRepository.findByPreisLessThan(8.0).forEach(g -> System.out.println(g.getName()));
 	}
 	
-	
+	// Aufgabe 2 fertig!
 }
 

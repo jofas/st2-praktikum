@@ -1,6 +1,5 @@
 package ms1jpaspringdemo.repositories;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
