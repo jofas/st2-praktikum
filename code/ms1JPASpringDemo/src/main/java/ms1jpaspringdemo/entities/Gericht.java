@@ -32,6 +32,8 @@ public class Gericht {
 	)
 	private Set<Speise> speisen = new HashSet<Speise>();
 	
+	public Gericht() {};
+	
 	public Gericht(String name, String details, double preis) {
 		this.name = name;
 		this.details = details;
@@ -55,11 +57,24 @@ public class Gericht {
 		return Collections.unmodifiableSet(speisen);
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public String getDetails() {
+		return details;
+	}
+
+
+	public double getPreis() {
+		return preis;
+	}
+
 	@Override
 	public String toString() {
 		return 
 		"Gericht: " + name + "\n" +
-		"Preis: " + preis + "\n" +
+		"Preis: " + preis + " €\n" +
 		"Details: " + details + "\n" +
 		"Anleitung: \n" +
 		String.join("\n",speisen.stream().map(Speise::toString).toArray(String[]::new));

@@ -19,7 +19,7 @@ public class Zubereitungsanleitung {
 	@CollectionTable(name = "ZUTATENANGABE")
 	private Set<Zutatenangabe> angaben = new HashSet<Zutatenangabe>();
 	
-	// Auch diesen Default-Konstruktor erzwingt JPA aus irgendeinen Grund
+	// Auch diesen Default-Konstruktor erzwingt JPA aus irgendeinem Grund
 	public Zubereitungsanleitung() {};
 	
 	public Zubereitungsanleitung(String anleitung) {

@@ -13,6 +13,9 @@ public class Zutat {
 	private int id;
 	private String name;
 	
+	// auch hier ist für JPA ein Default-Konstruktor notwendig
+	public Zutat() {};
+	
 	public Zutat(String name) {
 		this.name = name;
 	}

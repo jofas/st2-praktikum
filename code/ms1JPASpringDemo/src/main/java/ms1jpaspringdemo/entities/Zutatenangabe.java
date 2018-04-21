@@ -19,6 +19,6 @@ public class Zutatenangabe {
 	
 	@Override
 	public String toString() {
-		return "Zutat: " + zutat.toString() + "   Menge: " + menge;
+		return "Zutat: " + String.format("%-10s Anzahl: %-3d", zutat, menge);
 	}
 }

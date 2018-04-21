@@ -22,15 +22,21 @@
     <dependency>
     	<groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
-    </dependency>
+    </dependency>    
+	<!-- https://mvnrepository.com/artifact/org.antlr/antlr-complete -->
+	<dependency>
+    	<groupId>org.antlr</groupId>
+    	<artifactId>antlr-complete</artifactId>
+    	<version>3.5.1</version>
+	</dependency>
   </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
+  
+  <build>
+  	<plugins>
+    	<plugin>
+        	<groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+        </plugin>
+    </plugins>
+   </build>
 </project>

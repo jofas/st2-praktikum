@@ -13,15 +13,22 @@ public class Speise {
 	@Embedded
 	private Zubereitungsanleitung anleitung;
 	
+	// für JPA ist hier wieder ein Default-Konstruktor notwendig
+	public Speise() {};
+	
 	public Speise(String name, Zubereitungsanleitung anleitung) {
 		this.name = name;
 		this.anleitung = anleitung;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 	@Override
 	public String toString() {
 		return
 		"Speise: " + name + "\n" +
-		"Zubereitungsanleitung: \n" + anleitung + "\n";
+		"Zubereitungsanleitung: \n" + anleitung;
 	}
 }

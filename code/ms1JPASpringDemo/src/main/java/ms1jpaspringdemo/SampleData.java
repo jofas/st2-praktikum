@@ -42,11 +42,11 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 			Zutat z = new Zutat(s);
 			zutaten.put(s, z);
 		}
+		// Zutaten persitieren
 		zutatRepository.saveAll(zutaten.values());
 	
 		// schließlich die einzelnen Speisen erstellen
-		Map<String, Speise> speisen = new HashMap<String, Speise>();
-		
+		Map<String, Speise> speisen = new HashMap<String, Speise>();	
 		speisen.put("Kartoffelbrei", new Speise("Kartoffelbrei", 
 			ZubereitungsanleitungFactory.createZubereitungsanleitungWithAngaben(
 			"Kartoffeln, Salz und Butter vermatschen!", 	// Anleitungstext
@@ -86,22 +86,31 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 		
 		Gericht gericht2 = GerichtFactory.createGerichtWithSpeisen(
 				"Kartoffelbrei mit Erbsen", 
-				"Jede Erbse macht einen Knall!", 7.5, 
+				"Jede Erbse macht einen Knall!", 8.5, 
 				Arrays.asList(speisen.get("Kartoffelbrei"), speisen.get("Erbsengemüse")));
 		
-		// speicher persistent
-		/* Hier gibt es ein Problem! Wenn ich das zweite Gericht speichern möchte, dann kommt ein Fehler.
-		 * Fehler: object references an unsaved transient instance
-		 */
-		//TODO Gucken ob, man den Fehler beheben kann, noch mal alle Annotationen checken, finder-Methode implementieren
+		
 		
 		gerichtRepository.save(gericht2);
 		
 		// Ausgabe von Gericht 1
 		System.out.println(gericht1);
-		
+		// Zeile zur Formatierung
+		System.out.println();
 		// Ausgabe von Gericht 2
 		System.out.println(gericht2);
+		
+		// gib alle Speisen aus, die Salz enthalten
+		System.out.println("\nSalzige Speisen: ");
+		speiseRepository.findByContainsZutat(zutaten.get("Salz")).forEach(s -> System.out.println(s.getName()));
+		
+		// gib alle Zutaten aus, die ein 'f' im Namen haben
+		System.out.println("\nAlle Zutaten mit einem 'f' im Namen: ");
+		zutatRepository.findByNameLike("%f%").forEach(System.out::println);
+		
+		// gib alle Gericht unter 8 € aus
+		System.out.println("\nAlle Gerichte unter 7 €: ");
+		gerichtRepository.findByPreisLessThan(8.0).forEach(g -> System.out.println(g.getName()));
 	}
 	
 	
