@@ -42,6 +42,7 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 			Zutat z = new Zutat(s);
 			zutaten.put(s, z);
 		}
+		zutatRepository.saveAll(zutaten.values());
 	
 		// schließlich die einzelnen Speisen erstellen
 		Map<String, Speise> speisen = new HashMap<String, Speise>();
@@ -72,6 +73,9 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 			new Zutatenangabe(zutaten.get("Pfeffer"),5)
 		}))));
 		
+		//  Die Speisen persistent in der Datenbank speichern
+		speiseRepository.saveAll(speisen.values());
+		
 		// jetzt können die Gerichte aus den Speisen zusammen gesetzte werden
 		Gericht gericht1 = GerichtFactory.createGerichtWithSpeisen(
 				"Kartoffelbrei mit Möhren", 
@@ -91,11 +95,13 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 		 */
 		//TODO Gucken ob, man den Fehler beheben kann, noch mal alle Annotationen checken, finder-Methode implementieren
 		
-		// gerichtRepository.save(gericht2);
+		gerichtRepository.save(gericht2);
 		
-		// Ausgabe von ...
+		// Ausgabe von Gericht 1
 		System.out.println(gericht1);
 		
+		// Ausgabe von Gericht 2
+		System.out.println(gericht2);
 	}
 	
 	

@@ -25,7 +25,7 @@ public class Gericht {
 	private double preis;
 	
 	// Ein Gericht besteht aus mehreren Speisen und eine Speise kann mehreren Gerichten zugeordnet sein.
-	@ManyToMany(cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name = "gericht_speise",
 		joinColumns = @JoinColumn(name = "gericht_id"),
 		inverseJoinColumns = @JoinColumn(name = "speise_id")

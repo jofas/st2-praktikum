@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Zutatenangabe {
 	private int menge;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Zutat zutat;
 	
 	// Hier muss ein Default-Konstrukor hin, weil eine Zutatenangabe bevor der Zutat erstellt werden muss
