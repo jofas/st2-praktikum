@@ -19,13 +19,70 @@ h\"atte genauso gut einfach Teil der Zubereitungsanleitung sein
 k\"onnen und ist nur in unser Modell aufgenommen worden, damit
 wir die f\"ur die Aufgabenstellung ben\"otigte 1:1-Beziehung in
 unserem Diagramm haben.
+
+\subsubsection{Erl\"auterungen}
+
+Wir haben Zubereitungsanleitung als Value Object und nicht als
+Entity deklariert, da hier unserer Meinung nach Sharing nicht
+sinnvoll ist und ein Zubereitungsanleitungsobjekt deshalb
+persistent als Teil der zugeordneten Speise in der Datenbank
+gespeichert werden sollte.
+
+Gleiches gilt f\"ur die Zutatenangabe.
+
 % }}}
+
 \newpage
+
 % Teilaufgabe 2 {{{
 \subsection{Teilaufgabe 2: Entities und Value Objects mit JPA-Annotierung}
 
 \subsubsection{Annotationen der Entities und Value Objects}
 \input{ms1/code}
 
+% H2-Console {{{
 \subsubsection{H2-Console}
+
+% Gerichtstabelle {{{
+\begin{figure}[H]
+\centering
+\includegraphics{ms1/screenshots/gericht_table.PNG}
+\caption{Gerichtstabelle}
+\end{figure}
+% }}}
+
+% Speisentabelle {{{
+\begin{figure}[H]
+\centering
+\includegraphics{ms1/screenshots/speise_tbl.PNG}
+\caption{Speisentabelle}
+\end{figure}
+% }}}
+
+% Zutatentabelle {{{
+\begin{figure}[H]
+\centering
+\includegraphics{ms1/screenshots/zutat_tbl.PNG}
+\caption{Zutatentabelle}
+\end{figure}
+% }}}
+
+% Zutatenangabentabelle {{{
+\begin{figure}[H]
+\centering
+\includegraphics{ms1/screenshots/angabe_tbl.PNG}
+\caption{Zutatenangabentabelle}
+\end{figure}
+% }}}
+
+% Zuordnungstabelle Gericht - Speise {{{
+\begin{figure}[H]
+\centering
+\includegraphics{ms1/screenshots/gericht_speise_tbl.PNG}
+\caption{Zuordnungstabelle Gericht - Speise}
+\end{figure}
+% }}}
+
+% }}}
+
 % }}}
