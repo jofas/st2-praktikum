@@ -1,5 +1,5 @@
 TODO
 ----
-
-- Screenshots der H2-Console
-- Aufgabe 2b ?
+- bidirektionale Beziehung
+- Bild-Entity mit 1:n Beziehung zu Gericht
+- Zutatenangabe als Assoziationsklasse
