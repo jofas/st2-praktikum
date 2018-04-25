@@ -70,7 +70,7 @@ Gleiches gilt f\"ur die Zutatenmenge.
 % Zutatenmengentabelle {{{
 \begin{figure}[H]
 \centering
-\includegraphics{ms1/screenshots/angabe_tbl.PNG}
+\includegraphics{ms1/screenshots/zutatenmenge_tbl.PNG}
 \caption{Zutatenmengentabelle}
 \end{figure}
 % }}}
@@ -82,7 +82,51 @@ Gleiches gilt f\"ur die Zutatenmenge.
 \caption{Zuordnungstabelle Gericht - Speise}
 \end{figure}
 % }}}
-
+% }}}
 % }}}
 
+% Teilaufgabe 3 {{{
+\subsection{Teilaufgabe 3: Factories und Repositories}
+
+% Gericht Factory {{{
+\begin{mdframed}[style=codebox]
+\textbf{Factory für Erstellung von Gerichten}
+\lstinputlisting[language=Java, firstline=11, lastline=34]
+{../code/ms1JPASpringDemo/src/main/java/ms1jpaspringdemo/factories/GerichtFactory.java}
+\end{mdframed}
 % }}}
+
+Hier sieht man gut warum Factories notwendig sind. 
+Bei der Estellung von Gerichten muss zugleich die R\"uckreferenz von 
+Speise auf Gericht gesetzt werden.
+
+% Speise Repository {{{
+\begin{mdframed}[style=codebox]
+\textbf{Factory für Erstellung von Gerichten}
+\lstinputlisting[language=Java, firstline=12, lastline=17]
+{../code/ms1JPASpringDemo/src/main/java/ms1jpaspringdemo/repositories/SpeiseRepository.java}
+\end{mdframed}
+%}}}
+
+% Aufruf Query {{{
+\begin{mdframed}[style=codebox]
+\textbf{Ausgabe in der Konsole}
+\lstinputlisting[language=Java, firstline=103, lastline=105]
+{../code/ms1JPASpringDemo/src/main/java/ms1jpaspringdemo/SampleData.java}
+\end{mdframed}
+%}}}
+
+Folgendes wird dann in der Konsole ausgegeben:
+
+% Ausgabe Konsole{{{
+\begin{figure}[H]
+\centering
+\includegraphics{ms1/screenshots/console.PNG}
+\caption{Ausgabe in der Konsole}
+\end{figure}
+% }}}
+
+%}}}
+ 
+
+

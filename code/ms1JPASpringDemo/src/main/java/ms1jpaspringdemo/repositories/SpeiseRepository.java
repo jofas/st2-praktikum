@@ -10,11 +10,9 @@ import ms1jpaspringdemo.entities.Speise;
 import ms1jpaspringdemo.entities.Zutat;
 
 public interface SpeiseRepository extends CrudRepository<Speise,Integer> {
-
-	// Die Abfrage ist in JPQL geschrieben - Eine objektorientierte Variante von SQL
+	// Die Abfrage ist in JPQL geschrieben - Eine objektorientierte Abfragesprache, welche SQL aehnlich ist
 	// Findet alle Speisen, die eine bestimmte Zutat enthalten
 	@Query("select s from Speise s join s.anleitung a join a.angaben ang where ang.zutat = :zutat")
-	List<Speise> findByContainsZutat(@Param("zutat")Zutat zutat);
-	
+	List<Speise> findByContainsZutat(@Param("zutat")Zutat zutat);	
 }
 

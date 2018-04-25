@@ -81,7 +81,7 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 				"Kartoffelbrei mit Möhren", 
 				"Voll das Oma-Essen!", 7.5, 
 				Arrays.asList(speisen.get("Kartoffelbrei"), speisen.get("Möhrengemüse")));
-		// speicher persistent
+		// speicher persiste
 		gerichtRepository.save(gericht1); 
 		
 		Gericht gericht2 = GerichtFactory.createGerichtWithSpeisen(

@@ -1,5 +1,6 @@
 package ms1jpaspringdemo.entities;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ public class Speise {
 	private int id;
 	private String name;
 	
-	// bidirektionale Beziehung: Gericht kennt zugehörige Speisen und die Speisen kennen zugehörige Gerichte
+	// bidirektionale Beziehung: Gericht kennt zugehoerige Speisen und die Speisen kennen zugehoerige Gerichte
 	@ManyToMany(mappedBy = "speisen")
 	private Set<Gericht> gerichte = new HashSet<Gericht>();
 	
@@ -30,6 +31,14 @@ public class Speise {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public void addGericht(Gericht g) {
+		gerichte.add(g);
+	}
+	
+	public void addGerichte(Collection<Gericht> gerichte) {
+		gerichte.addAll(gerichte);
 	}
 	
 	@Override
