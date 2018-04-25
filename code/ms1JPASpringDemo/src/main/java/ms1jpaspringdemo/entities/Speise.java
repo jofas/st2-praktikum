@@ -1,5 +1,8 @@
 package ms1jpaspringdemo.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,7 +11,11 @@ public class Speise {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
-		
+	
+	// bidirektionale Beziehung: Gericht kennt zugehörige Speisen und die Speisen kennen zugehörige Gerichte
+	@ManyToMany(mappedBy = "speisen")
+	private Set<Gericht> gerichte = new HashSet<Gericht>();
+	
 	// Zubereitungsanleitung als Value Object
 	@Embedded
 	private Zubereitungsanleitung anleitung;

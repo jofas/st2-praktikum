@@ -15,9 +15,9 @@ public class Zubereitungsanleitung {
 	private String anleitung;
 
 	// Die Anleitung enthaelt mehrere Zutatenangaben als Value-Objects
-	@ElementCollection (targetClass = Zutatenangabe.class, fetch = FetchType.EAGER)
+	@ElementCollection (targetClass = Zutatenmenge.class, fetch = FetchType.EAGER)
 	@CollectionTable(name = "ZUTATENANGABE")
-	private Set<Zutatenangabe> angaben = new HashSet<Zutatenangabe>();
+	private Set<Zutatenmenge> angaben = new HashSet<Zutatenmenge>();
 
 	// Auch diesen Default-Konstruktor erzwingt JPA aus irgendeinen Grund
 
@@ -27,21 +27,21 @@ public class Zubereitungsanleitung {
 		this.anleitung = anleitung;
 	}
 
-	public Zubereitungsanleitung(String anleitung, Collection<Zutatenangabe> angb) {
+	public Zubereitungsanleitung(String anleitung, Collection<Zutatenmenge> angb) {
 		this.anleitung = anleitung;
-		this.angaben = new HashSet<Zutatenangabe>(angb);
+		this.angaben = new HashSet<Zutatenmenge>(angb);
 	}
 
 	// Ist es wirklich notwendig eine Angabe nur einzeln hinzuzufügen??
-	public void addZutatenangabe(Zutatenangabe angabe) {
+	public void addZutatenangabe(Zutatenmenge angabe) {
 		angaben.add(angabe);
 	}
 
-	public void addZutatenangaben(Collection<Zutatenangabe> angb) {
+	public void addZutatenangaben(Collection<Zutatenmenge> angb) {
 		this.angaben.addAll(angb);
 	}
 
-	public Set<Zutatenangabe> getZutatenangaben() {
+	public Set<Zutatenmenge> getZutatenangaben() {
 		return Collections.unmodifiableSet(angaben);
 	}
 
