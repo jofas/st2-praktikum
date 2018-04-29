@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import ms1jpaspringdemo.entities.Gericht;
 import ms1jpaspringdemo.entities.Speise;
 import ms1jpaspringdemo.entities.Zutat;
-import ms1jpaspringdemo.entities.Zutatenangabe;
+import ms1jpaspringdemo.entities.Zutatenmenge;
 import ms1jpaspringdemo.factories.GerichtFactory;
 import ms1jpaspringdemo.factories.ZubereitungsanleitungFactory;
 import ms1jpaspringdemo.repositories.GerichtRepository;
@@ -50,27 +50,27 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 		speisen.put("Kartoffelbrei", new Speise("Kartoffelbrei", 
 			ZubereitungsanleitungFactory.createZubereitungsanleitungWithAngaben(
 			"Kartoffeln, Salz und Butter vermatschen!", 	// Anleitungstext
-			Arrays.asList(new Zutatenangabe[]{          	// Zutatenangaben...
-			new Zutatenangabe(zutaten.get("Kartoffel"),6),
-			new Zutatenangabe(zutaten.get("Butter"),2),
-			new Zutatenangabe(zutaten.get("Salz"),5)
+			Arrays.asList(new Zutatenmenge[]{          	// Zutatenangaben...
+			new Zutatenmenge(zutaten.get("Kartoffel"),6),
+			new Zutatenmenge(zutaten.get("Butter"),2),
+			new Zutatenmenge(zutaten.get("Salz"),5)
 		}))));
 		
 		speisen.put("Möhrengemüse", new Speise("Möhrengemüse", 
 			ZubereitungsanleitungFactory.createZubereitungsanleitungWithAngaben(
 			"Möhren und Pfeffer umrühren!", 				// Anleitungstext
-			Arrays.asList(new Zutatenangabe[]{          	// Zutatenangaben...
-			new Zutatenangabe(zutaten.get("Möhre"),3),
-			new Zutatenangabe(zutaten.get("Pfeffer"),1)
+			Arrays.asList(new Zutatenmenge[]{          	// Zutatenangaben...
+			new Zutatenmenge(zutaten.get("Möhre"),3),
+			new Zutatenmenge(zutaten.get("Pfeffer"),1)
 		}))));
 		
 		speisen.put("Erbsengemüse", new Speise("Erbsengemüse",
 			ZubereitungsanleitungFactory.createZubereitungsanleitungWithAngaben(
 			"Erbsen, Salz und Pfeffer verbrennen lassen!",  // Anleitungstext
-			Arrays.asList(new Zutatenangabe[]{          	// Zutatenangaben...
-			new Zutatenangabe(zutaten.get("Erbse"),100),
-			new Zutatenangabe(zutaten.get("Salz"),2),
-			new Zutatenangabe(zutaten.get("Pfeffer"),5)
+			Arrays.asList(new Zutatenmenge[]{          	// Zutatenangaben...
+			new Zutatenmenge(zutaten.get("Erbse"),100),
+			new Zutatenmenge(zutaten.get("Salz"),2),
+			new Zutatenmenge(zutaten.get("Pfeffer"),5)
 		}))));
 		
 		//  Die Speisen persistent in der Datenbank speichern
@@ -81,7 +81,7 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 				"Kartoffelbrei mit Möhren", 
 				"Voll das Oma-Essen!", 7.5, 
 				Arrays.asList(speisen.get("Kartoffelbrei"), speisen.get("Möhrengemüse")));
-		// speicher persistent
+		// speicher persiste
 		gerichtRepository.save(gericht1); 
 		
 		Gericht gericht2 = GerichtFactory.createGerichtWithSpeisen(

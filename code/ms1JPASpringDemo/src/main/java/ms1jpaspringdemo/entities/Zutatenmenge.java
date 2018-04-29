@@ -3,16 +3,16 @@ package ms1jpaspringdemo.entities;
 import javax.persistence.*;
 
 @Embeddable
-public class Zutatenangabe {
+public class Zutatenmenge {
 	private int menge;
 	
 	@ManyToOne
 	private Zutat zutat;
 	
 	// Hier muss ein Default-Konstrukor hin, weil eine Zutatenangabe bevor der Zutat erstellt werden muss
-	public Zutatenangabe() {};
+	public Zutatenmenge() {};
 	
-	public Zutatenangabe(Zutat zutat, int menge) {
+	public Zutatenmenge(Zutat zutat, int menge) {
 		this.zutat = zutat;
 		this.menge = menge;
 	}

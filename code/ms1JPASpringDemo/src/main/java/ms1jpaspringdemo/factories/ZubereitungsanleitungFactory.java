@@ -2,7 +2,7 @@ package ms1jpaspringdemo.factories;
 import java.util.Collection;
 
 import ms1jpaspringdemo.entities.Zubereitungsanleitung;
-import ms1jpaspringdemo.entities.Zutatenangabe;
+import ms1jpaspringdemo.entities.Zutatenmenge;
 
 public class ZubereitungsanleitungFactory {
 	
@@ -12,7 +12,7 @@ public class ZubereitungsanleitungFactory {
 	 * die über Method-Chaining funktioniert.
 	 * Diese Factory ist aber nur ganz einfach gehalten und da sie keinen Zustand verwaltet, ist die Methode static.
 	 */
-	public static Zubereitungsanleitung createZubereitungsanleitungWithAngaben(String anleitungsText, Collection<Zutatenangabe> angaben) {
+	public static Zubereitungsanleitung createZubereitungsanleitungWithAngaben(String anleitungsText, Collection<Zutatenmenge> angaben) {
 		Zubereitungsanleitung anleitung = new Zubereitungsanleitung(anleitungsText);
 		anleitung.addZutatenangaben(angaben);
 		return anleitung;
