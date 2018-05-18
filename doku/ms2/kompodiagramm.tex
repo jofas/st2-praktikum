@@ -1,0 +1,156 @@
+\begin{center}
+\begin{tikzpicture}
+  % Column 1 {{{
+
+  % Row 1 {{{
+  \UMLSComponent
+    {0}
+    {0}
+    {Gast-UI}
+    {fill=green!25,text width=3cm}
+  % }}}
+
+  % Row 2 {{{
+  \UMLSComponentRelativeToAlterName
+    {below=3 of Gast-UI}
+    {Bestellvorgangs\-orchestrierung}
+    {bo}
+    {fill=purple,text width=3cm}
+  % }}}
+
+  % Row 3 {{{
+  \UMLSComponentRelativeTo
+    {below=3 of bo}
+    {Bestelldaten}
+    {fill=blue!25,text width=3cm}
+  % }}}
+
+  % Row 4 {{{
+  \UMLSComponentRelativeToAlterName
+    {below=3 of Bestelldaten}
+    {Buchhaltungs-API}
+    {ba}
+    {fill=purple,text width=3cm}
+  % }}}
+
+  % Row 5 {{{
+  \UMLSComponentRelativeToAlterName
+    {below=3 of ba}
+    {$<<$Buchhal\-tung$>>$}
+    {bh}
+    {fill=black!50,text width=3cm}
+  % }}}
+
+  % }}}
+
+  % Column 2 {{{
+
+  % Row 1 {{{
+  \UMLSComponentRelativeTo
+    {right=3 of Gast-UI}
+    {Backend}
+    {fill=orange,text width=3cm}
+  % }}}
+
+  % Row 3 {{{
+  \UMLSComponentRelativeTo
+    {right=3 of Bestelldaten}
+    {Standortdaten}
+    {fill=blue!25,text width=3cm}
+  % }}}
+
+  % Row 4 {{{
+  \UMLSComponentRelativeTo
+    {below=3 of Standortdaten}
+    {Rezeptadapter}
+    {fill=black!25,text width=3cm}
+  % }}}
+
+  % Row 5 {{{
+  \UMLSComponentRelativeToAlterName
+    {right=3 of bh}
+    {$<<$Rezeptver\-waltung$>>$}
+    {rvw}
+    {fill=black!50,text width=3cm}
+  % }}}
+
+  % }}}
+
+  % Column 3 {{{
+
+  % Row 1 {{{
+  \UMLSComponentRelativeTo
+    {right = 3 of Backend}
+    {Koch-UI}
+    {fill=green!25, text width=3cm}
+  % }}}
+
+  % Row 2 {{{
+  \UMLSComponentRelativeToAlterName
+    {below=3 of Koch-UI}
+    {Zubereitungs\-orchestrierung}
+    {zo}
+    {fill=purple,text width=3cm}
+  % }}}
+
+  % Row 3 {{{
+  \UMLSComponentRelativeTo
+    {below=3 of zo}
+    {Gerichtsdaten}
+    {fill=blue!25,text width=3cm}
+  % }}}
+
+  % Row 4 {{{
+  \UMLSComponentRelativeToAlterName
+    {below=3 of Gerichtsdaten}
+    {Lagerverwal\-tungsadapter}
+    {lvwa}
+    {fill=black!25,text width=3cm}
+  % }}}
+
+  % Row 5 {{{
+  \UMLSComponentRelativeToAlterName
+    {below=3 of lvwa}
+    {$<<$Lagerver\-waltung$>>$}
+    {lvw}
+    {fill=black!50,text width=3cm}
+  % }}}
+
+  % }}}
+
+  % Connections {{{
+
+  % }}}
+
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+% Legende {{{
+\begin{itemize}[label={}]
+  \item \tikz[baseline={-3pt}]{
+    \node[fill=green!25,green!25,inner ysep=3pt]{X};
+  }: Dialogkomponente
+
+  \item \tikz[baseline={-3pt}]{
+    \node[fill=purple,purple,inner ysep=3pt]{X};
+  }: Fassadenkomponente
+
+  \item \tikz[baseline={-3pt}]{
+    \node[fill=blue!25,blue!25,inner ysep=3pt]{X};
+  }: Datenkomponente
+
+  \item \tikz[baseline={-3pt}]{
+    \node[fill=orange,orange,inner ysep=3pt]{X};
+  }: Logikkomponente
+
+  \item \tikz[baseline={-3pt}]{
+    \node[fill=black!25,black!25,inner ysep=3pt]{X};
+  }: Adapterkomponente
+
+  \item \tikz[baseline={-3pt}]{
+    \node[fill=black!50,black!50,inner ysep=3pt]{X};
+  }: Umsystem
+\end{itemize}
+% }}}

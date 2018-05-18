@@ -148,7 +148,11 @@ Standortdaten &Arbeitsplatz, Sitzplatz &Diese Daten \"andern sich \"au{\ss}erst 
 % Gerichtskomponente {{{
 \hline
 Gerichtsdaten &Gericht, Speisekarte, Zubereitungsanleitung, Zutat, Zutatenangabe
-  &TODO  \\
+  &Stammdaten die f\"ur unseren Prozess der Zubereitung essentiell sind. Diese Daten
+  stammen nicht aus unserem Subsystem, sondern sind \"uber Schnittstellen abrufbar,
+  sowohl von der Lagerverwaltung (Zutat), als auch von der Rezepteverwaltung (Gericht,
+  Speisekarte, Zubereitungsanleitung, Zutatenangabe). Unsere Datenkomponente greift
+  \"uber Adapterkomponenten auf diese Schnittstellen zu.\\
 % }}}
 \hline
 \end{tabu}
@@ -166,9 +170,14 @@ Daten-/Logikkomponente &Zugeordnete(r) Use Case(s) &Erkl\"arung \\
 % }}}
 % Vergabewarteschlange {{{
 \hline
-Vergabewarteschlange (Logik) &Am Arbeitsplatz an-/abmelden, Gericht zubereiten & TODO \\
+Backend (Logik) &Am Arbeitsplatz an-/abmelden, Gericht bestellen, Gericht zubereiten &Unser "`Backend"',
+  was ab der Bestellungsaufgabe den Zubereitungsprozess steuert. Die Komponente umfasst die Vergabewarte\-
+  schlange mit den besetzten und freien Arbeitspl\"atzen und \"ubernimmt die Zuweisung, sobald eine
+  Bestellung von einem Clienten eingeht. Sobald ein Gericht fertig zubereitet ist und der Koch dies seinem
+  Terminal mitteilt, \"ubernimmt diese Komponente auch die Anzeige der Ordernummer (im Gast-UI). Da dies alles
+  vom Umfang her eher kleinere Aufgaben sind, haben wir uns dazu entschieden, diese Aufgaben in einer Komponente
+  zusammenzufassen.\\
 % }}}
-TODO & TODO &TODO \\
 \hline
 \end{tabu}
 
@@ -210,8 +219,8 @@ Umsystem/Schnittstelle &Eigene Fassadenkomponente sinnvoll? &Erkl\"arung \\
 % Buchhaltung {{{
 \hline
 Buchhaltung &Ja &Da die Buchhaltung lesenden Zugriff auf
-  usere Bestellungen haben soll, ist es notwendig eine spezialisierte Kompo\-
-  nente hierf\"ur anzulegen und nicht, wie intern in unserem Subsystem, den Zugriff
+  usere Bestellungen haben soll, ist es notwendig eine spezialisierte Komponente
+  hierf\"ur anzulegen und nicht, wie intern in unserem Subsystem, den Zugriff
   \"uber die Bestelldatenkomponente zu regeln.\\
 % }}}
 % Lagerverwaltung {{{
@@ -264,5 +273,5 @@ Rezeptverwaltung &Ja &Adapterkomponente f\"ur unsere Gerichtsdatenkomponente,
 
 % Teilaufgabe 3 {{{
 \subsection{Teilaufgabe 3: Komponentendiagramm}
-
+\input{ms2/kompodiagramm}
 % }}}
