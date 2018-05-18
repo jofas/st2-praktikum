@@ -56,7 +56,8 @@ Umsystem &Was geschieht zwischen Umsystem und unserem Subsystem?
 Rezeptverwaltung &Rezeptverwaltung verwaltet die Gesch\"aftsobjekte Gericht,
   Zubereitungsanleitung und Speisekarte. Der Gast fragt \"uber das ihm zur
   Verf\"ugung gestellte Frontend die Speisekarte und die Gerichte ab, w\"ahrend
-  der Koch an seinem Terminal die Zubereitungsanleitung angezeigt bekommt.
+  der Koch an seinem Terminal die Zubereitungsanleitung und die hiermit verbundenen
+  Zutatenangaben, angezeigt bekommt.
 
   &Aufruf einer Schnittstelle zur Rezeptverwaltung \\
 % }}}
@@ -73,9 +74,15 @@ Lagerverwaltung &Angabe zur Zutantenentnahme (kann auch \"uber die gleiche
 
   &Aufruf einer Schnittstelle zur Lagerverwaltung \\
 % }}}
+% Buchhaltung {{{
+\hline
+Buchhaltung &Abfrage der Bestellungen &Schnittstelle wird Buchhaltung zur verf\"ugung
+  gestellt \\
+% }}}
 \hline
 \end{tabu}
 
+% Erlaeuterung {{{
 \textbf{Erl\"auterung} \\
 
 Wir legen redundant zur Lagerverwaltung unsere eingene Verwaltung
@@ -101,12 +108,157 @@ stellt uns die Lagerverwaltung zwei Schnittstellen (oder eine, die beide
 Aufgaben - Entnahme mitteilen und Zutatenbestand abfragen - zusammenfasst)
 zur Verf\"ugung.
 
+Zus\"atzlich haben wir eine Schnittstelle f\"ur die Buchhaltung angelegt.
+Diese ist zwar kein explizites Subsystem, wird aber, unserer Meinung nach,
+im Betriebsumfeld h\"ochstwahrscheinlich als eigenes Subsystem existieren
+und unsere Schnittstelle zu den Bestellungen (im Endeffekt der Unternehmens\-
+umsatz aus dem Hauptgesch\"aft) nutzen wollen.
+% }}}
+
 % }}}
 
 % }}}
 
 % Teilaufgabe 2 {{{
 \subsection{Teilaufgabe 2: Ermittlung der verschiedenen Komponenten-Typen}
+
+% Schritt 1 {{{
+\subsubsection{Schritt 1: Gesch\"aftsobjekte in zusammenh\"angende Gruppen einteilen}
+
+\begin{tabu} to \linewidth {X|X|X}
+% Headerzeile {{{
+\hline
+\rowcolor{codebordercolor}
+Datenkomponente &Zugeordnete Gesch\"aftsobjekte &Erkl\"arung \\
+% }}}
+% Bestellungskomponente {{{
+\hline
+Bestelldaten &Bestellung &Die einzigen Daten die in diesem Subsystem tas\"achlich generiert
+  werden. Da die Bestellungen sehr wichtig f\"ur das Hauptgesch\"aft der Firma ist, es das einzige
+  Datenobjekt mit Implementierung eines Create-Interfaces (Factory) ist und auch sonst nicht in unsere
+  sonstigen Datenkomponenten passt, wird die Bestellung, unserer Meinung nach, in einer eigenen
+  Komponente implementiert.  \\
+% }}}
+% Standortkomponente {{{
+\hline
+Standortdaten &Arbeitsplatz, Sitzplatz &Diese Daten \"andern sich \"au{\ss}erst selten (und auch nicht
+  in unserem Subsystem) und umfassen im Vergleich zu anderen Komponenten wenig Datens\"atze und k\"onnen
+  deshalb, unserer Meinung nach, gut zusammengefasst werden.\\
+% }}}
+% Gerichtskomponente {{{
+\hline
+Gerichtsdaten &Gericht, Speisekarte, Zubereitungsanleitung, Zutat, Zutatenangabe
+  &TODO  \\
+% }}}
+\hline
+\end{tabu}
+
+% }}}
+
+% Schritt 2 {{{
+\subsubsection{Schritt 2: Use Cases auf Daten/Logik analysieren}
+
+\begin{tabu} to \linewidth {X|X|X}
+% Headerzeile {{{
+\hline
+\rowcolor{codebordercolor}
+Daten-/Logikkomponente &Zugeordnete(r) Use Case(s) &Erkl\"arung \\
+% }}}
+% Vergabewarteschlange {{{
+\hline
+Vergabewarteschlange (Logik) &Am Arbeitsplatz an-/abmelden, Gericht zubereiten & TODO \\
+% }}}
+TODO & TODO &TODO \\
+\hline
+\end{tabu}
+
+% }}}
+
+% Schritt 3 {{{
+\subsubsection{Schritt 3: Use Cases auf Nutzer-Interaktion analysieren}
+
+\begin{tabu} to \linewidth {X|X|X|X}
+% Headerzeile {{{
+\hline
+\rowcolor{codebordercolor}
+Dialogkomponente &Zugeordnete(r) Use Case(s) &Eigene Fassadenkomponente sinnvoll?
+  &Erkl\"arung \\
+% }}}
+% Koch-UI {{{
+\hline
+Koch-UI &Am Arbeitsplatz an-/abmelden, Gericht zubereiten &Ja &Fassadenkomponente zur
+  Orchestrierung der Gerichtszubereitung. \\
+% }}}
+% Gast-UI {{{
+\hline
+Gast-UI &Gericht bestellen &Ja &Fassadenkomponente zur Orchestrierung des Bestellvorgangs. \\
+% }}}
+\hline
+\end{tabu}
+
+% }}}
+
+% Schritt 4 {{{
+\subsubsection{Schritt 4: Angebot von externen Schnittstellen}
+
+\begin{tabu} to \linewidth {X|X|X}
+% Headerzeile {{{
+\hline
+\rowcolor{codebordercolor}
+Umsystem/Schnittstelle &Eigene Fassadenkomponente sinnvoll? &Erkl\"arung \\
+% }}}
+% Buchhaltung {{{
+\hline
+Buchhaltung &Ja &Da die Buchhaltung lesenden Zugriff auf
+  usere Bestellungen haben soll, ist es notwendig eine spezialisierte Kompo\-
+  nente hierf\"ur anzulegen und nicht, wie intern in unserem Subsystem, den Zugriff
+  \"uber die Bestelldatenkomponente zu regeln.\\
+% }}}
+% Lagerverwaltung {{{
+\hline
+Lagerverwaltung &Nein &Zugriff erfolgt nur aus der Gerichtsdatenkomponente \"uber die
+  Adapterkomponente der Lagerverwaltung, weshalb, unserer Meinung nach, keine Fassaden\-
+  komponente notwendig ist. \\
+% }}}
+% Rezeptverwaltung {{{
+\hline
+Rezeptverwaltung &Nein &Zugriff erfolgt nur aus der Gerichtsdatenkomponente \"uber die
+  Adapterkomponente der Rezepteverwaltung, weshalb, unserer Meinung nach, keine Fassaden\-
+  komponente notwendig ist. \\
+% }}}
+\hline
+\end{tabu}
+
+% }}}
+
+% Schritt 5 {{{
+\subsubsection{Schritt 5: Aufruf von externen Schnittstellen/Umsystemen}
+
+\begin{tabu} to \linewidth {X|X|X}
+% Headerzeile {{{
+\hline
+\rowcolor{codebordercolor}
+Umsystem/Schnittstelle &Adapterkomponente sinnvoll? &Erkl\"arung \\
+% }}}
+% Buchhaltung {{{
+\hline
+Buchhaltung &Nein &Bereits spezialisierte Fassadenkomponente vorhanden. \\
+% }}}
+% Lagerverwaltung {{{
+\hline
+Lagerverwaltung &Ja &Adapterkomponente f\"ur unsere Gerichtsdatenkomponente,
+  die die Lese- und Schreibforg\"ange zur Verf\"ugung stellt und gleichzeitig
+  bei Ausf\"allen als "`Anti-Corruption-Layer"' fungiert. \\
+% }}}
+% Rezeptverwaltung {{{
+\hline
+Rezeptverwaltung &Ja &Adapterkomponente f\"ur unsere Gerichtsdatenkomponente,
+  die die Leseforg\"ange zur Verf\"ugung stellt. \\
+% }}}
+\hline
+\end{tabu}
+
+% }}}
 
 % }}}
 
