@@ -1,15 +1,37 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%UML Module
+% Tikz-library for UML
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% arrow tips {{{
+% Arrow tips {{{
+
+  % umlaggreg {{{
+  \tikzset{
+    umlaggreg /.tip = {Diamond[fill=white,scale=1.75]}
+  }
+  % }}}
+
+  % umlcompo {{{
+  \tikzset{
+    umlcompo /.tip = {Diamond[fill=black,scale=1.75]}
+  }
+  % }}}
+
+  % umlgeneral {{{
+  \tikzset{
+    umlgeneral /.tip = {Triangle[fill=white,scale=1.75]}
+  }
+  % }}}
+
+% }}}
+
+% Use-case {{{
 \tikzset{
-  umlaggreg /.tip = {Diamond[fill=white,scale=1.75]}
-}
-\tikzset{
-  umlcompo /.tip = {Diamond[fill=black,scale=1.75]}
+  usecase/.style={
+    ellipse,
+    fill=blue!20,
+    align=center,
+    draw
+  }
 }
 % }}}
 
@@ -186,6 +208,111 @@
         #4
       ] (#3) {#2};
     }
+  % }}}
+
+% }}}
+
+% UML Actor (various) {{{
+%
+% 1. Normal
+%    -> \UMLActor { X } { Y } { Text/Name }
+% 2. Normal mit alternativem Namen
+%    -> \UMLActorAlterName { X } { Y } { Text } { Name }
+% 3. Relativ
+%    -> \UMLActorRelativeTo { Relative to } { Text/Name }
+% 4. Relativ mit alternativem Namen
+%    -> \UMLActorRelativeToAlterName { Relative to } { Text } { Name }
+
+  % DrawActor {{{
+  \def\DrawActor#1{
+
+    % Body {{{
+    \draw[scale=.5] ($(#1)+(0,.5)$) -- ($(#1)-(0,.5)$);
+    % }}}
+
+    % Left leg {{{
+    \draw[scale=.5] ($(#1)-(0,.5)$) -- ($(#1)+(.5,-1)$);
+    % }}}
+
+    % Right leg {{{
+    \draw[scale=.5] ($(#1)-(0,.5)$) -- ($(#1)+(-.5,-1)$);
+    % }}}
+
+    % Arms {{{
+    \draw[scale=.5] ($(#1)+(.5,.25)$) -- ($(#1)+(-.5,.25)$);
+    % }}}
+
+    % Head {{{
+    \draw[scale=.5] ($(#1)+(0,.75)$) circle (.25);
+    % }}}
+
+  }
+  % }}}
+
+  % 1. Normal {{{
+  \def\UMLActor#1#2#3{
+
+    % Node for referencing actor {{{
+    \node[
+      label=below:#3,
+      inner ysep=.55cm,
+      inner xsep=.3cm
+    ] at (#1,#2) (#3) {};
+    % }}}
+
+    \DrawActor{#3}
+
+  }
+  % }}}
+
+  % 2. Normal mit alternativem Namen {{{
+  \def\UMLActorAlterName#1#2#3#4{
+
+    % Node for referencing actor {{{
+    \node[
+      label=below:#3,
+      inner ysep=.55cm,
+      inner xsep=.3cm
+    ] at (#1,#2) (#4) {};
+    % }}}
+
+    \DrawActor{#4}
+
+  }
+  % }}}
+
+  % 3. Relativ {{{
+  \def\UMLActorRelativeTo#1#2{
+
+    % Node for referencing actor {{{
+    \node[
+      label=below:#2,
+      inner ysep=.55cm,
+      inner xsep=.3cm,
+      #1
+    ] (#2) {};
+    % }}}
+
+    \DrawActor{#2}
+
+  }
+  % }}}
+
+  % 4. Relativ {{{
+  \def\UMLActorRelativeToAlterName#1#2#3{
+
+    % Node for referencing actor {{{
+    \node[
+      label=below:#2,
+      inner ysep=.55cm,
+      inner xsep=.3cm,
+      #1
+    ] (#3) {};
+    % }}}
+
+    \DrawActor{#3}
+
+  }
   % }}}
 
 % }}}

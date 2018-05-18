@@ -1,0 +1,116 @@
+\section{Meilenstein 2 $-$ Komponentenschnitt}
+
+% Teilaufgabe 1 {{{
+\subsection{Teilaufgabe 1: Vorbereitung des Komponentenschnitts}
+
+% Liste der Geschaeftsobjekte {{{
+\subsubsection{Liste der Gesch\"aftsobjekte}
+
+\begin{itemize}
+
+  \item Arbeitsplatz
+
+  \item Bestellung
+
+  \item Gericht
+
+  \item Sitzplatz
+
+  \item Speisekarte
+
+  \item Zubereitungsanleitung
+
+  \item Zutat
+
+  \item Zutatenangabe
+
+\end{itemize}
+% }}}
+
+% Liste der Use Cases {{{
+\subsubsection{Liste der Use Cases}
+
+\begin{itemize}
+
+  \item Am Arbeitsplatz an-/abmelden
+
+  \item Gericht bestellen
+
+  \item Gericht zubereiten
+
+\end{itemize}
+% }}}
+
+% Liste der Umsysteme {{{
+\subsubsection{Liste der Umsysteme}
+
+\begin{tabu} to \linewidth {X|X|X}
+% Headerzeile {{{
+\hline
+\rowcolor{codebordercolor}
+Umsystem &Was geschieht zwischen Umsystem und unserem Subsystem?
+  &Schnittstelle angeboten oder aufgerufen \\
+% }}}
+% Rezeptverwaltung {{{
+\hline
+Rezeptverwaltung &Rezeptverwaltung verwaltet die Gesch\"aftsobjekte Gericht,
+  Zubereitungsanleitung und Speisekarte. Der Gast fragt \"uber das ihm zur
+  Verf\"ugung gestellte Frontend die Speisekarte und die Gerichte ab, w\"ahrend
+  der Koch an seinem Terminal die Zubereitungsanleitung angezeigt bekommt.
+
+  &Aufruf einer Schnittstelle zur Rezeptverwaltung \\
+% }}}
+% Lagerverwaltung {{{
+\hline
+Lagerverwaltung &Abfrage zum Zutatenbestand &Aufruf einer Schnittstelle zur
+  Lagerverwaltung \\
+% }}}
+% Lagerverwaltung {{{
+\hline
+Lagerverwaltung &Angabe zur Zutantenentnahme (kann auch \"uber die gleiche
+  Schnittstelle, die im obrigen Tabelleneintrag spezifiziert ist, realisiert
+  werden)
+
+  &Aufruf einer Schnittstelle zur Lagerverwaltung \\
+% }}}
+\hline
+\end{tabu}
+
+\textbf{Erl\"auterung} \\
+
+Wir legen redundant zur Lagerverwaltung unsere eingene Verwaltung
+mit Angaben zum Zutatenbestand an, um auch bei Nichterreichbarkeit
+der Lagerverwaltung funktionsf\"ahig zu bleiben, da unser Subsystem
+essentiell f\"ur den Umsatz verantwortlich ist und ein Ausfall, das
+hei{\ss}t in diesem Fall der Zustand, dass eine Zutat nicht mehr in
+ben\"otigter Menge im Lager zur Verf\"ugung steht, nicht auf Grund
+technischer Probleme eintreten sollte.
+
+Allerdings stellen wir keinen Anspruch auf absolute Richtigkeit unserer
+Zutantenbestandsverwaltung, da wir nur die Ereignisse unseres Subsystems,
+das hei{\ss}t in diesem Fall die Entnahme einer Zutat zur Zubereitung,
+protokollieren und die restlichen Angaben aus der Lagerverwaltung stammen.
+
+Ist diese nun nicht erreichbar, verwendet unsere Zutatenbestandsverwaltung
+mitunter veraltete Daten, was wir nicht mit einbeziehen.
+
+Der Lagerverwaltung wird die Entnahme von unserem Subsystem aus mitgeteilt.
+
+F\"ur den kompletten Synchronisationsprozess zwischen den beiden Systemen
+stellt uns die Lagerverwaltung zwei Schnittstellen (oder eine, die beide
+Aufgaben - Entnahme mitteilen und Zutatenbestand abfragen - zusammenfasst)
+zur Verf\"ugung.
+
+% }}}
+
+% }}}
+
+% Teilaufgabe 2 {{{
+\subsection{Teilaufgabe 2: Ermittlung der verschiedenen Komponenten-Typen}
+
+% }}}
+
+% Teilaufgabe 3 {{{
+\subsection{Teilaufgabe 3: Komponentendiagramm}
+
+% }}}
