@@ -22,6 +22,26 @@
   }
   % }}}
 
+  % umlportprovider {{{
+  \tikzset{
+    umlportprovider /.tip = {Circle[
+      length=8pt,
+      width=8pt,
+      fill=white
+    ]}
+  }
+  % }}}
+
+  % umlportcaller {{{
+  \tikzset{
+    umlportcaller /.tip = {Arc Barb[
+      reversed,
+      length=3pt,
+      width=8pt
+    ]}
+  }
+  % }}}
+
 % }}}
 
 % Use-case {{{
@@ -66,7 +86,7 @@
 	};
 }
 
-%UML Simple Component {{{
+% UML Simple Component {{{
 
 % 1. x
 % 2. y
@@ -157,8 +177,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % UML Component Port
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\def\UMLComponentPort#1{
-	\draw[fill=yellow!25] ($(#1)-(.2,.2)$) rectangle ($(#1)+(.2,.2)$);
+
+% 1. position
+% 2. options (draw)
+\def\UMLComponentPort#1#2{
+	\draw[fill=yellow!25,#2] ($(#1)-(.2,.2)$) rectangle ($(#1)+(.2,.2)$);
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,3 +1,4 @@
+\begin{figure}[H]
 \begin{center}
 \begin{tikzpicture}
   % Column 1 {{{
@@ -21,13 +22,13 @@
   % Row 3 {{{
   \UMLSComponentRelativeTo
     {below=3 of bo}
-    {Bestelldaten}
+    {Standortdaten}
     {fill=blue!25,text width=3cm}
   % }}}
 
   % Row 4 {{{
   \UMLSComponentRelativeToAlterName
-    {below=3 of Bestelldaten}
+    {below=3 of Standortdaten}
     {Buchhaltungs-API}
     {ba}
     {fill=purple,text width=3cm}
@@ -54,14 +55,14 @@
 
   % Row 3 {{{
   \UMLSComponentRelativeTo
-    {right=3 of Bestelldaten}
-    {Standortdaten}
+    {right=3 of Standortdaten}
+    {Bestelldaten}
     {fill=blue!25,text width=3cm}
   % }}}
 
   % Row 4 {{{
   \UMLSComponentRelativeTo
-    {below=3 of Standortdaten}
+    {below=3 of Bestelldaten}
     {Rezeptadapter}
     {fill=black!25,text width=3cm}
   % }}}
@@ -120,10 +121,232 @@
 
   % Connections {{{
 
+    % Gast-UI -> bo {{{
+    \draw [-{>[sep=3.5]>}] (Gast-UI.south) -- (bo.north);
+
+    \UMLComponentPort
+      {Gast-UI.south}
+      {fill=white}
+
+    \UMLComponentPort
+      {bo.north}
+      {fill=white}
+    % }}}
+
+    % bo -> Backend {{{
+    \draw [-{>[sep=3.5]>}] (bo.east) -| (Backend.230);
+
+    \UMLComponentPort
+      {bo.east}
+      {fill=white}
+
+    \UMLComponentPort
+      {Backend.230}
+      {fill=white}
+    % }}}
+
+    % Backend -> zo {{{
+    \draw [-{>[sep=3.5]>}] (Backend.310) |- (zo.west);
+
+    \UMLComponentPort
+      {Backend.310}
+      {fill=white}
+
+    \UMLComponentPort
+      {zo.west}
+      {fill=white}
+    % }}}
+
+    % Koch-UI -> zo {{{
+    \draw [-{>[sep=3.5]>}] (Koch-UI.south) -- (zo.north);
+
+    \UMLComponentPort
+      {Koch-UI.south}
+      {fill=white}
+
+    \UMLComponentPort
+      {zo.north}
+      {fill=white}
+    % }}}
+
+    % Koch-UI -> Backend {{{
+    \draw [-{>[sep=3.5]>}] (Koch-UI.west) -- (Backend.east);
+
+    \UMLComponentPort
+      {Koch-UI.west}
+      {fill=white}
+
+    \UMLComponentPort
+      {Backend.east}
+      {fill=white}
+    % }}}
+
+    % bo -> Bestelldaten {{{
+    \draw [-{>[sep=3.5]>}]
+      (bo.south)
+      |-
+      ($(bo)!.6!(Bestelldaten)$)
+      -|
+      (Bestelldaten.158);
+
+    \UMLComponentPort
+      {bo.south}
+      {fill=white}
+
+    \UMLComponentPort
+      {Bestelldaten.158}
+      {fill=white}
+    % }}}
+
+    % bo -> Standortdaten {{{
+    \draw [-{>[sep=3.5]>}] (bo.210) -- (Standortdaten.158);
+
+    \UMLComponentPort
+      {bo.210}
+      {fill=white}
+
+    \UMLComponentPort
+      {Standortdaten.158}
+      {fill=white}
+    % }}}
+
+    % bo -> Gerichtsdaten {{{
+    \draw [-{>[sep=3.5]>}]
+      (bo.330)
+      |-
+      ($(bo)!.4!(Gerichtsdaten)$)
+      -|
+      (Gerichtsdaten.158);
+
+    \UMLComponentPort
+      {bo.330}
+      {fill=white}
+
+    \UMLComponentPort
+      {Gerichtsdaten.158}
+      {fill=white}
+    % }}}
+
+    % zo -> Gerichtsdaten {{{
+    \draw [-{>[sep=3.5]>}] (zo.330) -- (Gerichtsdaten.22);
+
+    \UMLComponentPort
+      {zo.330}
+      {fill=white}
+
+    \UMLComponentPort
+      {Gerichtsdaten.22}
+      {fill=white}
+    % }}}
+
+    % zo -> Bestelldaten {{{
+    \draw [-{>[sep=3.5]>}]
+      (zo.south)
+      |-
+      ($(zo)!.6!(Bestelldaten)$)
+      -|
+      (Bestelldaten.22);
+
+    \UMLComponentPort
+      {zo.south}
+      {fill=white}
+
+    \UMLComponentPort
+      {Bestelldaten.22}
+      {fill=white}
+    % }}}
+
+    % ba -> Bestelldaten {{{
+    \draw [-{>[sep=3.5]>}]
+      (ba.north)
+      |-
+      ($(ba)!.7!(Bestelldaten)$)
+      -|
+      (Bestelldaten.south);
+
+    \UMLComponentPort
+      {ba.north}
+      {fill=white}
+
+    \UMLComponentPort
+      {Bestelldaten.south}
+      {fill=white}
+    % }}}
+
+    % Gerichtsdaten -> Rezeptadapter {{{
+    \draw [-{>[sep=3.5]>}]
+      (Gerichtsdaten.230)
+      |-
+      ($(Gerichtsdaten)!.5!(Rezeptadapter)$)
+      -|
+      (Rezeptadapter.north);
+
+    \UMLComponentPort
+      {Gerichtsdaten.230}
+      {fill=white}
+
+    \UMLComponentPort
+      {Rezeptadapter.north}
+      {fill=white}
+    % }}}
+
+    % Gerichtsdaten -> lvwa {{{
+    \draw [-{>[sep=3.5]>}] (Gerichtsdaten.310) -- (lvwa.60);
+
+    \UMLComponentPort
+      {Gerichtsdaten.310}
+      {fill=white}
+
+    \UMLComponentPort
+      {lvwa.60}
+      {fill=white}
+    % }}}
+
+    % ba -> bh {{{
+    \draw [-umlportprovider] (ba)--($(ba)!.5!(bh)$);
+    \draw [-umlportcaller]   (bh)--($(bh)!.5!(ba)$);
+
+    \UMLComponentPort
+      {ba.south}
+      {fill=white}
+
+    \UMLComponentPort
+      {bh.north}
+      {fill=white}
+    % }}}
+
+    % Rezeptadapter -> rvw {{{
+    \draw [-umlportcaller]   (Rezeptadapter)--($(Rezeptadapter)!.5!(rvw)$);
+    \draw [-umlportprovider] (rvw)--($(rvw)!.5!(Rezeptadapter)$);
+
+    \UMLComponentPort
+      {Rezeptadapter.south}
+      {fill=white}
+
+    \UMLComponentPort
+      {rvw.north}
+      {fill=white}
+    % }}}
+
+    % lvwa -> lvw {{{
+    \draw [-umlportcaller]   (lvwa)--($(lvwa)!.5!(lvw)$);
+    \draw [-umlportprovider] (lvw)--($(lvw)!.5!(lvwa)$);
+
+    \UMLComponentPort
+      {lvwa.south}
+      {fill=white}
+
+    \UMLComponentPort
+      {lvw.north}
+      {fill=white}
+    % }}}
+
   % }}}
 
 \end{tikzpicture}
+\caption{Komponentendiagramm}
 \end{center}
+\end{figure}
 
 \newpage
 
