@@ -13,7 +13,7 @@
 
   % Row 2 {{{
   \UMLSComponentRelativeToAlterName
-    {below=3 of Gast-UI}
+    {below=2 of Gast-UI}
     {Bestellvorgangs\-fassade}
     {bo}
     {fill=purple,text width=3cm}
@@ -108,7 +108,7 @@
 
   % Row 2 {{{
   \UMLSComponentRelativeToAlterName
-    {below=3 of Zubereitungs-UI}
+    {right=3 of aao}
     {Zubereitungs\-fassade}
     {zo}
     {fill=purple,text width=3cm}
@@ -263,7 +263,7 @@
       (Bestelldaten.158);
 
       % Portnumber {{{
-      \node[above right=.5 of Bestelldaten.158] {8}
+      \node[above right=.5 of Bestelldaten.158] {9}
         edge (Bestelldaten.158);
       % }}}
 
@@ -280,7 +280,7 @@
     \draw [-{>[sep=3.5]>}] (bo.210) -- (Standortdaten.158);
 
       % Portnumber {{{
-      \node[above right=.5 of Standortdaten.158] {6}
+      \node[above right=.5 of Standortdaten.158] {7}
         edge (Standortdaten.158);
       % }}}
 
@@ -302,7 +302,7 @@
       (Gerichtsdaten.158);
 
       % Portnumber {{{
-      \node[above right=.5 of Gerichtsdaten.158] {10}
+      \node[above right=.5 of Gerichtsdaten.158] {11}
         edge (Gerichtsdaten.158);
       % }}}
 
@@ -324,7 +324,7 @@
       (Standortdaten.46);
 
       % Portnumber {{{
-      \node[above right=.5 of Standortdaten.46] {7}
+      \node[above right=.5 of Standortdaten.46] {8}
         edge (Standortdaten.46);
       % }}}
 
@@ -341,7 +341,7 @@
     \draw [-{>[sep=3.5]>}] (zo.330) -- (Gerichtsdaten.22);
 
       % Portnumber {{{
-      \node[above left=.5 of Gerichtsdaten.22] {11}
+      \node[above left=.5 of Gerichtsdaten.22] {12}
         edge (Gerichtsdaten.22);
       % }}}
 
@@ -363,7 +363,7 @@
       (Bestelldaten.22);
 
       % Portnumber {{{
-      \node[above left=.5 of Bestelldaten.22] {9}
+      \node[above left=.5 of Bestelldaten.22] {10}
         edge (Bestelldaten.22);
       % }}}
 
@@ -385,7 +385,7 @@
       (Bestelldaten.south);
 
       % Portnumber {{{
-      \node[below right=.5 of Bestelldaten.south] {12}
+      \node[below right=.5 of Bestelldaten.south] {13}
         edge (Bestelldaten.south);
       % }}}
 
@@ -407,7 +407,7 @@
       (Rezeptadapter.north);
 
       % Portnumber {{{
-      \node[above right=.5 of Rezeptadapter.north] {13}
+      \node[above right=.5 of Rezeptadapter.north] {14}
         edge (Rezeptadapter.north);
       % }}}
 
@@ -424,7 +424,7 @@
     \draw [-{>[sep=3.5]>}] (Gerichtsdaten.310) -- (lvwa.60);
 
       % Portnumber {{{
-      \node[above left=.5 of lvwa.60] {14}
+      \node[above left=.5 of lvwa.60] {15}
         edge (lvwa.60);
       % }}}
 
@@ -483,8 +483,6 @@
 \end{center}
 \end{figure}
 
-\newpage
-
 % Legende {{{
 \begin{itemize}[label={}]
   \item \tikz[baseline={-3pt}]{
@@ -511,4 +509,149 @@
     \node[fill=black!50,black!50,inner ysep=3pt]{X};
   }: Umsystem
 \end{itemize}
+% }}}
+
+% Portbeschriftungen {{{
+\subsubsection*{Portbeschriftungen}
+
+\begin{tabu} to \linewidth {clcllX}
+% Headerzeile {{{
+%Nummer &Aufrufender Port & &Aufgerufener Port &Beschreibung aufgerufener Port\\
+% }}}
+% 1. {{{
+1.
+  &\textbf{Gast-UI}
+  &$\rightarrow$
+  &\textbf{Bestellvorgangsfassade}
+  &:
+  &Bestellvorgang beginnen.
+  \\\\
+% }}}
+% 2. {{{
+2.
+  &\textbf{An-/Abmeldungs-UI}
+  &$\rightarrow$
+  &\textbf{An-/Abmeldungs\-fassade}
+  &:
+  &Am Arbeitsplatz an-/abmelden.
+  \\\\
+% }}}
+% 3. {{{
+3.
+  &\textbf{Zubereitungs-UI}
+  &$\rightarrow$
+  &\textbf{Zubereitungsfassade}
+  &:
+  &Zubereitung beginnen.
+  \\\\
+% }}}
+% 4. {{{
+4.
+  &\textbf{Bestellvorgansfassade}
+  &$\rightarrow$
+  &\textbf{Bestellabwicklung}
+  &:
+  &Bestellung aufgeben.
+  \\\\
+% }}}
+% 5. {{{
+5.
+  &\textbf{An-/Abmeldefassade}
+  &$\rightarrow$
+  &\textbf{Bestellabwicklung}
+  &:
+  &In Vergabewarteschlange aufnehmen.
+  \\\\
+% }}}
+% 6. {{{
+6.
+  &\textbf{Bestellabwicklung}
+  &$\rightarrow$
+  &\textbf{Zubereitungsfassade}
+  &:
+  &Bestellung zubereiten.
+  \\\\
+% }}}
+% 7. {{{
+7.
+  &\textbf{Bestellvorgangsfassade}
+  &$\rightarrow$
+  &\textbf{Standortdaten}
+  &:
+  &Sitzplatz abfragen.
+  \\\\
+% }}}
+% 8. {{{
+8.
+  &\textbf{An-/Abmeldungs\-fassade}
+  &$\rightarrow$
+  &\textbf{Standortdaten}
+  &:
+  &Arbeitsplatz abfragen.
+  \\\\
+% }}}
+% 9. {{{
+9.
+  &\textbf{Bestellvorgangsfassade}
+  &$\rightarrow$
+  &\textbf{Bestelldaten}
+  &:
+  &Bestellung speichern.
+  \\\\
+% }}}
+% 10. {{{
+10.
+  &\textbf{Zubereitungsfassade}
+  &$\rightarrow$
+  &\textbf{Bestelldaten}
+  &:
+  &Zuzubereitende Bestellung abfragen.
+  \\\\
+% }}}
+% 11. {{{
+11.
+  &\textbf{Bestellvorgangsfassade}
+  &$\rightarrow$
+  &\textbf{Gerichtsdaten}
+  &:
+  &Speisekarte und Gerichte abfragen.
+  \\\\
+% }}}
+% 12. {{{
+12.
+  &\textbf{Zubereitungsfassade}
+  &$\rightarrow$
+  &\textbf{Gerichtsdaten}
+  &:
+  &Zubereitungsanleitung abfragen.
+  \\\\
+% }}}
+% 13. {{{
+13&\textbf{Buchhaltungs-API}
+  &$\rightarrow$
+  &\textbf{Bestelldaten}
+  &:
+  &Bestellungen abfragen.
+  \\\\
+% }}}
+% 14. {{{
+14.
+  &\textbf{Gerichtsdaten}
+  &$\rightarrow$
+  &\textbf{Rezeptadapter}
+  &:
+  &Daten aus Subsystem Rezeptverwaltung holen.
+  \\\\
+% }}}
+% 15. {{{
+15.
+  &\textbf{Gerichtsdaten}
+  &$\rightarrow$
+  &\textbf{Lagerverwaltungs\-adapter}
+  &:
+  &Daten aus Subsystem Lagerverwaltung holen
+    und synchronisieren.
+  \\
+% }}}
+\end{tabu}
 % }}}

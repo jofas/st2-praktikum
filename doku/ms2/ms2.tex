@@ -57,7 +57,7 @@ Rezeptverwaltung &Rezeptverwaltung verwaltet die Gesch\"aftsobjekte Gericht,
   Zubereitungsanleitung und Speisekarte. Der Gast fragt \"uber das ihm zur
   Verf\"ugung gestellte Frontend die Speisekarte und die Gerichte ab, w\"ahrend
   der Koch an seinem Terminal die Zubereitungsanleitung und die hiermit verbundenen
-  Zutatenangaben, angezeigt bekommt.
+  Zutatenpositionen, angezeigt bekommt.
 
   &Aufruf einer Schnittstelle zur Rezeptverwaltung \\
 % }}}
@@ -147,11 +147,11 @@ Standortdaten &Arbeitsplatz, Sitzplatz &Diese Daten \"andern sich \"au{\ss}erst 
 % }}}
 % Gerichtskomponente {{{
 \hline
-Gerichtsdaten &Gericht, Speisekarte, Zubereitungsanleitung, Zutat, Zutatenangabe
+Gerichtsdaten &Gericht, Speisekarte, Zubereitungsanleitung, Zutat, Zutatenposition
   &Stammdaten die f\"ur unseren Prozess der Zubereitung essentiell sind. Diese Daten
   stammen nicht aus unserem Subsystem, sondern sind \"uber Schnittstellen abrufbar,
   sowohl von der Lagerverwaltung (Zutat), als auch von der Rezepteverwaltung (Gericht,
-  Speisekarte, Zubereitungsanleitung, Zutatenangabe). Unsere Datenkomponente greift
+  Speisekarte, Zubereitungsanleitung, Zutatenposition). Unsere Datenkomponente greift
   \"uber Adapterkomponenten auf diese Schnittstellen zu.\\
 % }}}
 \hline
@@ -283,3 +283,4 @@ Rezeptverwaltung &Ja &Adapterkomponente f\"ur unsere Gerichtsdatenkomponente,
 \subsection{Teilaufgabe 3: Komponentendiagramm}
 \input{ms2/kompodiagramm}
 % }}}
+
