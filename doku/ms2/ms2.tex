@@ -22,7 +22,7 @@
 
   \item Zutat
 
-  \item Zutatenangabe
+  \item Zutatenposition
 
 \end{itemize}
 % }}}
@@ -168,14 +168,15 @@ Gerichtsdaten &Gericht, Speisekarte, Zubereitungsanleitung, Zutat, Zutatenangabe
 \rowcolor{codebordercolor}
 Daten-/Logikkomponente &Zugeordnete(r) Use Case(s) &Erkl\"arung \\
 % }}}
-% Vergabewarteschlange {{{
+% Bestellabwicklung {{{
 \hline
-Backend (Logik) &Am Arbeitsplatz an-/abmelden, Gericht bestellen, Gericht zubereiten &Unser "`Backend"',
-  was ab der Bestellungsaufgabe den Zubereitungsprozess steuert. Die Komponente umfasst die Vergabewarte\-
-  schlange mit den besetzten und freien Arbeitspl\"atzen und \"ubernimmt die Zuweisung, sobald eine
-  Bestellung von einem Clienten eingeht. Sobald ein Gericht fertig zubereitet ist und der Koch dies seinem
-  Terminal mitteilt, \"ubernimmt diese Komponente auch die Anzeige der Ordernummer (im Gast-UI). Da dies alles
-  vom Umfang her eher kleinere Aufgaben sind, haben wir uns dazu entschieden, diese Aufgaben in einer Komponente
+Bestellabwicklung (Logik) &Am Arbeitsplatz an-/abmelden, Gericht bestellen, Gericht zubereiten
+  &Unser "`Backend"', was ab der Bestellungsaufgabe den Zubereitungsprozess steuert. Die
+  Komponente umfasst die Vergabewarteschlange mit den besetzten und freien Arbeitspl\"atzen
+  und \"ubernimmt die Zuweisung, sobald eine Bestellung von einem Clienten eingeht. Sobald ein
+  Gericht fertig zubereitet ist und der Koch dies seinem Terminal mitteilt, \"ubernimmt diese
+  Komponente auch die Anzeige der Ordernummer (im Gast-UI). Da dies alles vom Umfang her eher
+  kleinere Aufgaben sind, haben wir uns dazu entschieden, diese Aufgaben in einer Komponente
   zusammenzufassen.\\
 % }}}
 \hline
@@ -193,10 +194,16 @@ Backend (Logik) &Am Arbeitsplatz an-/abmelden, Gericht bestellen, Gericht zubere
 Dialogkomponente &Zugeordnete(r) Use Case(s) &Eigene Fassadenkomponente sinnvoll?
   &Erkl\"arung \\
 % }}}
-% Koch-UI {{{
+% Zubereitungs-UI {{{
 \hline
-Koch-UI &Am Arbeitsplatz an-/abmelden, Gericht zubereiten &Ja &Fassadenkomponente zur
+Zubereitungs-UI &Gericht zubereiten &Ja &Fassadenkomponente zur
   Orchestrierung der Gerichtszubereitung. \\
+% }}}
+% An-/Abmeldungs-UI {{{
+\hline
+An-/Abmeldungs-UI &Am Arbeitsplatz an-/abmelden &Ja &Fassadenkomponente f\"ur den Zugriff auf
+  Datenkomponente "`Standortdaten"' (Read- und Updateoperationen auf den Arbeitsplatz) und
+  um das "`Strict Layering"' einzuhalten.\\
 % }}}
 % Gast-UI {{{
 \hline
@@ -262,7 +269,8 @@ Lagerverwaltung &Ja &Adapterkomponente f\"ur unsere Gerichtsdatenkomponente,
 % Rezeptverwaltung {{{
 \hline
 Rezeptverwaltung &Ja &Adapterkomponente f\"ur unsere Gerichtsdatenkomponente,
-  die die Lesevorg\"ange zur Verf\"ugung stellt. \\
+  die die Lesevorg\"ange zur Verf\"ugung stellt und gleichzeitig bei Ausf\"allen
+  als "`Anti-Corruption-Layer"' fungiert. \\
 % }}}
 \hline
 \end{tabu}

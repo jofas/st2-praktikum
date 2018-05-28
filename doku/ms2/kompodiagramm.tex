@@ -14,21 +14,21 @@
   % Row 2 {{{
   \UMLSComponentRelativeToAlterName
     {below=3 of Gast-UI}
-    {Bestellvorgangs\-orchestrierung}
+    {Bestellvorgangs\-fassade}
     {bo}
     {fill=purple,text width=3cm}
   % }}}
 
   % Row 3 {{{
   \UMLSComponentRelativeTo
-    {below=3 of bo}
+    {below=7.5 of bo}
     {Standortdaten}
     {fill=blue!25,text width=3cm}
   % }}}
 
   % Row 4 {{{
   \UMLSComponentRelativeToAlterName
-    {below=3 of Standortdaten}
+    {below=2 of Standortdaten}
     {Buchhaltungs-API}
     {ba}
     {fill=purple,text width=3cm}
@@ -36,7 +36,7 @@
 
   % Row 5 {{{
   \UMLSComponentRelativeToAlterName
-    {below=3 of ba}
+    {below=1.5 of ba}
     {$<<$Buchhal\-tung$>>$}
     {bh}
     {fill=black!50,text width=3cm}
@@ -49,7 +49,27 @@
   % Row 1 {{{
   \UMLSComponentRelativeTo
     {right=3 of Gast-UI}
-    {Backend}
+    {Bestellabwicklung}
+    {fill=orange,text width=3cm}
+  \UMLSComponentRelativeToAlterName
+    {right=3 of Gast-UI}
+    {An-/Abmel\-dungs-UI}
+    {aaui}
+    {fill=green!25,text width=3cm}
+  % }}}
+
+  % Row 2 {{{
+  \UMLSComponentRelativeToAlterName
+    {right=3 of bo}
+    {An-/Abmel\-dungs\-fassade}
+    {aao}
+    {fill=purple,text width=3cm}
+  % }}}
+
+  % Row 2.5 {{{
+  \UMLSComponentRelativeTo
+    {below=3 of aao}
+    {Bestellabwicklung}
     {fill=orange,text width=3cm}
   % }}}
 
@@ -62,7 +82,7 @@
 
   % Row 4 {{{
   \UMLSComponentRelativeTo
-    {below=3 of Bestelldaten}
+    {right=3 of ba}
     {Rezeptadapter}
     {fill=black!25,text width=3cm}
   % }}}
@@ -81,29 +101,29 @@
 
   % Row 1 {{{
   \UMLSComponentRelativeTo
-    {right = 3 of Backend}
-    {Koch-UI}
+    {right = 3 of aaui}
+    {Zubereitungs-UI}
     {fill=green!25, text width=3cm}
   % }}}
 
   % Row 2 {{{
   \UMLSComponentRelativeToAlterName
-    {below=3 of Koch-UI}
-    {Zubereitungs\-orchestrierung}
+    {below=3 of Zubereitungs-UI}
+    {Zubereitungs\-fassade}
     {zo}
     {fill=purple,text width=3cm}
   % }}}
 
   % Row 3 {{{
   \UMLSComponentRelativeTo
-    {below=3 of zo}
+    {right=3 of Bestelldaten}
     {Gerichtsdaten}
     {fill=blue!25,text width=3cm}
   % }}}
 
   % Row 4 {{{
   \UMLSComponentRelativeToAlterName
-    {below=3 of Gerichtsdaten}
+    {right=3 of Rezeptadapter}
     {Lagerverwal\-tungsadapter}
     {lvwa}
     {fill=black!25,text width=3cm}
@@ -111,7 +131,7 @@
 
   % Row 5 {{{
   \UMLSComponentRelativeToAlterName
-    {below=3 of lvwa}
+    {right=3 of rvw}
     {$<<$Lagerver\-waltung$>>$}
     {lvw}
     {fill=black!50,text width=3cm}
@@ -124,6 +144,11 @@
     % Gast-UI -> bo {{{
     \draw [-{>[sep=3.5]>}] (Gast-UI.south) -- (bo.north);
 
+      % Portnumber {{{
+      \node[above right=.5 of bo.north] {1}
+        edge (bo.north);
+      % }}}
+
     \UMLComponentPort
       {Gast-UI.south}
       {fill=white}
@@ -131,25 +156,80 @@
     \UMLComponentPort
       {bo.north}
       {fill=white}
+
     % }}}
 
-    % bo -> Backend {{{
-    \draw [-{>[sep=3.5]>}] (bo.east) -| (Backend.230);
+    % aaui -> aao {{{
+    \draw [-{>[sep=3.5]>}] (aaui.south) -- (aao.north);
+
+      % Portnumber {{{
+      \node[above right=.5 of aao.north] {2}
+        edge (aao.north);
+      % }}}
+
+    \UMLComponentPort
+      {aaui.south}
+      {fill=white}
+
+    \UMLComponentPort
+      {aao.north}
+      {fill=white}
+    % }}}
+
+    % bo -> Bestellabwicklung {{{
+    \draw [-{>[sep=3.5]>}]
+      (bo.east)
+      -|
+      ($(bo)!.5!(Bestellabwicklung)$)
+      |-
+      (Bestellabwicklung.west);
+
+      % Portnumber {{{
+      \node[above left=.5 of Bestellabwicklung.west] {4}
+        edge (Bestellabwicklung.west);
+      % }}}
 
     \UMLComponentPort
       {bo.east}
       {fill=white}
 
     \UMLComponentPort
-      {Backend.230}
+      {Bestellabwicklung.west}
       {fill=white}
     % }}}
 
-    % Backend -> zo {{{
-    \draw [-{>[sep=3.5]>}] (Backend.310) |- (zo.west);
+    % aao -> Bestellabwicklung {{{
+    \draw [-{>[sep=3.5]>}] (aao.south) -- (Bestellabwicklung.north);
+
+      % Portnumber {{{
+      \node[above right=.5 of Bestellabwicklung.north] {5}
+        edge (Bestellabwicklung.north);
+      % }}}
 
     \UMLComponentPort
-      {Backend.310}
+      {aao.south}
+      {fill=white}
+
+    \UMLComponentPort
+      {Bestellabwicklung.north}
+      {fill=white}
+    % }}}
+
+    % Bestellabwicklung -> zo {{{
+    \draw [-{>[sep=3.5]>}]
+      (Bestellabwicklung.east)
+      -|
+      ($(Bestellabwicklung)!.5!(zo)$)
+      |-
+      (zo.west);
+
+      % Portnumber {{{
+      \node[below left=.5 of zo.west] {6}
+        edge (zo.west);
+      % }}}
+
+    \UMLComponentPort
+      {Bestellabwicklung.east}
       {fill=white}
 
     \UMLComponentPort
@@ -157,11 +237,16 @@
       {fill=white}
     % }}}
 
-    % Koch-UI -> zo {{{
-    \draw [-{>[sep=3.5]>}] (Koch-UI.south) -- (zo.north);
+    % Zubereitungs-UI -> zo {{{
+    \draw [-{>[sep=3.5]>}] (Zubereitungs-UI.south) -- (zo.north);
+
+      % Portnumber {{{
+      \node[above left=.5 of zo.north] {3}
+        edge (zo.north);
+      % }}}
 
     \UMLComponentPort
-      {Koch-UI.south}
+      {Zubereitungs-UI.south}
       {fill=white}
 
     \UMLComponentPort
@@ -169,25 +254,18 @@
       {fill=white}
     % }}}
 
-    % Koch-UI -> Backend {{{
-    \draw [-{>[sep=3.5]>}] (Koch-UI.west) -- (Backend.east);
-
-    \UMLComponentPort
-      {Koch-UI.west}
-      {fill=white}
-
-    \UMLComponentPort
-      {Backend.east}
-      {fill=white}
-    % }}}
-
     % bo -> Bestelldaten {{{
     \draw [-{>[sep=3.5]>}]
       (bo.south)
       |-
-      ($(bo)!.6!(Bestelldaten)$)
+      ($(bo)!.75!(Bestelldaten)$)
       -|
       (Bestelldaten.158);
+
+      % Portnumber {{{
+      \node[above right=.5 of Bestelldaten.158] {8}
+        edge (Bestelldaten.158);
+      % }}}
 
     \UMLComponentPort
       {bo.south}
@@ -200,6 +278,11 @@
 
     % bo -> Standortdaten {{{
     \draw [-{>[sep=3.5]>}] (bo.210) -- (Standortdaten.158);
+
+      % Portnumber {{{
+      \node[above right=.5 of Standortdaten.158] {6}
+        edge (Standortdaten.158);
+      % }}}
 
     \UMLComponentPort
       {bo.210}
@@ -214,9 +297,14 @@
     \draw [-{>[sep=3.5]>}]
       (bo.330)
       |-
-      ($(bo)!.4!(Gerichtsdaten)$)
+      ($(bo)!.65!(Gerichtsdaten)$)
       -|
       (Gerichtsdaten.158);
+
+      % Portnumber {{{
+      \node[above right=.5 of Gerichtsdaten.158] {10}
+        edge (Gerichtsdaten.158);
+      % }}}
 
     \UMLComponentPort
       {bo.330}
@@ -227,8 +315,35 @@
       {fill=white}
     % }}}
 
+    % aao -> Standortdaten {{{
+    \draw [-{>[sep=3.5]>}]
+      (aao.210)
+      |-
+      ($(aao)!.35!(Standortdaten)$)
+      -|
+      (Standortdaten.46);
+
+      % Portnumber {{{
+      \node[above right=.5 of Standortdaten.46] {7}
+        edge (Standortdaten.46);
+      % }}}
+
+    \UMLComponentPort
+      {aao.210}
+      {fill=white}
+
+    \UMLComponentPort
+      {Standortdaten.46}
+      {fill=white}
+    % }}}
+
     % zo -> Gerichtsdaten {{{
     \draw [-{>[sep=3.5]>}] (zo.330) -- (Gerichtsdaten.22);
+
+      % Portnumber {{{
+      \node[above left=.5 of Gerichtsdaten.22] {11}
+        edge (Gerichtsdaten.22);
+      % }}}
 
     \UMLComponentPort
       {zo.330}
@@ -243,9 +358,14 @@
     \draw [-{>[sep=3.5]>}]
       (zo.south)
       |-
-      ($(zo)!.6!(Bestelldaten)$)
+      ($(zo)!.75!(Bestelldaten)$)
       -|
       (Bestelldaten.22);
+
+      % Portnumber {{{
+      \node[above left=.5 of Bestelldaten.22] {9}
+        edge (Bestelldaten.22);
+      % }}}
 
     \UMLComponentPort
       {zo.south}
@@ -264,6 +384,11 @@
       -|
       (Bestelldaten.south);
 
+      % Portnumber {{{
+      \node[below right=.5 of Bestelldaten.south] {12}
+        edge (Bestelldaten.south);
+      % }}}
+
     \UMLComponentPort
       {ba.north}
       {fill=white}
@@ -281,6 +406,11 @@
       -|
       (Rezeptadapter.north);
 
+      % Portnumber {{{
+      \node[above right=.5 of Rezeptadapter.north] {13}
+        edge (Rezeptadapter.north);
+      % }}}
+
     \UMLComponentPort
       {Gerichtsdaten.230}
       {fill=white}
@@ -292,6 +422,11 @@
 
     % Gerichtsdaten -> lvwa {{{
     \draw [-{>[sep=3.5]>}] (Gerichtsdaten.310) -- (lvwa.60);
+
+      % Portnumber {{{
+      \node[above left=.5 of lvwa.60] {14}
+        edge (lvwa.60);
+      % }}}
 
     \UMLComponentPort
       {Gerichtsdaten.310}
@@ -316,8 +451,8 @@
     % }}}
 
     % Rezeptadapter -> rvw {{{
-    \draw [-umlportcaller]   (Rezeptadapter)--($(Rezeptadapter)!.5!(rvw)$);
-    \draw [-umlportprovider] (rvw)--($(rvw)!.5!(Rezeptadapter)$);
+    \draw [-umlportcaller]   (Rezeptadapter)--($(Rezeptadapter.south)!.5!(rvw.north)$);
+    \draw [-umlportprovider] (rvw)--($(rvw.north)!.5!(Rezeptadapter.south)$);
 
     \UMLComponentPort
       {Rezeptadapter.south}
