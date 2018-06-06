@@ -14,7 +14,7 @@
       Preis: double
     }
     {gericht}
-    {minimum width=6cm,text width=2.75cm}
+    {minimum width=6cm,text width=2.75cm,dashed}
 
   \UMLClassRelativeToAlterName
     {right=3 of gericht}
@@ -44,7 +44,7 @@
 
   \UMLClassRelativeToAlterName
     {right=3 of za}
-    {\textbf{Zutatenmenge}\nodepart{second}Menge: int}
+    {\textbf{Zutatenposition}\nodepart{second}Menge: int}
     {zutatenmenge}
     {minimum width=6cm,fill=red!25}
 % }}}
@@ -75,6 +75,23 @@
   \node[left] at ($(zutatenmenge)!.5!(zutat)$) {ben\"otigt};
   % }}}
 % }}}
+
+% Aggregates {{{
+\draw[rounded corners, red!75]
+  ($(gericht.north) + (0,.5)$)
+  --
+  ($(gericht.north west) + (-.5,.5)$)
+  |-
+  ($(zutatenmenge.south east)+(.5,-.5)$)
+  |-
+  ($(za.north east)+(.5,.5)$)
+  --
+  ($(gericht.north east)+(.5,.5)$)
+  --
+  cycle
+;
+% }}}
+
 \end{tikzpicture}
 \end{center}
 % Legende {{{
@@ -83,7 +100,13 @@
 }: Value Object \\
 \tikz[baseline={-3pt}]{
   \node[fill=yellow!25,yellow!25,inner ysep=2pt]{X};
-}: Entity
+}: Entity \\
+\tikz[baseline={-3pt}]{
+  \node[draw,red!75,inner ysep=3pt]{\textcolor{white}{X}};
+}: Aggregate \\
+\tikz[baseline={-3pt}]{
+  \node[draw,dashed,inner ysep=3pt]{\textcolor{white}{X}};
+}: Aggregate Root
 % }}}
-\caption{Klassendiagramm}
+\caption{Aggregates}
 \end{figure}

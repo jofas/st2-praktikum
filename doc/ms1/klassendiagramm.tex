@@ -1,0 +1,89 @@
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+
+% Ebene 0 {{{
+  \UMLClassAlterName
+    {0}
+    {0}
+    {
+      \textbf{Gericht}
+        \nodepart{second}
+      Name: String \\
+      Details: String \\
+      Preis: double
+    }
+    {gericht}
+    {minimum width=6cm,text width=2.75cm}
+
+  \UMLClassRelativeToAlterName
+    {right=3 of gericht}
+    {\textbf{Zutat}\nodepart{second}Name: String}
+    {zutat}
+    {minimum width=6cm}
+% }}}
+
+% Ebene -1 {{{
+  \UMLClassRelativeToAlterName
+    {below=3 of gericht}
+    {\textbf{Speise}\nodepart{second}Name: String}
+    {speise}
+    {minimum width=6cm}
+% }}}
+
+% Ebene -2 {{{
+  \UMLClassRelativeToAlterName
+    {below=3 of speise}
+    {
+      \textbf{Zubereitungsanleitung}
+        \nodepart{second}
+      Anleitung: String
+    }
+    {za}
+    {minimum width=6cm,fill=red!25}
+
+  \UMLClassRelativeToAlterName
+    {right=3 of za}
+    {\textbf{Zutatenposition}\nodepart{second}Menge: int}
+    {zutatenmenge}
+    {minimum width=6cm,fill=red!25}
+% }}}
+
+% Verbindungen {{{
+  % gericht -- speise {{{
+  \draw[umlaggreg-] (gericht.south) -- (speise.north);
+  \node[below left=.25 of gericht.south] {*};
+  \node[above left=.25 of speise.north] {*};
+  \node[left] at ($(gericht)!.5!(speise)$) {Teil von};
+  % }}}
+  % speise -- za {{{
+  \draw[umlcompo-] (speise.south) -- (za.north);
+  \node[below left=.25 of speise.south] {1};
+  \node[above left=.25 of za.north] {1};
+  \node[left] at ($(speise)!.5!(za)$) {beschreibt};
+  % }}}
+  % zutatenmenge -- za {{{
+  \draw[-umlcompo] (zutatenmenge.west) -- (za.east);
+  \node[above left=.25 of zutatenmenge.west] {1..*};
+  \node[above right=.25 of za.east] {1};
+  \node[below] at ($(zutatenmenge)!.5!(za)$) {ben\"otigt};
+  % }}}
+  % zutatenmenge -- zutat {{{
+  \draw (zutatenmenge.north) -- (zutat.south);
+  \node[above left=.25 of zutatenmenge.north] {*};
+  \node[below left=.25 of zutat.south] {1};
+  \node[left] at ($(zutatenmenge)!.5!(zutat)$) {ben\"otigt};
+  % }}}
+% }}}
+\end{tikzpicture}
+\end{center}
+% Legende {{{
+\tikz[baseline={-3pt}]{
+  \node[fill=red!25,red!25,inner ysep=3pt]{X};
+}: Value Object \\
+\tikz[baseline={-3pt}]{
+  \node[fill=yellow!25,yellow!25,inner ysep=2pt]{X};
+}: Entity
+% }}}
+\caption{Klassendiagramm}
+\end{figure}

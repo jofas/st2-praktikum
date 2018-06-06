@@ -67,45 +67,6 @@
     shapes.multipart
 }
 
-% Fuer ERM "Kraehenfuss-Notation"
-\tikzset{
-    sep_tip/.tip = {Kite[white,length=0.1,sep=16pt]}
-}
-\tikzset{
-    one /.tip = {|[scale=2]Square[length=8pt,width=1pt]}
-}
-\tikzset{
-    c_one /.tip = {Circle[fill=white,scale=1.5]one}
-}
-\tikzset{
-    n /.tip = {
-        |[scale=2,sep=-2pt]
-        Straight Barb[reversed,length=10pt,width=15pt,sep=-12pt]
-        Square[length=12pt,width=1pt]
-    }
-}
-\tikzset{
-  cn /.tip = {Circle[fill=white,scale=1.5]n}
-}
-\tikzset{
-    entity/.style={
-        rectangle split,
-        rectangle split ignore empty parts=true,
-        rectangle split parts=2,label=#1,
-        rounded corners,
-        solid,
-        draw}
-}
-\tikzset{
-    eerm-subtype/.style={
-        semicircle,
-        fill=white,
-        draw,
-        label=\textbf{#1}
-    }
-}
-
-
 \pgfplotsset{width=7cm,compat=1.15}
 
 \definecolor{codecolor}{HTML}{EEEEEE}
@@ -157,5 +118,6 @@
 
 \include{ms1/ms1}
 \include{ms2/ms2}
+\include{ms3/ms3}
 
 \end{document}

@@ -1,0 +1,34 @@
+\section{Meilenstein 3 $-$ Spezifikation, Implementierung und Demo
+  eines REST-API}
+
+% Teilaufgabe 1 {{{
+\subsection{Teilaufgabe 1: Festlegen von Aggregates}
+
+\input{ms3/aggregates}
+
+Wir sind der Meinung, dass sich die Datenobjekte Gericht,
+Speise, Zubereitungsanleitung und Zutatenposition als ein
+Aggregate mit Gericht als Aggregate Root zusammenfassen
+lassen, da keine Referenzen auf innere Entities existieren
+und ein fachlicher Zusammenhang besteht, da ein Gericht aus
+Speisen besteht, Speisen eine Zubereitungsanleitung haben
+und diese wiederum Zutatenpositionen, ergibt sich hier
+ein enges fachliches Geflecht.
+
+Eine m\"ogliche Invariante w\"are, wenn $Gericht.name$ eine
+Kombination von den zugeh\"origen Speisen w\"are. Als Beispiel
+hierf\"ur: $Gericht.name$: "`Schnitzel mit Pommes und Salat"'.
+Daraus lassen sich die Speisen Schnitzel, Pommes und Salat
+ableiten.
+% }}}
+
+% Teilaufgabe 2 {{{
+\subsection{Teilaufgabe 2: Design des REST-API}
+
+% }}}
+
+% Teilaufgabe 3 {{{
+\subsection{Teilaufgabe 3: Implementierung in Spring Data JPA /
+  Web MVC}
+
+% }}}
