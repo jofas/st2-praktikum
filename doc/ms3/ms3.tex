@@ -1,5 +1,5 @@
-\section{Meilenstein 3 $-$ Spezifikation, Implementierung und Demo
-  eines REST-API}
+\section{Meilenstein 3 $-$ Spezifikation, Implementierung
+  und Demo eines REST-API}
 
 % Teilaufgabe 1 {{{
 \subsection{Teilaufgabe 1: Festlegen von Aggregates}
@@ -16,19 +16,93 @@ und diese wiederum Zutatenpositionen, ergibt sich hier
 ein enges fachliches Geflecht.
 
 Eine m\"ogliche Invariante w\"are, wenn $Gericht.name$ eine
-Kombination von den zugeh\"origen Speisen w\"are. Als Beispiel
-hierf\"ur: $Gericht.name$: "`Schnitzel mit Pommes und Salat"'.
-Daraus lassen sich die Speisen Schnitzel, Pommes und Salat
-ableiten.
+Kombination von den zugeh\"origen Speisen w\"are. Als
+Beispiel hierf\"ur: $Gericht.name$: "`Schnitzel mit Pommes
+und Salat"'. Daraus lassen sich die Speisen Schnitzel,
+Pommes und Salat ableiten.
 % }}}
 
 % Teilaufgabe 2 {{{
 \subsection{Teilaufgabe 2: Design des REST-API}
 
+F\"ur unser REST-API verwenden wir folgenden Ausschnitt aus
+unserem Klassendiagramm aus Meilenstein 1:
+
+\input{ms3/extract}
+
+\begin{tabu} to \linewidth {l|l|X|X|X}
+% Headerzeile {{{
+\hline
+\rowcolor{codebordercolor}
+Szen.-Nr. &URI &HTTP Verb &Request-Body &Ressource und
+  Aktion \\
+% }}}
+% A1, A5, BC1 {{{
+\hline
+A1, A5, BC1 &/gerichte/\{gericht\_id\} &PUT, DELETE
+  &\textbf{Nur bei Put:}
+    \{
+      name=\dots,
+      details=\dots,
+      preis=\dots
+    \}
+  &Neues Gericht anlegen, Gericht
+  \"uberschreiben, Gericht l\"oschen. \\
+% }}}
+% A2, A4 {{{
+\hline
+A2, A4 &/gerichte?filter[preis]$>$\{wert\} &GET & &Alle
+  Gerichte $a$ ausgeben, f\"ur die $a.preis > wert$ gilt.
+  \\
+% }}}
+% A3 {{{
+\hline
+A3 &/gerichte/\{gericht\_id\}/preis &PUT &\{wert\} &Preis
+  von Gericht $a$ mit $a.gericht\_id=\{gericht\_id\}$ auf
+  $\{wert\}$ setzen. \\
+% }}}
+% A6 {{{
+\hline
+A6 &/gerichte/\{gericht\_id\}/id &GET & &Id von Gericht
+  abfragen. 404 wird geworfen, falls Gericht nicht
+  vorhanden. \\
+% }}}
+% BC2 {{{
+\hline
+BC2 &/speisen/\{speise\_id\} &PUT &\{name=\dots\} &Speise
+  anlegen, \"uberschreiben. \\
+% }}}
+% BC3, BC6 {{{
+\hline
+BC3, BC6 &/gerichte/\{gericht\_id\}/speisen &PUT, DELETE
+  &\{speise\_id=\dots\} &Speise einem Gericht hinzuf\"ugen
+  oder l\"oschen.
+  \\
+% }}}
+% BC4, BC7 {{{
+\hline
+BC4, BC7 &/gerichte &GET & &Alle Gerichte ausgeben. \\
+% }}}
+% BC5 {{{
+\hline
+BC5 &/speisen &GET & &Alle Speisen ausgeben. \\
+% }}}
+\hline
+\end{tabu}
 % }}}
 
+\subsubsection*{Bemerkung}
+
+Bei Szenario BC3 und BC6 haben wir uns entschieden, dass
+die Beziehung zwsichen einer Instanz von Gericht und einer
+Instanz von Speise \"uber /gerichte/\{gericht\_id\}/speisen
+hinzugef\"ugt oder gel\"oscht weren kann. Man h\"atte dies
+auch \"uber /speisen/\{speisen\_id\}/gerichte tun k\"onnen,
+was wir jedoch f\"ur un\"ubersichtlicher und nicht so
+naheliegend wie unsere Variante gehalten haben.
+
 % Teilaufgabe 3 {{{
-\subsection{Teilaufgabe 3: Implementierung in Spring Data JPA /
-  Web MVC}
+\subsection{Teilaufgabe 3: Implementierung in Spring Data
+  JPA / Web MVC}
 
 % }}}

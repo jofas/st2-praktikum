@@ -1,0 +1,32 @@
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+
+  \UMLClassAlterName
+    {0}
+    {0}
+    {
+      \textbf{Gericht}
+        \nodepart{second}
+      Name: String \\
+      Details: String \\
+      Preis: double
+    }
+    {gericht}
+    {minimum width=6cm,text width=2.75cm, label=A/B}
+
+  \UMLClassRelativeToAlterName
+    {below=3 of gericht}
+    {\textbf{Speise}\nodepart{second}Name: String}
+    {speise}
+    {minimum width=6cm,label={below:C}}
+
+  \draw[umlaggreg-] (gericht.south) -- (speise.north);
+  \node[below left=.25 of gericht.south] {*};
+  \node[above left=.25 of speise.north] {*};
+  \node[left] at ($(gericht)!.5!(speise)$) {Teil von};
+
+\end{tikzpicture}
+\end{center}
+\caption{Ausschnitt Klassendiagramm f\"ur REST-API}
+\end{figure}
