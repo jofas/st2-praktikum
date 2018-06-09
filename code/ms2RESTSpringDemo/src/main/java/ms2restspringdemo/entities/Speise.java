@@ -6,6 +6,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Speise {
 	@Id
@@ -14,6 +16,7 @@ public class Speise {
 	private String name;
 	
 	// bidirektionale Beziehung: Gericht kennt zugehoerige Speisen und die Speisen kennen zugehoerige Gerichte
+	@JsonManagedReference
 	@ManyToMany(mappedBy = "speisen")
 	private Set<Gericht> gerichte = new HashSet<Gericht>();
 	

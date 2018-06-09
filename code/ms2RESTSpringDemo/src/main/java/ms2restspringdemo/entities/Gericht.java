@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Gericht {
 	@Id
@@ -23,6 +25,7 @@ public class Gericht {
 	private double preis;
 	
 	// Ein Gericht besteht aus mehreren Speisen und eine Speise kann mehreren Gerichten zugeordnet sein.
+	@JsonManagedReference
 	@ManyToMany
 	@JoinTable(name = "gericht_speise",
 		joinColumns = @JoinColumn(name = "gericht_id"),
