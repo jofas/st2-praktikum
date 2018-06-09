@@ -1,8 +1,8 @@
-package ms2restspringdemo.factories;
+package ms3restspringdemo.factories;
 import java.util.Collection;
 
-import ms2restspringdemo.entities.Zubereitungsanleitung;
-import ms2restspringdemo.entities.Zutatenmenge;
+import ms3restspringdemo.entities.Zubereitungsanleitung;
+import ms3restspringdemo.entities.Zutatenmenge;
 
 public class ZubereitungsanleitungFactory {
 	

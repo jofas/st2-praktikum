@@ -1,11 +1,11 @@
-package ms2restspringdemo.factories;
+package ms3restspringdemo.factories;
 
 import java.util.Collection;
 
 import org.springframework.stereotype.Component;
 
-import ms2restspringdemo.entities.Gericht;
-import ms2restspringdemo.entities.Speise;
+import ms3restspringdemo.entities.Gericht;
+import ms3restspringdemo.entities.Speise;
 
 
 @Component

@@ -1,4 +1,4 @@
-package com.example;
+package ms3restspringdemo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

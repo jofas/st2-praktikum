@@ -1,10 +1,10 @@
-package ms2restspringdemo.repositories;
+package ms3restspringdemo.repositories;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import ms2restspringdemo.entities.Gericht;
+import ms3restspringdemo.entities.Gericht;
 
 public interface GerichtRepository extends CrudRepository<Gericht,Integer> {
 	

@@ -1,4 +1,4 @@
-package ms2restspringdemo;
+package ms3restspringdemo;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -9,15 +9,15 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import ms2restspringdemo.entities.Gericht;
-import ms2restspringdemo.entities.Speise;
-import ms2restspringdemo.entities.Zutat;
-import ms2restspringdemo.entities.Zutatenmenge;
-import ms2restspringdemo.factories.GerichtFactory;
-import ms2restspringdemo.factories.ZubereitungsanleitungFactory;
-import ms2restspringdemo.repositories.GerichtRepository;
-import ms2restspringdemo.repositories.SpeiseRepository;
-import ms2restspringdemo.repositories.ZutatRepository;
+import ms3restspringdemo.entities.Gericht;
+import ms3restspringdemo.entities.Speise;
+import ms3restspringdemo.entities.Zutat;
+import ms3restspringdemo.entities.Zutatenmenge;
+import ms3restspringdemo.factories.GerichtFactory;
+import ms3restspringdemo.factories.ZubereitungsanleitungFactory;
+import ms3restspringdemo.repositories.GerichtRepository;
+import ms3restspringdemo.repositories.SpeiseRepository;
+import ms3restspringdemo.repositories.ZutatRepository;
 
 
 @Component

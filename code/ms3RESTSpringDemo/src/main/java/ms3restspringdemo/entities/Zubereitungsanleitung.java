@@ -1,4 +1,4 @@
-package ms2restspringdemo.entities;
+package ms3restspringdemo.entities;
 
 import java.util.Collection;
 import java.util.Collections;

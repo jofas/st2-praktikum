@@ -1,4 +1,4 @@
-package ms2restspringdemo.repositories;
+package ms3restspringdemo.repositories;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import ms2restspringdemo.entities.Speise;
-import ms2restspringdemo.entities.Zutat;
+import ms3restspringdemo.entities.Speise;
+import ms3restspringdemo.entities.Zutat;
 
 public interface SpeiseRepository extends CrudRepository<Speise,Integer> {
 	// Die Abfrage ist in JPQL geschrieben - Eine objektorientierte Abfragesprache, welche SQL aehnlich ist
