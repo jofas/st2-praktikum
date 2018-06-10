@@ -1,0 +1,994 @@
+{
+	"id": "7f5e08be-d34f-4842-932c-db6cf203af3d",
+	"name": "st-ms3",
+	"allTests": [],
+	"timestamp": "2018-06-10T17:38:15.287Z",
+	"collection_id": "3e648a94-bfc7-470d-b709-ebe12e43249c",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "0",
+	"data": [],
+	"delay": 0,
+	"count": 1,
+	"collection": {
+		"id": "3e648a94-bfc7-470d-b709-ebe12e43249c",
+		"name": "st-ms3",
+		"description": null,
+		"auth": null,
+		"events": null,
+		"variables": null,
+		"order": [
+			"d11d5fba-1882-40e1-9df1-de60df3f1e7f",
+			"6fde8dc6-fc64-4f1d-97dd-ac911102fc19",
+			"4ebcfe3f-582a-4f90-8334-3559f78625a4",
+			"aefcecab-93de-4489-9a09-159f509bfc79",
+			"fc80748b-1a3c-4cf9-9566-278ede3bd721",
+			"26a901b4-fa87-4eea-b480-ad13bad6d080",
+			"4975384e-2049-49db-a00b-1606a869e972",
+			"5ad02235-c3c5-444b-843d-a8489fcf78db",
+			"a4b4ed6f-c65b-431b-9ab4-089ba68c9cbb",
+			"5d49a771-0e87-4503-9085-4de4d8b26c4f",
+			"f32e6a6b-2718-4df5-955f-41ec12d4d33d",
+			"fdacd222-672a-4d25-a691-b4a5e3ab040c",
+			"f1944133-a5d2-447c-8fa5-250d8eff6174",
+			"620ca477-4487-44e9-880f-0a906e09b6f2",
+			"0022de17-02fa-4979-97c1-1d1e1b390b22",
+			"5a4f798c-fb95-4c32-b597-23f71214ff96",
+			"e19483a7-7c07-4b6d-b10a-4b4da15bd0a9"
+		],
+		"folders_order": [],
+		"owner": "4566853",
+		"permissions": {},
+		"favorite": false,
+		"shared": false,
+		"type": "collection",
+		"depth": 0
+	},
+	"folder": null,
+	"environment": null,
+	"globals": [],
+	"results": [
+		{
+			"name": "A1",
+			"id": "d11d5fba-1882-40e1-9df1-de60df3f1e7f",
+			"url": "localhost:8080/gerichte/",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"name": "Gericht 'Erdbeerpudding' erstellt",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Gericht 'Erdbeerpudding' erstellt": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"176"
+			],
+			"allTests": [
+				{
+					"Gericht 'Erdbeerpudding' erstellt": true
+				}
+			],
+			"time": "176",
+			"totalRequestTime": "176",
+			"iterationResults": {}
+		},
+		{
+			"name": "A2",
+			"id": "6fde8dc6-fc64-4f1d-97dd-ac911102fc19",
+			"url": "localhost:8080/gerichte?search=preis>10",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Leere Rückgabe",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Leere Rückgabe": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"19"
+			],
+			"allTests": [
+				{
+					"Leere Rückgabe": true
+				}
+			],
+			"time": "19",
+			"totalRequestTime": "19",
+			"iterationResults": {}
+		},
+		{
+			"name": "A3",
+			"id": "4ebcfe3f-582a-4f90-8334-3559f78625a4",
+			"url": "localhost:8080/gerichte/1/preis",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Preis muss auf 12 geupdatet sein",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Preis muss auf 12 geupdatet sein": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"27"
+			],
+			"allTests": [
+				{
+					"Preis muss auf 12 geupdatet sein": true
+				}
+			],
+			"time": "27",
+			"totalRequestTime": "27",
+			"iterationResults": {}
+		},
+		{
+			"name": "A4 ",
+			"id": "aefcecab-93de-4489-9a09-159f509bfc79",
+			"url": "localhost:8080/gerichte?search=preis>10",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Gericht 'Erdbeerpudding' mit geupdateten Preis muss da sein",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Gericht 'Erdbeerpudding' mit geupdateten Preis muss da sein": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"4"
+			],
+			"allTests": [
+				{
+					"Gericht 'Erdbeerpudding' mit geupdateten Preis muss da sein": true
+				}
+			],
+			"time": "4",
+			"totalRequestTime": "4",
+			"iterationResults": {}
+		},
+		{
+			"name": "A5",
+			"id": "fc80748b-1a3c-4cf9-9566-278ede3bd721",
+			"url": "localhost:8080/gerichte/1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Loeschen erfolgreich",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Loeschen erfolgreich": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"13"
+			],
+			"allTests": [
+				{
+					"Loeschen erfolgreich": true
+				}
+			],
+			"time": "13",
+			"totalRequestTime": "13",
+			"iterationResults": {}
+		},
+		{
+			"name": "A6",
+			"id": "26a901b4-fa87-4eea-b480-ad13bad6d080",
+			"url": "localhost:8080/gerichte/1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"name": "Gericht 'not found'",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Gericht 'not found'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"3"
+			],
+			"allTests": [
+				{
+					"Gericht 'not found'": true
+				}
+			],
+			"time": "3",
+			"totalRequestTime": "3",
+			"iterationResults": {}
+		},
+		{
+			"name": "BC1.1",
+			"id": "4975384e-2049-49db-a00b-1606a869e972",
+			"url": "localhost:8080/gerichte",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"name": "Gericht 'Schnitzel mit Pommes' erstellt",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Gericht 'Schnitzel mit Pommes' erstellt": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"4"
+			],
+			"allTests": [
+				{
+					"Gericht 'Schnitzel mit Pommes' erstellt": true
+				}
+			],
+			"time": "4",
+			"totalRequestTime": "4",
+			"iterationResults": {}
+		},
+		{
+			"name": "BC1.2",
+			"id": "5ad02235-c3c5-444b-843d-a8489fcf78db",
+			"url": "localhost:8080/gerichte",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"name": "Gericht 'Große Portion Pommes' erstellt",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Gericht 'Große Portion Pommes' erstellt": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"4"
+			],
+			"allTests": [
+				{
+					"Gericht 'Große Portion Pommes' erstellt": true
+				}
+			],
+			"time": "4",
+			"totalRequestTime": "4",
+			"iterationResults": {}
+		},
+		{
+			"name": "BC2.1",
+			"id": "a4b4ed6f-c65b-431b-9ab4-089ba68c9cbb",
+			"url": "localhost:8080/speisen",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"name": "Speise 'Pommes' erstellt",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Speise 'Pommes' erstellt": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"7"
+			],
+			"allTests": [
+				{
+					"Speise 'Pommes' erstellt": true
+				}
+			],
+			"time": "7",
+			"totalRequestTime": "7",
+			"iterationResults": {}
+		},
+		{
+			"name": "BC2.2",
+			"id": "5d49a771-0e87-4503-9085-4de4d8b26c4f",
+			"url": "localhost:8080/speisen",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"name": "Gericht 'Schnitzel' erstellt",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Gericht 'Schnitzel' erstellt": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"4"
+			],
+			"allTests": [
+				{
+					"Gericht 'Schnitzel' erstellt": true
+				}
+			],
+			"time": "4",
+			"totalRequestTime": "4",
+			"iterationResults": {}
+		},
+		{
+			"name": "BC3.1.1",
+			"id": "f32e6a6b-2718-4df5-955f-41ec12d4d33d",
+			"url": "localhost:8080/gerichte/2/speisen/1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Gericht 'Schnitzel mit Pommes' Speise 'Pommes' zugeordnet",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' zugeordnet": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"11"
+			],
+			"allTests": [
+				{
+					"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' zugeordnet": true
+				}
+			],
+			"time": "11",
+			"totalRequestTime": "11",
+			"iterationResults": {}
+		},
+		{
+			"name": "BC3.1.2",
+			"id": "fdacd222-672a-4d25-a691-b4a5e3ab040c",
+			"url": "localhost:8080/gerichte/2/speisen/2",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Gericht 'Schnitzel mit Pommes' Speise 'Schnitzel' zugeordnet",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Gericht 'Schnitzel mit Pommes' Speise 'Schnitzel' zugeordnet": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"7"
+			],
+			"allTests": [
+				{
+					"Gericht 'Schnitzel mit Pommes' Speise 'Schnitzel' zugeordnet": true
+				}
+			],
+			"time": "7",
+			"totalRequestTime": "7",
+			"iterationResults": {}
+		},
+		{
+			"name": "BC3.2",
+			"id": "f1944133-a5d2-447c-8fa5-250d8eff6174",
+			"url": "localhost:8080/gerichte/3/speisen/1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"6"
+			],
+			"allTests": [
+				{
+					"Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet": true
+				}
+			],
+			"time": "6",
+			"totalRequestTime": "6",
+			"iterationResults": {}
+		},
+		{
+			"name": "BC4",
+			"id": "620ca477-4487-44e9-880f-0a906e09b6f2",
+			"url": "localhost:8080/gerichte",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Gericht 1 besteht aus 2 Speisen und Gericht 2 aus einer Speise",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Gericht 1 besteht aus 2 Speisen und Gericht 2 aus einer Speise": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"5"
+			],
+			"allTests": [
+				{
+					"Gericht 1 besteht aus 2 Speisen und Gericht 2 aus einer Speise": true
+				}
+			],
+			"time": "5",
+			"totalRequestTime": "5",
+			"iterationResults": {}
+		},
+		{
+			"name": "BC5",
+			"id": "0022de17-02fa-4979-97c1-1d1e1b390b22",
+			"url": "localhost:8080/speisen",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "erfolgreich Speisen ausgeben",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"erfolgreich Speisen ausgeben": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"6"
+			],
+			"allTests": [
+				{
+					"erfolgreich Speisen ausgeben": true
+				}
+			],
+			"time": "6",
+			"totalRequestTime": "6",
+			"iterationResults": {}
+		},
+		{
+			"name": "BC6",
+			"id": "5a4f798c-fb95-4c32-b597-23f71214ff96",
+			"url": "localhost:8080/gerichte/2/speisen/1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"7"
+			],
+			"allTests": [
+				{
+					"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen": true
+				}
+			],
+			"time": "7",
+			"totalRequestTime": "7",
+			"iterationResults": {}
+		},
+		{
+			"name": "BC7",
+			"id": "e19483a7-7c07-4b6d-b10a-4b4da15bd0a9",
+			"url": "localhost:8080/gerichte",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "Gerichte erfolgreich ausgeben",
+				"status": "pass"
+			},
+			"testPassFailCounts": {
+				"Gerichte erfolgreich ausgeben": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"4"
+			],
+			"allTests": [
+				{
+					"Gerichte erfolgreich ausgeben": true
+				}
+			],
+			"time": "4",
+			"totalRequestTime": "4",
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 17,
+	"totalFail": 0,
+	"totalTime": 307,
+	"lifecycle": "done",
+	"requests": [
+		{
+			"name": "A1",
+			"id": "d11d5fba-1882-40e1-9df1-de60df3f1e7f",
+			"url": "localhost:8080/gerichte/",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Gericht 'Erdbeerpudding' erstellt": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "A2",
+			"id": "6fde8dc6-fc64-4f1d-97dd-ac911102fc19",
+			"url": "localhost:8080/gerichte?search=preis>10",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Leere Rückgabe": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "A3",
+			"id": "4ebcfe3f-582a-4f90-8334-3559f78625a4",
+			"url": "localhost:8080/gerichte/1/preis",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Preis muss auf 12 geupdatet sein": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "A4 ",
+			"id": "aefcecab-93de-4489-9a09-159f509bfc79",
+			"url": "localhost:8080/gerichte?search=preis>10",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Gericht 'Erdbeerpudding' mit geupdateten Preis muss da sein": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "A5",
+			"id": "fc80748b-1a3c-4cf9-9566-278ede3bd721",
+			"url": "localhost:8080/gerichte/1",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Loeschen erfolgreich": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "A6",
+			"id": "26a901b4-fa87-4eea-b480-ad13bad6d080",
+			"url": "localhost:8080/gerichte/1",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Gericht 'not found'": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "BC1.1",
+			"id": "4975384e-2049-49db-a00b-1606a869e972",
+			"url": "localhost:8080/gerichte",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Gericht 'Schnitzel mit Pommes' erstellt": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "BC1.2",
+			"id": "5ad02235-c3c5-444b-843d-a8489fcf78db",
+			"url": "localhost:8080/gerichte",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Gericht 'Große Portion Pommes' erstellt": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "BC2.1",
+			"id": "a4b4ed6f-c65b-431b-9ab4-089ba68c9cbb",
+			"url": "localhost:8080/speisen",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Speise 'Pommes' erstellt": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "BC2.2",
+			"id": "5d49a771-0e87-4503-9085-4de4d8b26c4f",
+			"url": "localhost:8080/speisen",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Gericht 'Schnitzel' erstellt": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "BC3.1.1",
+			"id": "f32e6a6b-2718-4df5-955f-41ec12d4d33d",
+			"url": "localhost:8080/gerichte/2/speisen/1",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' zugeordnet": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "BC3.1.2",
+			"id": "fdacd222-672a-4d25-a691-b4a5e3ab040c",
+			"url": "localhost:8080/gerichte/2/speisen/2",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Gericht 'Schnitzel mit Pommes' Speise 'Schnitzel' zugeordnet": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "BC3.2",
+			"id": "f1944133-a5d2-447c-8fa5-250d8eff6174",
+			"url": "localhost:8080/gerichte/3/speisen/1",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "BC4",
+			"id": "620ca477-4487-44e9-880f-0a906e09b6f2",
+			"url": "localhost:8080/gerichte",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Gericht 1 besteht aus 2 Speisen und Gericht 2 aus einer Speise": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "BC5",
+			"id": "0022de17-02fa-4979-97c1-1d1e1b390b22",
+			"url": "localhost:8080/speisen",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"erfolgreich Speisen ausgeben": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "BC6",
+			"id": "5a4f798c-fb95-4c32-b597-23f71214ff96",
+			"url": "localhost:8080/gerichte/2/speisen/1",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "BC7",
+			"id": "e19483a7-7c07-4b6d-b10a-4b4da15bd0a9",
+			"url": "localhost:8080/gerichte",
+			"time": "2018-06-10T17:38:15.287Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Gerichte erfolgreich ausgeben": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		}
+	],
+	"synced": false
+}

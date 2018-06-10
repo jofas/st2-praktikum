@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class Zutatenmenge {
 	private int menge;
 	
+	
 	@ManyToOne
 	private Zutat zutat;
 	
@@ -20,5 +21,13 @@ public class Zutatenmenge {
 	@Override
 	public String toString() {
 		return "Zutat: " + String.format("%-10s Anzahl: %-3d", zutat, menge);
+	}
+	
+	public Zutat getZutat() {
+		return zutat;
+	}
+	
+	public int getMenge() {
+		return menge;
 	}
 }

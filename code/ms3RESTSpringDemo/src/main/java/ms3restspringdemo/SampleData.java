@@ -29,6 +29,7 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 	@Autowired
 	private SpeiseRepository speiseRepository;
 
+	// DATEN EINFUEGEN FUER DEN 3 MEILENSTEIN AUSKOMMENTIERT!!!
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent arg0) {
 		/* Hier wird einmal Kartoffelbrei mit Möhren 
@@ -36,6 +37,8 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 		
 		// Die Sachen werden zur besseren Nachvollziehbarkeit in Hashmaps gespeichert.
 		
+		
+		/*
 		// erst einmal Zutaten erstellen
 		Map<String, Zutat> zutaten = new HashMap<String, Zutat>();
 		for(String s : new String[]{"Kartoffel","Erbse","Möhre","Salz","Butter","Pfeffer"}) {
@@ -76,7 +79,7 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 		//  Die Speisen persistent in der Datenbank speichern
 		speiseRepository.save(speisen.values());
 		
-		// jetzt können die Gerichte aus den Speisen zusammen gesetzte werden
+		// jetzt können die Gerichte aus den Speisen zusammen gesetzt werden
 		Gericht gericht1 = GerichtFactory.createGerichtWithSpeisen(
 				"Kartoffelbrei mit Möhren", 
 				"Voll das Oma-Essen!", 7.5, 
@@ -111,6 +114,8 @@ public class SampleData implements ApplicationListener<ContextRefreshedEvent> {
 		// gib alle Gericht unter 8 € aus
 		System.out.println("\nAlle Gerichte unter 7 €: ");
 		gerichtRepository.findByPreisLessThan(8.0).forEach(g -> System.out.println(g.getName()));
+		
+		*/
 	}
 	
 	// Aufgabe 2 fertig!

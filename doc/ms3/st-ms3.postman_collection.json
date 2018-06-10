@@ -1,0 +1,757 @@
+{
+	"info": {
+		"_postman_id": "3e648a94-bfc7-470d-b709-ebe12e43249c",
+		"name": "st-ms3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "A1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0de1641b-7b7e-4eab-b4a6-39d6a62421a8",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Gericht 'Erdbeerpudding' erstellt\", function () {",
+							"    ",
+							"    // created (POST)",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]); ",
+							"    ",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[\"name\"]).to.eql(\"Erdbeerpudding\");",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Erdbeerpudding\",\n\t\"details\" : \"Leckerer süßlicher Erdbeerpudding <3 <3 <3\",\n\t\"preis\" : 10\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/gerichte/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte",
+						""
+					]
+				},
+				"description": "Eine neue Instanz a von Gericht anlegen, wobei a.preis = {wert1} "
+			},
+			"response": []
+		},
+		{
+			"name": "A2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "28da2c62-6a68-43d5-841d-34062b0b75e4",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Leere Rückgabe\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(0);",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/gerichte?search=preis>10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "preis>10"
+						}
+					]
+				},
+				"description": "Alle a von Gerichte abfragen, bei denen der Wert von a.preis > 10; die Rückgabe muss leer sein"
+			},
+			"response": []
+		},
+		{
+			"name": "A3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ef2e4394-8b13-4187-b5c3-362a03ec9a97",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Preis muss auf 12 geupdatet sein\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[\"preis\"]).to.eql(12);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "12"
+				},
+				"url": {
+					"raw": "localhost:8080/gerichte/1/preis",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte",
+						"1",
+						"preis"
+					]
+				},
+				"description": "a.preis auf 12 setzen mit 10 > 12"
+			},
+			"response": []
+		},
+		{
+			"name": "A4 ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1bfa8a18-e2ba-4782-91c6-54b73ac943f6",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Gericht 'Erdbeerpudding' mit geupdateten Preis muss da sein\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(1);",
+							"    pm.expect(jsonData[0][\"name\"]).to.eql(\"Erdbeerpudding\");",
+							"    pm.expect(jsonData[0][\"preis\"]).to.eql(12);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/gerichte?search=preis>10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "preis>10"
+						}
+					]
+				},
+				"description": "Anfrage aus (A2) wiederholen; jetzt muss a zurückgegeben werden"
+			},
+			"response": []
+		},
+		{
+			"name": "A5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "065f416f-ce39-483f-8def-81fafe2aac86",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Loeschen erfolgreich\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/gerichte/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte",
+						"1"
+					]
+				},
+				"description": "a löschen"
+			},
+			"response": []
+		},
+		{
+			"name": "A6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e01cd18-dc07-43f7-aa92-484febf224b7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Gericht 'not found'\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/gerichte/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte",
+						"1"
+					]
+				},
+				"description": "Die ID von a vom Server abfragen; eine passende Fehlermeldung wird zurückgegeben"
+			},
+			"response": []
+		},
+		{
+			"name": "BC1.1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5aecb791-03b2-456d-af0f-3ccfeb0594d6",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Gericht 'Schnitzel mit Pommes' erstellt\", function () {",
+							"    ",
+							"    // created (POST)",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"    ",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[\"name\"]).to.eql(\"Schnitzel mit Pommes\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Schnitzel mit Pommes\",\n\t\"details\" : \"Der grandiose Klassiker!\",\n\t\"preis\" : 12.5\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/gerichte",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte"
+					]
+				},
+				"description": "Neue Instanzen b1 und b2 von Gerichte anlegen "
+			},
+			"response": []
+		},
+		{
+			"name": "BC1.2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7b3883ae-bca9-40c2-8f4b-0f08bb89868c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Gericht 'Große Portion Pommes' erstellt\", function () {",
+							"    ",
+							"    // created (POST)",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"    ",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[\"name\"]).to.eql(\"Große Portion Pommes\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Große Portion Pommes\",\n\t\"details\" : \"Lecker fettig!\",\n\t\"preis\" : 6\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/gerichte",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte"
+					]
+				},
+				"description": "Neue Instanzen b1 und b2 von Gerichte anlegen "
+			},
+			"response": []
+		},
+		{
+			"name": "BC2.1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4ea88f08-cdf8-415d-b0bf-5101d988d31d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Speise 'Pommes' erstellt\", function () {",
+							"    ",
+							"    // created (POST)",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"    ",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[\"name\"]).to.eql(\"Pommes\");",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Pommes\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/speisen",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"speisen"
+					]
+				},
+				"description": "Neue Instanzen c1 und c2 von Speisen anlegen"
+			},
+			"response": []
+		},
+		{
+			"name": "BC2.2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "efc0ecb7-d807-4724-bbd7-e6464175f8ac",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Gericht 'Schnitzel' erstellt\", function () {",
+							"    ",
+							"    // created (POST)",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"    ",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[\"name\"]).to.eql(\"Schnitzel\");",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Schnitzel\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/speisen",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"speisen"
+					]
+				},
+				"description": "Neue Instanzen c1 und c2 von Speisen anlegen"
+			},
+			"response": []
+		},
+		{
+			"name": "BC3.1.1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e54930ef-f4b8-444f-8492-730ef0e006dc",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' zugeordnet\", function () {",
+							"    ",
+							"    pm.expect(pm.response.code).to.eql(200);",
+							"    ",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[\"speisen\"].length).to.eql(1);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/gerichte/2/speisen/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte",
+						"2",
+						"speisen",
+						"1"
+					]
+				},
+				"description": "Beziehung b1<->c1"
+			},
+			"response": []
+		},
+		{
+			"name": "BC3.1.2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "103c4832-f66b-4c1a-8823-ecbc446193f8",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Gericht 'Schnitzel mit Pommes' Speise 'Schnitzel' zugeordnet\", function () {",
+							"    ",
+							"    pm.expect(pm.response.code).to.eql(200);",
+							"    ",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[\"speisen\"].length).to.eql(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/gerichte/2/speisen/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte",
+						"2",
+						"speisen",
+						"2"
+					]
+				},
+				"description": "Beziehung b1<->c2"
+			},
+			"response": []
+		},
+		{
+			"name": "BC3.2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eab57950-226a-4805-990a-dacf7b703245",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet\", function () {",
+							"    ",
+							"    pm.expect(pm.response.code).to.eql(200);",
+							"    ",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[\"speisen\"].length).to.eql(1);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/gerichte/3/speisen/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte",
+						"3",
+						"speisen",
+						"1"
+					]
+				},
+				"description": "Beziehung b2<->c1 setzen "
+			},
+			"response": []
+		},
+		{
+			"name": "BC4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6ea1e28e-d3af-4c81-b630-2bff751c7c95",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Gericht 1 besteht aus 2 Speisen und Gericht 2 aus einer Speise\", function () {",
+							"    ",
+							"    pm.expect(pm.response.code).to.eql(200);",
+							"    ",
+							"    var jsonData = pm.response.json();",
+							"    ",
+							"    // Gericht 1 besteht aus 2 Speisen",
+							"    pm.expect(jsonData[0][\"speisen\"].length).to.eql(2);",
+							"    ",
+							"    // Gericht 2 besteht aus 1 Speise",
+							"    pm.expect(jsonData[1][\"speisen\"].length).to.eql(1);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/gerichte",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte"
+					]
+				},
+				"description": "Alle b von Gericht abfragen; Beziehungen zu c1 und c2 werden jeweils korrekt ausgegeben"
+			},
+			"response": []
+		},
+		{
+			"name": "BC5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "879f334d-85aa-45fd-a00b-bcab462f4393",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"erfolgreich Speisen ausgeben\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/speisen",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"speisen"
+					]
+				},
+				"description": "Alle c von Speise abfragen; Beziehungen zu b1 und b2 sind jeweils korrekt angegeben"
+			},
+			"response": []
+		},
+		{
+			"name": "BC6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7cfee2be-6d8d-4f80-b033-2a4f45154523",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen\", function () {",
+							"    ",
+							"    pm.expect(pm.response.code).to.eql(200);",
+							"    ",
+							"    var jsonData = pm.response.json();",
+							"    ",
+							"    // Das Gericht besteht jetzt nur noch aus einer Speise",
+							"    pm.expect(jsonData[\"speisen\"].length).to.eql(1);",
+							"    ",
+							"    // Diese Speise ist nicht 'Pommes'",
+							"    pm.expect(jsonData[\"speisen\"][0][\"name\"]).to.not.eql(\"Pommes\");",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/gerichte/2/speisen/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte",
+						"2",
+						"speisen",
+						"1"
+					]
+				},
+				"description": "Verbindung b1<->c1 löschen"
+			},
+			"response": []
+		},
+		{
+			"name": "BC7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ead6a22b-d088-4a28-a691-64cbdc5795fd",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Gerichte erfolgreich ausgeben\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/gerichte",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerichte"
+					]
+				},
+				"description": "Alle b von Gericht abfragen; in den Beziehungen zu C taucht nur noch c2 auf"
+			},
+			"response": []
+		}
+	]
+}

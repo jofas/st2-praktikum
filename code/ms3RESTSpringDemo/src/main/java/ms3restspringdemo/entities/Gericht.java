@@ -13,7 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Gericht {
@@ -25,6 +27,7 @@ public class Gericht {
 	private double preis;
 	
 	// Ein Gericht besteht aus mehreren Speisen und eine Speise kann mehreren Gerichten zugeordnet sein.
+	@JsonIgnore
 	@JsonManagedReference
 	@ManyToMany
 	@JoinTable(name = "gericht_speise",
@@ -54,8 +57,17 @@ public class Gericht {
 		speisen.addAll(sp);
 	}
 	
+	public void removeSpeise(Speise speise) {
+		speisen.remove(speise);
+	}
+	
+	@JsonProperty
 	public Set<Speise> getSpeisen() {
 		return Collections.unmodifiableSet(speisen);
+	}
+	
+	public int getId() {
+		return id;
 	}
 	
 	public String getName() {
@@ -69,6 +81,23 @@ public class Gericht {
 
 	public double getPreis() {
 		return preis;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setDetails(String details) {
+		this.details = details;
+	}
+	
+	public void setPreis(double preis) {
+		this.preis = preis;
+	}
+	
+	public void setSpeisen(Set<Speise> speisen) {
+		speisen.stream().forEach(sp -> sp.addGericht(this));
+		this.speisen = speisen;
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package ms3restspringdemo.entities;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,12 +14,11 @@ public class Zubereitungsanleitung {
 	private String anleitung;
 
 	// Die Anleitung enthaelt mehrere Zutatenangaben als Value-Objects
+	@CollectionTable(name = "Zutatenposition")
 	@ElementCollection (targetClass = Zutatenmenge.class, fetch = FetchType.EAGER)
-	@CollectionTable(name = "ZUTATENANGABE")
 	private Set<Zutatenmenge> angaben = new HashSet<Zutatenmenge>();
 
 	// Auch diesen Default-Konstruktor erzwingt JPA aus irgendeinen Grund
-
 	public Zubereitungsanleitung() {};
 
 	public Zubereitungsanleitung(String anleitung) {
@@ -31,8 +29,15 @@ public class Zubereitungsanleitung {
 		this.anleitung = anleitung;
 		this.angaben = new HashSet<Zutatenmenge>(angb);
 	}
+	
+	public String getAnleitung() {
+		return anleitung;
+	}
+	
+	public void setAnleitung(String anleitung) {
+		this.anleitung = anleitung;
+	}
 
-	// Ist es wirklich notwendig eine Angabe nur einzeln hinzuzufügen??
 	public void addZutatenangabe(Zutatenmenge angabe) {
 		angaben.add(angabe);
 	}
@@ -42,7 +47,7 @@ public class Zubereitungsanleitung {
 	}
 
 	public Set<Zutatenmenge> getZutatenangaben() {
-		return Collections.unmodifiableSet(angaben);
+		return angaben;
 	}
 
 	@Override

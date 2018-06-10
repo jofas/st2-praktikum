@@ -9,4 +9,5 @@ import ms3restspringdemo.entities.Gericht;
 public interface GerichtRepository extends CrudRepository<Gericht,Integer> {
 	
 	List<Gericht> findByPreisLessThan(double preis);
+	List<Gericht> findByPreisGreaterThan(double preis);
 }
