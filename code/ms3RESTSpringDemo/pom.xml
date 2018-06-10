@@ -56,6 +56,6 @@
 	</build>
 
 
-	<groupId>com.example</groupId>
-	<artifactId>example</artifactId>
+	<artifactId>ms3restspringdemo</artifactId>
+	<groupId>com.ms3restspringdemo</groupId>
 </project>
