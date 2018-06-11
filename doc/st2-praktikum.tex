@@ -7,6 +7,7 @@
 \usepackage[ngerman]{babel} % deutsche Sonderzeichen
 \usepackage[utf8]{inputenc}
 \usepackage{geometry} % Dokumentendesign wie Seiten- oder Zeilenabstand bestimmen
+\usepackage[toc,page]{appendix}
 
 % Graphiken
 \usepackage{tikz}
@@ -37,6 +38,10 @@
 
 % BibLaTex
 \bibliographystyle{acm}
+
+% Aendern des Anhangnamens (Seite und Inhaltsverzeichnis)
+\renewcommand\appendixtocname{Anhang}
+\renewcommand\appendixpagename{Anhang}
 
 % mdframed Style
 \mdfdefinestyle{codebox}{
@@ -119,5 +124,6 @@
 \include{ms1/ms1}
 \include{ms2/ms2}
 \include{ms3/ms3}
+\include{appendix/appendix}
 
 \end{document}

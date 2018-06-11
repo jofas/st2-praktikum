@@ -7,13 +7,18 @@
 \input{ms3/aggregates}
 
 Wir sind der Meinung, dass sich die Datenobjekte Gericht,
-Speise, Zubereitungsanleitung und Zutatenposition als ein
-Aggregate mit Gericht als Aggregate Root zusammenfassen
-lassen, da keine Referenzen auf innere Entities existieren
-und ein fachlicher Zusammenhang besteht, da ein Gericht aus
-Speisen besteht, Speisen eine Zubereitungsanleitung haben
-und diese wiederum Zutatenpositionen, ergibt sich hier
-ein enges fachliches Geflecht.
+Speise, Zubereitungsanleitung, Zutatenposition und Zutat
+als ein Aggregate mit Gericht als Aggregate Root
+zusammenfassen lassen, da keine Referenzen auf innere
+Entities existieren und ein fachlicher Zusammenhang
+besteht, da ein Gericht aus Speisen besteht, Speisen eine
+Zubereitungsanleitung haben und diese wiederum
+Zutatenpositionen, die auf Zutaten verweisen, ergibt sich
+hier ein enges fachliches Geflecht. Au{\ss}erdem ist es so,
+dass wir in Meilenstein 2 alle diese Objekte in der
+Datenkomponente Gerichtsdaten (vgl. \ref{gos})
+zusammengefasst haben, weshalb wir uns \"uberlegt haben,
+dass das Aggregate durchaus deckungsgleich sein k\"onnte.
 
 Eine m\"ogliche Invariante w\"are, wenn $Gericht.name$ eine
 Kombination von den zugeh\"origen Speisen w\"are. Als
@@ -29,6 +34,19 @@ F\"ur unser REST-API verwenden wir folgenden Ausschnitt aus
 unserem Klassendiagramm aus Meilenstein 1:
 
 \input{ms3/extract}
+
+\subsubsection*{Bemerkung}
+
+Diese Schnittstelle w\"urde so in unserem Subsystem nicht
+implementiert, da die verwendeten Gesch\"aftsobjekte nicht
+in unser Subsystem geh\"oren und wir sie deshalb selbst
+\"uber Schnittstellen aus anderen Subsystemen beziehen.
+Wir bieten nur eine Schnittstelle f\"ur das
+Gesch\"aftsobjekt Bestellung f\"ur die Buchhaltung an (vgl.
+\ref{ms2_3}) und mit nur einem Gesch\"aftsobjekt l\"asst
+sich das angegebene Szenario nicht durchf\"uhren, weshalb
+wir den obrigen Ausschnitt verwenden.
+
 
 \begin{tabu} to \linewidth {l|l|X|X|X}
 % Headerzeile {{{
@@ -89,7 +107,6 @@ BC5 &/speisen &GET & &Alle Speisen ausgeben. \\
 % }}}
 \hline
 \end{tabu}
-% }}}
 
 \subsubsection*{Bemerkung}
 
@@ -100,6 +117,8 @@ hinzugef\"ugt oder gel\"oscht weren kann. Man h\"atte dies
 auch \"uber /speisen/\{speisen\_id\}/gerichte tun k\"onnen,
 was wir jedoch f\"ur un\"ubersichtlicher und nicht so
 naheliegend wie unsere Variante gehalten haben.
+
+% }}}
 
 \newpage
 
@@ -146,25 +165,7 @@ naheliegend wie unsere Variante gehalten haben.
 % Nachweis der Lauffaehigkeit {{{
 \subsubsection{Nachweis der Lauff\"ahigkeit}
 
-% Postman-Collection {{{
-\textbf{Postman-Collection}
-\lstinputlisting[
-  language=Java,
-]{%
-  ms3/static/st-ms3.%
-  postman_collection.json
-}
-% }}}
-
-% Postman-Test-Run {{{
-\textbf{Postman-Test-Run}
-\lstinputlisting[
-  language=Java,
-]{%
-  ms3/static/st-ms3.%
-  postman_test_run.json
-}
-% }}}
+Ausgaben der Postman Logs sind in Anhang A zu finden.
 
 % }}}
 
