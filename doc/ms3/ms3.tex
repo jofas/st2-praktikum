@@ -101,8 +101,71 @@ auch \"uber /speisen/\{speisen\_id\}/gerichte tun k\"onnen,
 was wir jedoch f\"ur un\"ubersichtlicher und nicht so
 naheliegend wie unsere Variante gehalten haben.
 
+\newpage
+
 % Teilaufgabe 3 {{{
 \subsection{Teilaufgabe 3: Implementierung in Spring Data
   JPA / Web MVC}
+
+% Code-Listing {{{
+\subsubsection{Code-Listing}
+
+% GerichtRESTController {{{
+\begin{mdframed}[style=codebox]
+\textbf{GerichtRESTController}
+\lstinputlisting[
+  language=Java,
+  firstline=34,
+  lastline=134
+]{%
+  ../code/ms3RESTSpringDemo/src/main/java/%
+  ms3restspringdemo/services/GerichtRestController%
+  .java
+}
+\end{mdframed}
+% }}}
+
+% SpeiseRESTController {{{
+\begin{mdframed}[style=codebox]
+\textbf{SpeiseRESTController}
+\lstinputlisting[
+  language=Java,
+  firstline=28,
+  lastline=43
+]
+{%
+  ../code/ms3RESTSpringDemo/src/main/java/%
+  ms3restspringdemo/services/SpeiseRestController%
+  .java
+}
+\end{mdframed}
+% }}}
+
+% }}}
+
+% Nachweis der Lauffaehigkeit {{{
+\subsubsection{Nachweis der Lauff\"ahigkeit}
+
+% Postman-Collection {{{
+\textbf{Postman-Collection}
+\lstinputlisting[
+  language=Java,
+]{%
+  ms3/static/st-ms3.%
+  postman_collection.json
+}
+% }}}
+
+% Postman-Test-Run {{{
+\textbf{Postman-Test-Run}
+\lstinputlisting[
+  language=Java,
+]{%
+  ms3/static/st-ms3.%
+  postman_test_run.json
+}
+% }}}
+
+% }}}
 
 % }}}

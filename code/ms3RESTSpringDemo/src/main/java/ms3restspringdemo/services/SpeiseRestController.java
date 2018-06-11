@@ -21,17 +21,16 @@ import ms3restspringdemo.repositories.SpeiseRepository;
 @RestController
 @RequestMapping("/speisen")
 public class SpeiseRestController {
- 
+
     @Autowired
     private SpeiseRepository speiseRepository;
-    
+
     // BC5: Alle Speisen auslesen
     @GetMapping
     public List<Speise> getAllSpeisen() {
 		return (List<Speise>) speiseRepository.findAll();
     }
-	
-    
+
     // BC2: Einen Speise neu anlegen
     @PostMapping
 	ResponseEntity<?> add( @RequestBody Speise input ) {
@@ -42,19 +41,19 @@ public class SpeiseRestController {
 				.path("/{id}").buildAndExpand( s.getId() ).toUri();
     	return ResponseEntity.created( location ).body( s );
     }
-    
-    
+
+
     // Eine Speisen loeschen (war nicht gefordert)
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteSpeise(@PathVariable("id") int id) {
 		if ( speiseRepository.exists(id) ) {
 			speiseRepository.delete(id);
 		    return ResponseEntity.ok().build();
-		} 
+		}
 		else return ResponseEntity.notFound().build();
     }
-    
-    
+
+
     // Einen bestimmten Speise auslesen (war nicht gefordert)
     @GetMapping("/{id}")
 	public ResponseEntity<?> getSpeiseById(@PathVariable("id") int id ) {
@@ -62,7 +61,7 @@ public class SpeiseRestController {
 		if ( s == null ) return ResponseEntity.notFound().build();
 		else return ResponseEntity.ok().body( s );
 	}
-    
+
 
     // Eine Speise aendern (war nicht gefordert)
     @PutMapping("/{id}")
@@ -76,5 +75,5 @@ public class SpeiseRestController {
 			return ResponseEntity.ok().body(s);
 		}
     }
-    
+
 }

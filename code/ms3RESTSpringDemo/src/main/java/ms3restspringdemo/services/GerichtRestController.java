@@ -23,52 +23,52 @@ import ms3restspringdemo.repositories.SpeiseRepository;
 @RestController
 @RequestMapping("/gerichte")
 public class GerichtRestController {
- 
+
     @Autowired
     private GerichtRepository gerichtRepository;
-    
+
     @Autowired
     private SpeiseRepository speiseRepository;
-    
-    
+
+
     // BC4,BC7: Alle Gerichte ausgeben
     @GetMapping
     public ResponseEntity<?> getAllGerichte(@RequestParam(value="search", required = false) String query) {
     	if(query == null)
     		return ResponseEntity.ok().body(gerichtRepository.findAll());
-    	
+
     	// query specified
     	else {
-    		
+
     		// Nur das Suchen nach Gerichten, mit einem Preis hoeher einem bestimmten Wert wird implementiert.
-    		// Da wir fuer die Aufgabe nur die eine Option brauchen.		
+    		// Da wir fuer die Aufgabe nur die eine Option brauchen.
     		try {
-        		
-    			if(!query.substring(0, 6).equalsIgnoreCase("preis>")) 
+
+    			if(!query.substring(0, 6).equalsIgnoreCase("preis>"))
         			throw new Exception("Der erste Teil des Strings muss 'preis>' sein");
-        		
+
     			String preisStr = query.substring(6);
     			double preis = Double.parseDouble(preisStr);
-    			
+
     			return ResponseEntity.ok().body(gerichtRepository.findByPreisGreaterThan(preis));
-    			
+
     		}
     		// fange alle Exceptions auf die Eintreten koennen und gebe einfach die Exception zurueck
     		catch(Exception e){
     			return ResponseEntity.badRequest().body(e);
-    		}		
+    		}
     	}
     }
-    
 
-    // A6: ein einzelnes Gericht ausgeben 
+
+    // A6: ein einzelnes Gericht ausgeben
     @GetMapping("/{id}")
 	public ResponseEntity<?> getKundeById(@PathVariable("id") int id ) {
 		Gericht g = gerichtRepository.findOne(id);
-		if ( g == null ) return ResponseEntity.notFound().build(); 
+		if ( g == null ) return ResponseEntity.notFound().build();
 		else return ResponseEntity.ok().body(g);
 	}
-	
+
 
     // A5: Ein Gericht loeschen
     @DeleteMapping("/{id}")
@@ -76,11 +76,11 @@ public class GerichtRestController {
 		if ( gerichtRepository.exists(id) ) {
 			gerichtRepository.delete(id);
 		    return ResponseEntity.ok().build();
-		} 
+		}
 		else return ResponseEntity.notFound().build();
     }
-    
-    
+
+
     // A1,BC1: Ein Gericht neu anlegen
     @PostMapping
 	ResponseEntity<?> add( @RequestBody Gericht input ) {
@@ -89,8 +89,8 @@ public class GerichtRestController {
 				.path("/{id}").buildAndExpand( g.getId() ).toUri();
     	return ResponseEntity.created( location ).body( g );
     }
-    
-    
+
+
     // A3: Den Preis eines Gerichts aendern
     @PutMapping("/{id}/preis")
 	ResponseEntity<?> change( @PathVariable("id") int id, @RequestBody double preis) {
@@ -102,8 +102,8 @@ public class GerichtRestController {
 			return ResponseEntity.ok().body(g);
 		}
     }
-    
-    
+
+
     // BC3,BC6: Speisen einem Gericht hinzufuegen
     @PutMapping("/{gericht_id}/speisen/{speise_id}")
     ResponseEntity<?> addSpeise(@PathVariable("gericht_id") int gericht_id, @PathVariable("speise_id") int speise_id) {
@@ -115,12 +115,11 @@ public class GerichtRestController {
     	s.addGericht(g);
     	gerichtRepository.save(g);
     	speiseRepository.save(s);
-    	
+
     	return ResponseEntity.ok().body(g);
     }
-    
-    
-    // BC6: Speise (Verbindung) für ein Gericht loeschen
+
+    // BC6: Speise (Verbindung) fuer ein Gericht loeschen
     @DeleteMapping("/{gericht_id}/speisen/{speise_id}")
     ResponseEntity<?> removeSpeise(@PathVariable("gericht_id") int gericht_id, @PathVariable("speise_id") int speise_id) {
     	Gericht g = gerichtRepository.findOne(gericht_id);
@@ -130,10 +129,10 @@ public class GerichtRestController {
     	g.removeSpeise(s);
     	s.removeGericht(g);
     	gerichtRepository.save(g);
-    	speiseRepository.save(s);  	
+    	speiseRepository.save(s);
     	return ResponseEntity.ok().body(g);
     }
-    
+
 
     // Ein Gericht aendern (war nicht gefordert)
     @PutMapping("/{id}")
