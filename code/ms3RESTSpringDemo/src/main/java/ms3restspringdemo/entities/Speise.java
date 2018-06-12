@@ -12,13 +12,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 
 @Entity
+@JsonIdentityInfo(
+  generator = ObjectIdGenerators.PropertyGenerator.class, 
+  property = "id",
+  scope = Speise.class)
 public class Speise {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,7 +31,6 @@ public class Speise {
 	private String name;
 	
 	// bidirektionale Beziehung: Gericht kennt zugehoerige Speisen und die Speisen kennen zugehoerige Gerichte
-	@JsonBackReference
 	@JsonIgnore // beim Erstellen einer Speise muessen die Gerichte nicht angegeben sein
 	@ManyToMany(mappedBy = "speisen")
 	private Set<Gericht> gerichte = new HashSet<Gericht>();
@@ -58,7 +62,6 @@ public class Speise {
 	}
 	
 	// Gerichte die Speise beinhalten sollen zurueckgegeben werden
-	@JsonBackReference
 	@JsonProperty
 	public Set<Gericht> getGerichte() {
 		return Collections.unmodifiableSet(gerichte);

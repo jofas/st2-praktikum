@@ -53,9 +53,9 @@ public class GerichtRestController {
     			return ResponseEntity.ok().body(gerichtRepository.findByPreisGreaterThan(preis));
 
     		}
-    		// fange alle Exceptions auf die Eintreten koennen und gebe einfach die Exception zurueck
+    		// fange alle Exceptions auf die Eintreten koennen und gebe einfach BadRequest zurueck
     		catch(Exception e){
-    			return ResponseEntity.badRequest().body(e);
+    			return ResponseEntity.badRequest().build();
     		}
     	}
     }
