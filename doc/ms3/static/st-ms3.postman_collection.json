@@ -36,7 +36,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\" : \"Erdbeerpudding\",\n\t\"details\" : \"Leckerer süßlicher Erdbeerpudding <3 <3 <3\",\n\t\"preis\" : 10\n}"
+					"raw": "{\n\t\"name\" : \"Erdbeerpudding\",\n\t\"details\" : \"Leckerer suesslicher Erdbeerpudding <3 <3 <3\",\n\t\"preis\" : 10\n}"
 				},
 				"url": {
 					"raw": "localhost:8080/gerichte/",
@@ -62,7 +62,7 @@
 						"id": "fcf66a3d-b4e4-42d6-9cd7-5dd462327ff3",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Leere Rückgabe\", function () {",
+							"pm.test(\"Leere Rueckgabe\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.length).to.eql(0);",
 							"});"
@@ -90,7 +90,7 @@
 						}
 					]
 				},
-				"description": "Alle a von Gerichte abfragen, bei denen der Wert von a.preis > 10; die Rückgabe muss leer sein"
+				"description": "Alle a von Gerichte abfragen, bei denen der Wert von a.preis > 10; die Rueckgabe muss leer sein"
 			},
 			"response": []
 		},
@@ -178,7 +178,7 @@
 						}
 					]
 				},
-				"description": "Anfrage aus (A2) wiederholen; jetzt muss a zurückgegeben werden"
+				"description": "Anfrage aus (A2) wiederholen; jetzt muss a zurueckgegeben werden"
 			},
 			"response": []
 		},
@@ -213,7 +213,7 @@
 						"1"
 					]
 				},
-				"description": "a löschen"
+				"description": "a loeschen"
 			},
 			"response": []
 		},
@@ -248,7 +248,7 @@
 						"1"
 					]
 				},
-				"description": "Die ID von a vom Server abfragen; eine passende Fehlermeldung wird zurückgegeben"
+				"description": "Die ID von a vom Server abfragen; eine passende Fehlermeldung wird zurueckgegeben"
 			},
 			"response": []
 		},
@@ -308,13 +308,13 @@
 						"id": "7b3883ae-bca9-40c2-8f4b-0f08bb89868c",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Gericht 'Große Portion Pommes' erstellt\", function () {",
+							"pm.test(\"Gericht 'Grosse Portion Pommes' erstellt\", function () {",
 							"    ",
 							"    // created (POST)",
 							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
 							"    ",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData[\"name\"]).to.eql(\"Große Portion Pommes\");",
+							"    pm.expect(jsonData[\"name\"]).to.eql(\"Grosse Portion Pommes\");",
 							"});"
 						]
 					}
@@ -330,7 +330,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\" : \"Große Portion Pommes\",\n\t\"details\" : \"Lecker fettig!\",\n\t\"preis\" : 6\n}"
+					"raw": "{\n\t\"name\" : \"Grosse Portion Pommes\",\n\t\"details\" : \"Lecker fettig!\",\n\t\"preis\" : 6\n}"
 				},
 				"url": {
 					"raw": "localhost:8080/gerichte",
@@ -531,7 +531,7 @@
 						"id": "eab57950-226a-4805-990a-dacf7b703245",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet\", function () {",
+							"pm.test(\"Gericht 'Grosse Portion Pommes' Speise 'Pommes' zugeordnet\", function () {",
 							"    ",
 							"    pm.expect(pm.response.code).to.eql(200);",
 							"    ",
@@ -640,7 +640,7 @@
 						"id": "ece271b4-b5d3-42ff-bb88-62e80ddc9576",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen\", function () {",
+							"pm.test(\"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' loeschen\", function () {",
 							"    pm.expect(pm.response.code).to.eql(200);",
 							"});",
 							"",
@@ -666,7 +666,7 @@
 						"1"
 					]
 				},
-				"description": "Verbindung b1<->c1 löschen"
+				"description": "Verbindung b1<->c1 loeschen"
 			},
 			"response": []
 		},

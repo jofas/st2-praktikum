@@ -97,11 +97,11 @@
 				}
 			},
 			"tests": {
-				"name": "Leere Rückgabe",
+				"name": "Leere Rueckgabe",
 				"status": "pass"
 			},
 			"testPassFailCounts": {
-				"Leere Rückgabe": {
+				"Leere Rueckgabe": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -111,7 +111,7 @@
 			],
 			"allTests": [
 				{
-					"Leere Rückgabe": true
+					"Leere Rueckgabe": true
 				}
 			],
 			"time": "20",
@@ -307,11 +307,11 @@
 				}
 			},
 			"tests": {
-				"name": "Gericht 'Große Portion Pommes' erstellt",
+				"name": "Gericht 'Grosse Portion Pommes' erstellt",
 				"status": "pass"
 			},
 			"testPassFailCounts": {
-				"Gericht 'Große Portion Pommes' erstellt": {
+				"Gericht 'Grosse Portion Pommes' erstellt": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -321,7 +321,7 @@
 			],
 			"allTests": [
 				{
-					"Gericht 'Große Portion Pommes' erstellt": true
+					"Gericht 'Grosse Portion Pommes' erstellt": true
 				}
 			],
 			"time": "5",
@@ -482,11 +482,11 @@
 				}
 			},
 			"tests": {
-				"name": "Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet",
+				"name": "Gericht 'Grosse Portion Pommes' Speise 'Pommes' zugeordnet",
 				"status": "pass"
 			},
 			"testPassFailCounts": {
-				"Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet": {
+				"Gericht 'Grosse Portion Pommes' Speise 'Pommes' zugeordnet": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -496,7 +496,7 @@
 			],
 			"allTests": [
 				{
-					"Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet": true
+					"Gericht 'Grosse Portion Pommes' Speise 'Pommes' zugeordnet": true
 				}
 			],
 			"time": "7",
@@ -587,11 +587,11 @@
 				}
 			},
 			"tests": {
-				"name": "Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen",
+				"name": "Gericht 'Schnitzel mit Pommes' Speise 'Pommes' loeschen",
 				"status": "pass"
 			},
 			"testPassFailCounts": {
-				"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen": {
+				"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' loeschen": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -601,7 +601,7 @@
 			],
 			"allTests": [
 				{
-					"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen": true
+					"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' loeschen": true
 				}
 			],
 			"time": "8",
@@ -683,7 +683,7 @@
 				}
 			},
 			"testPassFailCounts": {
-				"Leere Rückgabe": {
+				"Leere Rueckgabe": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -803,7 +803,7 @@
 				}
 			},
 			"testPassFailCounts": {
-				"Gericht 'Große Portion Pommes' erstellt": {
+				"Gericht 'Grosse Portion Pommes' erstellt": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -903,7 +903,7 @@
 				}
 			},
 			"testPassFailCounts": {
-				"Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet": {
+				"Gericht 'Grosse Portion Pommes' Speise 'Pommes' zugeordnet": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -963,7 +963,7 @@
 				}
 			},
 			"testPassFailCounts": {
-				"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen": {
+				"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' loeschen": {
 					"pass": 1,
 					"fail": 0
 				}

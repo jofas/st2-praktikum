@@ -48,7 +48,7 @@ sich das angegebene Szenario nicht durchf\"uhren, weshalb
 wir den obrigen Ausschnitt verwenden.
 
 
-\begin{tabu} to \linewidth {l|l|X|X|X}
+\begin{tabu} to \linewidth {p{1.8cm}|X|p{2.5cm}|p{3cm}|X}
 % Headerzeile {{{
 \hline
 \rowcolor{codebordercolor}
@@ -64,40 +64,39 @@ A1, BC1, BC4, BC7 &/gerichte &POST, GET
       details=\dots,
       preis=\dots
     \}
-  &Neues Gericht anlegen, 
-    Alle Gerichte ausgeben. \\
+  &Neues Gericht anlegen, alle Gerichte ausgeben. \\
 % }}}
 % A2, A4 {{{
 \hline
-A2, A4 &/gerichte?search=preis$>$\{wert\} &GET & &Alle
+A2, A4 &/gerichte?search= preis$>$\{wert\} &GET & &Alle
   Gerichte $a$ ausgeben, f\"ur die $a.preis > wert$ gilt.
   \\
 % }}}
 % A3 {{{
 \hline
-A3 &/gerichte/\{gericht\_id\}/preis &PUT &\{wert\} &Preis
+A3 &/gerichte/\{gericht\_id\}/ preis &PUT &\{wert\} &Preis
   von Gericht $a$ mit $a.gericht\_id=\{gericht\_id\}$ auf
   $\{wert\}$ setzen. \\
 % }}}
 % A6 {{{
 \hline
-A6 &/gerichte/\{gericht\_id\} &GET & &Ein bestimmtes Gericht \"uber die Id
+A6 &/gerichte/\{gericht\_id\} &GET & &Ein bestimmtes
+  Gericht \"uber die Id
   abfragen. 404 wird geworfen, falls Gericht nicht
   vorhanden. \\
 % }}}
 % BC2, BC5 {{{
 \hline
-BC2 &/speisen &POST, GET 
+BC2 &/speisen &POST, GET
   &\textbf{Nur bei POST:}
-  \{name=\dots\} 
+  \{name=\dots\}
   &Neue Speise anlegen. Alle Speisen ausgeben. \\
 % }}}
 % BC3, BC6 {{{
 \hline
-BC3, BC6 &/gerichte/\{gericht\_id\}/speisen/\{speise_id\} &PUT, DELETE
-  & &Speise einem Gericht hinzuf\"ugen
-  oder l\"oschen.
-  \\
+BC3, BC6 &/gerichte/\{gericht\_id\}/ speisen/\{speise\_id\}
+  &PUT, DELETE & &Speise einem Gericht hinzuf\"ugen oder
+  l\"oschen. \\
 % }}}
 \end{tabu}
 
