@@ -55,21 +55,21 @@ wir den obrigen Ausschnitt verwenden.
 Szen.-Nr. &URI &HTTP Verb &Request-Body &Ressource und
   Aktion \\
 % }}}
-% A1, A5, BC1 {{{
+% A1, BC1, BC4, BC7 {{{
 \hline
-A1, A5, BC1 &/gerichte/\{gericht\_id\} &PUT, DELETE
-  &\textbf{Nur bei Put:}
+A1, BC1, BC4, BC7 &/gerichte &POST, GET
+  &\textbf{Nur bei POST:}
     \{
       name=\dots,
       details=\dots,
       preis=\dots
     \}
-  &Neues Gericht anlegen, Gericht
-  \"uberschreiben, Gericht l\"oschen. \\
+  &Neues Gericht anlegen, 
+    Alle Gerichte ausgeben. \\
 % }}}
 % A2, A4 {{{
 \hline
-A2, A4 &/gerichte?filter[preis]$>$\{wert\} &GET & &Alle
+A2, A4 &/gerichte?search=preis$>$\{wert\} &GET & &Alle
   Gerichte $a$ ausgeben, f\"ur die $a.preis > wert$ gilt.
   \\
 % }}}
@@ -81,31 +81,24 @@ A3 &/gerichte/\{gericht\_id\}/preis &PUT &\{wert\} &Preis
 % }}}
 % A6 {{{
 \hline
-A6 &/gerichte/\{gericht\_id\}/id &GET & &Id von Gericht
+A6 &/gerichte/\{gericht\_id\} &GET & &Ein bestimmtes Gericht \"uber die Id
   abfragen. 404 wird geworfen, falls Gericht nicht
   vorhanden. \\
 % }}}
-% BC2 {{{
+% BC2, BC5 {{{
 \hline
-BC2 &/speisen/\{speise\_id\} &PUT &\{name=\dots\} &Speise
-  anlegen, \"uberschreiben. \\
+BC2 &/speisen &POST, GET 
+  &\textbf{Nur bei POST:}
+  \{name=\dots\} 
+  &Neue Speise anlegen. Alle Speisen ausgeben. \\
 % }}}
 % BC3, BC6 {{{
 \hline
-BC3, BC6 &/gerichte/\{gericht\_id\}/speisen &PUT, DELETE
-  &\{speise\_id=\dots\} &Speise einem Gericht hinzuf\"ugen
+BC3, BC6 &/gerichte/\{gericht\_id\}/speisen/\{speise_id\} &PUT, DELETE
+  & &Speise einem Gericht hinzuf\"ugen
   oder l\"oschen.
   \\
 % }}}
-% BC4, BC7 {{{
-\hline
-BC4, BC7 &/gerichte &GET & &Alle Gerichte ausgeben. \\
-% }}}
-% BC5 {{{
-\hline
-BC5 &/speisen &GET & &Alle Speisen ausgeben. \\
-% }}}
-\hline
 \end{tabu}
 
 \subsubsection*{Bemerkung}
