@@ -1,0 +1,110 @@
+\section{Meilenstein 4 $-$ Microservices}
+
+% Teilaufgabe 1 {{{
+\subsection{Teilaufgabe 1: Context Map}
+
+\textbf{Anmerkung:} im Folgenden ist der Ausdruck Subsytem
+equivalent zum Ausdruck Dom\"ane.
+
+% Map {{{
+\subsubsection{Context Map}
+\input{ms4/context_map}
+% }}}
+
+% Tabelle {{{
+\subsubsection{Tabelle der \"Uberlappungstypen}
+
+\begin{tabu} to \linewidth {p{1.8cm}|p{2.2cm}|X|X}
+% Headerzeile {{{
+\hline
+Entity &\"Uberlappung mit anderer Dom\"ane
+  &\"Uberlappungstyp &Begr\"undung \\
+% }}}
+% Bestellung {{{
+\hline
+Bestellung &Buchhaltung &Conformist (unser Subsystem als
+  Eigent\"umer) &Die Buchhaltung ruft die Bestellungsdaten
+  bei uns ab. Hier wurde Conformist anstelle von Customer /
+  Suplier gew\"ahlt, da es sich bei dem Buchhaltungssystem
+  wahrscheinlich nicht um eine Hausentwicklung handelt,
+  sondern um ein propriet\"ares System mit unbekannten
+  Schnittstellen, weshalb eine Zusammenarbeit auf
+  Augenh\"ohe nicht unbedingt m\"oglich ist. \\
+% }}}
+% Gericht {{{
+\hline
+Gericht &Rezeptver\-waltung &Customer / Suplier
+  (Rezeptverwaltung als Eigent\"umer) &Wir rufen
+  die Gerichte beim Subsystem Rezeptverwaltung ab. Das
+  Subsystem Rezeptverwaltung ist der Eigent\"umer und wir
+  haben (brauchen) nur lesenden Zugriff auf das Entity
+  Gericht. Customer / Suplier, da wir auf Augenh\"ohe mit
+  der Rezeptverwaltung sind uns eine enge Zusammenarbeit
+  m\"oglich ist. \\
+% }}}
+% Speisekarte {{{
+\hline
+Speisekar\-te &Rezeptver\-waltung &Customer / Suplier
+  (Rezeptverwaltung als Eigent\"umer) &vgl. Entity Gericht.
+  \\
+% }}}
+% Zubereitungsanleitung {{{
+\hline
+Zuberei\-tungsanlei\-tung &Rezeptver\-waltung &
+  Customer / Suplier (Rezeptverwaltung als Eigent\"umer)
+  &vgl. Entity Gericht. \\
+% }}}
+% Zutat {{{
+\hline
+Zutat &Lagerver\-waltung &Customer / Suplier
+  (Lagerverwaltung als Eigent\"umer) &Zutat ist in unserem
+  Fall einfach die Menge der Zutat, welche im Lager
+  zur Verf\"ugung steht und wird mit der Lagerverwaltung
+  abgeglichen. Zutat verh\"alt sich analog zu Gericht. \\
+% }}}
+% Zutatenposition {{{
+\hline
+Zutaten\-position &Rezeptver\-waltung &Customer / Suplier
+  (Rezeptverwaltung als Eigent\"umer) &vgl. Entity Gericht.
+  \\
+% }}}
+\hline
+\end{tabu}
+% }}}
+% }}}
+
+% Teilaufgabe 2 {{{
+\subsection{Teilaufgabe 2: Aggregates}
+
+Im Folgenden beziehen wir uns auf unsere Aggregates aus
+Kapitel \ref{ms3_aggregates}. Die einzige Unterscheidung zu
+diesem Aggregate ist, dass wir die redundante Entity Speise
+(in Kapitel \ref{ldm} dem Klassendiagramm des logischen
+Datenmodells hinzugef\"ugt, um die Aufgabenstellung zu
+erf\"ullen) entfernen und das Attribut $Speise.name$ in
+$Zubereitungsanleitung.name$ \"uberf\"uhren.
+
+\begin{center}
+% Tabelle {{{
+\begin{tabu} to \linewidth {p{3cm}|X|X|X}
+% Headerzeile {{{
+\hline
+Aggregate Root &Weitere beteiligte Entities &Invarianten
+  &Begr\"undung, dass das ein Aggregate ist \\
+% }}}
+% Gericht {{{
+\hline
+Gericht &Zubereitungsanleitung, Zutatenposition, Zutat
+  &\textit{Gericht.name} wird aus
+  \textit{Zubereitungsanleitung.name}
+  zusammengesetzt (Schnitzel, Pommes, Salat $\Rightarrow$
+  \textit{Gericht.name} = Schnitzel mit Pommes und Salat)
+  &vgl. \ref{ms3_aggregates} \\
+% }}}
+\end{tabu}
+% }}}
+\end{center}
+% }}}
+
+\subsection{Teilaufgabe 3: Microservice-Architektur}
+

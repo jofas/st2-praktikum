@@ -1,0 +1,111 @@
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[
+  zub/.style={
+    draw,rounded corners,outer color=yellow!25,
+    inner color=white
+  },
+  buc/.style={
+    draw, rounded corners, outer color=black!25,
+    inner color=white
+  },
+  rvw/.style={
+    draw, rounded corners, outer color=green!25,
+    inner color=white
+  },
+  lvw/.style={
+    draw, rounded corners, outer color=blue!25,
+    inner color=white
+  }
+]
+% Zubereitung {{{
+\node[zub] at (0,0) (best) {Bestellung};
+\node[zub, right=1 of best] (ap) {Arbeitsplatz}
+  edge (best);
+\node[zub, left=1 of best] (sp) {Sitzplatz}
+  edge (best);
+\node[zub, below=3 of best] (za) {Zubereitungsanleitung};
+\node[zub, left=1 of za] (g) {Gericht}
+  edge (za);
+\node[zub, left=1 of g] (sk) {Speisekarte}
+  edge (g);
+\node[zub, right=1 of za] (zp) {Zutatenposition}
+  edge (za);
+\node[zub, right=1 of zp] (z) {Zutat}
+  edge (zp);
+
+\draw (sk) |- (sp);
+\draw (g) |- ($(g)!.5!(best)$) -| (best);
+
+\draw[dashed]
+  ($(sk.south west) - (1,1)$)
+  --
+  ($(z.south east) - (-1,1)$)
+  |-
+  node[below left] {Subsystem Zubereitung}
+  ($(best.north) + (0,1)$)
+  -|
+  cycle;
+% }}}
+
+% Buchhaltung {{{
+\node[buc, above=4 of best] (buc_best) {Bestellung}
+  edge[->,dashed] node[fill=green!50] {CON} (best);
+
+\draw[dashed]
+  ($(sk.south west) + (-1,7.5)$)
+  --
+  ($(z.south east) + (1,7.5)$)
+  |-
+  node[below left] {Subsystem Buchhaltung}
+  ($(buc_best.north) + (0,1)$)
+  -|
+  cycle;
+
+% }}}
+
+% Rezeptverwaltung {{{
+\node [rvw, below=4 of sk] (rvw_sk) {Speisekarte}
+  edge[<-,dashed] node[fill=yellow!50] {C/S} (sk);
+\node [rvw, below=4 of g] (rvw_g) {Gericht}
+  edge[<-,dashed] node[fill=yellow!50] {C/S} (g);
+\node [rvw, below=4 of za] (rvw_za) {Zubereitungsanleitung}
+  edge[<-,dashed] node[fill=yellow!50] {C/S} (za);
+\node [rvw, below=4 of zp] (rvw_zp) {Speisekarte}
+  edge[<-,dashed] node[fill=yellow!50] {C/S} (zp);
+
+\draw[dashed]
+  ($(sk.south west) - (1,5.5)$)
+  --
+  node[above]
+    {Subsystem Rezeptverwaltung}
+  ($(z.south east) - (2,5.5)$)
+  |-
+  ($(rvw_za.north) + (0,1)$)
+  -|
+  cycle;
+% }}}
+
+% Lagerverwaltung {{{
+\node [lvw, below=7 of z] (lvw_z) {Zutat};
+
+\draw[->,dashed]
+  (z) -- node[fill=yellow!50] {C/S} (lvw_z);
+
+\draw[dashed]
+  ($(sk.south west) - (1,8)$)
+  --
+  ($(z.south east) - (-1,8)$)
+  |-
+  ($(lvw_z.north) + (0,1)$)
+  -|
+  node[below right]
+    {Subsystem Lagerverwaltung}
+  cycle;
+% }}}
+
+\end{tikzpicture}
+\end{center}
+\caption{Context Map}
+\end{figure}
+
