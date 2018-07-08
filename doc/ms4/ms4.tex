@@ -16,7 +16,7 @@ equivalent zum Ausdruck Dom\"ane.
 
 \begin{tabu} to \linewidth {p{1.8cm}|p{2.2cm}|X|X}
 % Headerzeile {{{
-\hline
+\hline\rowcolor{codebordercolor}
 Entity &\"Uberlappung mit anderer Dom\"ane
   &\"Uberlappungstyp &Begr\"undung \\
 % }}}
@@ -88,7 +88,7 @@ $Zubereitungsanleitung.name$ \"uberf\"uhren.
 % Tabelle {{{
 \begin{tabu} to \linewidth {p{3cm}|X|X|X}
 % Headerzeile {{{
-\hline
+\hline\rowcolor{codebordercolor}
 Aggregate Root &Weitere beteiligte Entities &Invarianten
   &Begr\"undung, dass das ein Aggregate ist \\
 % }}}
@@ -101,6 +101,7 @@ Gericht &Zubereitungsanleitung, Zutatenposition, Zutat
   \textit{Gericht.name} = Schnitzel mit Pommes und Salat)
   &vgl. \ref{ms3_aggregates} \\
 % }}}
+\hline
 \end{tabu}
 % }}}
 \end{center}
@@ -108,3 +109,56 @@ Gericht &Zubereitungsanleitung, Zutatenposition, Zutat
 
 \subsection{Teilaufgabe 3: Microservice-Architektur}
 
+\subsubsection{Servicetabelle}
+
+% Tabelle {{{
+\begin{tabu} to \linewidth {X|X|X}
+% Headerzeile {{{
+\hline\rowcolor{codebordercolor}
+Service &Bildet ab &Kommentar \\
+% }}}
+% Bestellung {{{
+\hline
+Bestellungsdaten &Bestellung &Dient als API Gateway, da
+  unser Subsystem ein Supplier f\"ur die Bestelldaten ist.
+  \\
+% }}}
+% Gericht {{{
+\hline
+Gerichtsdaten &Gericht (vgl. \ref{ms3_aggregates})
+  &Adapterservice, da unser Subsystem ein Customer f\"ur
+  die Gerichtsdaten ist.\\
+% }}}
+% Speisekarte {{{
+\hline
+Speisekartendaten &Speisekarte &Adapterservice, da unser
+  Subsystem ein Customer f\"ur die Speisekartendaten ist.\\
+% }}}
+% Restaurant {{{
+\hline
+Restaurantdaten &Sitzplatz, Arbeitsplatz &Service der die
+  Sitz- und Arbeitspl\"atze der Standorte verwaltet. \\
+% }}}
+% Gast-UI {{{
+\hline
+Gast-UI & &UI-Service f\"ur den Gast. Hier wird unserer
+  Meinung nach kein API Gateway ben\"otigt, da das UI nur
+  Daten aus dem Speisekartendaten-Service ben\"otigt und
+  Bestellungen an den Bestellungsdaten-Service schickt,
+  was weder eine besondere Darstellung der Daten ist, noch
+  als viele verschiedene Aufrufe zu charakterisieren
+  w\"are. \\
+% }}}
+% Koch-UI {{{
+\hline
+Koch-UI & &UI-Service f\"ur den Koch. Hier wird unserer
+  Meinung nach kein API Gateway ben\"otigt, da nur Daten
+  aus dem Gerichtsdaten-Service abgerufen werden m\"ussen.
+  \\
+% }}}
+\hline
+\end{tabu}
+% }}}
+
+\subsubsection{Komponentendiagramm}
+\input{ms4/compo}
