@@ -76,13 +76,14 @@ Zutaten\-position &Rezeptver\-waltung &Customer / Suplier
 % Teilaufgabe 2 {{{
 \subsection{Teilaufgabe 2: Aggregates}
 
-Im Folgenden beziehen wir uns auf unsere Aggregates aus
-Kapitel \ref{ms3_aggregates}. Die einzige Unterscheidung zu
-diesem Aggregate ist, dass wir die redundante Entity Speise
-(in Kapitel \ref{ldm} dem Klassendiagramm des logischen
-Datenmodells hinzugef\"ugt, um die Aufgabenstellung zu
-erf\"ullen) entfernen und das Attribut $Speise.name$ in
-$Zubereitungsanleitung.name$ \"uberf\"uhren.
+Im Folgenden beziehen wir uns unter anderem auf unsere
+Aggregates aus Kapitel \ref{ms3_aggregates}. Die einzige
+Unterscheidung zu diesem Aggregate ist, dass wir die
+redundante Entity Speise (in Kapitel \ref{ldm} dem
+Klassendiagramm des logischen Datenmodells hinzugef\"ugt,
+um die Aufgabenstellung zu erf\"ullen) entfernen und das
+Attribut $Speise.name$ in $Zubereitungsanleitung.name$
+\"uberf\"uhren.
 
 \begin{center}
 % Tabelle {{{
@@ -100,6 +101,26 @@ Gericht &Zubereitungsanleitung, Zutatenposition, Zutat
   zusammengesetzt (Schnitzel, Pommes, Salat $\Rightarrow$
   \textit{Gericht.name} = Schnitzel mit Pommes und Salat)
   &vgl. \ref{ms3_aggregates} \\
+% }}}
+% Bestellung {{{
+\hline
+Bestellung & & &Entity Bestellung als eingenst\"andiges
+  Aggregate, da es keine sinnvollen Zuordnungen gibt.\\
+% }}}
+% Speisekarte {{{
+\hline
+Speisekarte & & &vgl. Aggregate Bestellung. \\
+% }}}
+% Arbeitsplatz {{{
+\hline
+Arbeitsplatz & & &Entity aus unserem logischen Datenmodell,
+  ohne \"Uberlappung zu anderen Subsystemen. Alleinstehend,
+  da auch hier, wie beim Aggregate Bestellung keine
+  sinnvollen Zuordnungen existieren. \\
+% }}}
+% Sitzplatz {{{
+\hline
+Sitzplatz & & &vgl. Aggregate Arbeitsplatz. \\
 % }}}
 \hline
 \end{tabu}
@@ -162,3 +183,83 @@ Koch-UI & &UI-Service f\"ur den Koch. Hier wird unserer
 
 \subsubsection{Komponentendiagramm}
 \input{ms4/compo}
+
+\subsubsection{Vergleich monolitisches Modell aus
+  Meilenstein 2 mit Microservice-Modell}
+
+% Tabelle {{{
+\begin{tabu} to \linewidth {p{3cm}|X}
+% Headerzeile {{{
+\hline\rowcolor{codebordercolor}
+Service &Entspricht / bildet ab auf Komponente aus MS 2 \\
+% }}}
+% Bestellung {{{
+\hline
+Bestellungsdaten &Bestelldaten: Datenkomponente,
+  Buchhaltungs-Api: Fassadenkomponente,
+  Bestellabwicklung: Logikkomponente
+  \\
+% }}}
+% Gericht {{{
+\hline
+Gerichtsdaten &Gerichtsdaten: Datenkomponente,
+  Rezeptadapter: Adapterkomponente,
+  Lagerverwaltungsadapter: Adapterkomponente
+  \\
+% }}}
+% Speisekarte {{{
+\hline
+Speisekartendaten &Entspricht Tei der Gerichtsdaten:
+  Datenkomponente, Rezeptadapter: Adapterkomponente \\
+% }}}
+% Restaurant {{{
+\hline
+Restaurantdaten &Standortdaten: Datenkomponente \\
+% }}}
+% Gast-UI {{{
+\hline
+Gast-UI &Gast-UI: Dialogkomponente,
+  Bestellvorgangsfassade: Fassadenkomponente \\
+% }}}
+% Koch-UI {{{
+\hline
+Koch-UI &An-/Abmeldungs-UI: Dialogkomponente,
+  An-/Abmeldungsfassade: Fassadenkomponente,
+  Zubereitungs-UI: Dialogkomponente,
+  Zubereitungsfassade: Fassadenkomponente
+  \\
+% }}}
+\hline
+\end{tabu}
+% }}}
+
+\subsubsection*{Was sind aus Ihrer der einen oder anderen
+  Architektur?}
+
+Unserer Meinung nach hat die Microservice-Architektur den
+Vorteil der \"Ubersichtlichkeit und der losen Kopplung.
+Allein vom Modell wirkt die Microservice-Architektur
+\"uberschaulicher (zumindest im Rahmen unseres Subsystems).
+Des weiteren gef\"allt uns die klare Definition von
+Schnittstellen und deren Implementierung \"uber
+Netzwerkprotokolle wie HTTP.
+
+Hier sehen wir allerdings auch einen Vorteil der
+monolitischen Anwendung, da diese nicht auf die eher
+allgemein gehaltenen Schnittstellen angwiesen ist uns so,
+unserer Meinung nach, mehr Freiraum bietet.
+
+\subsubsection*{Welche Architektur w\"urden Sie umsetzen,
+  wenn Sie das als Informatikprojekt implementieren
+  m\"ussten und wieso?}
+
+Die Microservice-Architektur, da sie, allein vom Modell,
+\"ubersichtlicher wirkt. Die lose Kopplung der Services und
+die einheitlichen Schnittstellen gefallen uns sehr gut.
+Unser Subsystem ist vom Implementierungsaufwand, unserer
+Meinung nach, eher gering, weshalb die Menge an Komponenten
+des monolitischen Modells abschreckend wirkt.
+
+Unabh\"angig davon erfreut sich die Microservice-
+Architektur momentan gro{\ss}er Beliebtheit, was wir auch
+als Vorteil sehen.
