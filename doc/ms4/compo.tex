@@ -1,8 +1,10 @@
 \begin{figure}[H]
 \begin{center}
-\begin{tikzpicture} [n_api/.style={
-  inner ysep=0cm, inner xsep=.2cm
-}]
+\begin{tikzpicture} [
+  n_api/.style={
+    inner ysep=0cm, inner xsep=.2cm
+  }
+]
   % Compos {{{
   \UMLSComponent
     {0}
@@ -10,25 +12,26 @@
     {Gast-UI}
     {fill=green!25,text width=3cm}
 
-    \UMLSComponentRelativeTo
+    \UMLSComponentRelativeToAlterName
       {below=2 of Gast-UI}
-      {Speisekartendaten}
+      {Speisekartenver\-waltung}
+      {Speisekartenverwaltung}
       {fill=black!25,text width=3cm}
 
     % DUMMY NODE
     \node[
       right=2 of Gast-UI,
-      text width=3cm,
+      text width=3.8cm,
       minimum height=1.4cm
     ] (Bestellabwicklung) {};
 
       \UMLSComponentRelativeTo
         {above=2 of Bestellabwicklung}
-        {Bestellungsdaten}
+        {Bestellungen}
         {fill=purple,text width=3cm}
 
         \UMLSComponentRelativeToAlterName
-          {above=2 of Bestellungsdaten}
+          {above=2 of Bestellungen}
           {$<<$Buchhal\-tung$>>$}
           {bn}
           {fill=black!50,text width=3cm}
@@ -40,25 +43,27 @@
 
         \UMLSComponentRelativeTo
           {below=2 of Koch-UI}
-          {Gerichtsdaten}
+          {Gerichte}
           {fill=black!25,text width=3cm}
 
+      \UMLSComponentRelativeToAlterName
+        {below=2 of Bestellabwicklung}
+        {Restaurantver\-waltung}
+        {Restaurantverwaltung}
+        {fill=white,text width=3cm}
+
+        \UMLSComponentRelativeToAlterName
+          {below=2 of Restaurantverwaltung}
+          {$<<$Rezeptver\-waltung$>>$}
+          {rvw}
+          {fill=black!50,text width=3cm}
+
           \UMLSComponentRelativeToAlterName
-            {below=2 of Gerichtsdaten}
+            {right=2 of rvw}
             {$<<$Lagerver\-waltung$>>$}
             {lvw}
             {fill=black!50,text width=3cm}
 
-      \UMLSComponentRelativeTo
-        {below=2 of Bestellabwicklung}
-        {Restaurantdaten}
-        {fill=white,text width=3cm}
-
-        \UMLSComponentRelativeToAlterName
-          {below=2 of Restaurantdaten}
-          {$<<$Rezeptver\-waltung$>>$}
-          {rvw}
-          {fill=black!50,text width=3cm}
   % }}}
 
   % Conns {{{
@@ -67,36 +72,36 @@
 
       % Bestellungsdaten {{{
       \draw [-umlportproviderREST]
-        (Bestellungsdaten)
+        (Bestellungen)
         --
-        ($(Bestellungsdaten)!.5!(bn)$)
+        ($(Bestellungen)!.5!(bn)$)
           node[n_api] (bdr) {};
 
       \draw [-umlportproviderEvent]
-        (Bestellungsdaten) -- (Bestellabwicklung.center);
+        (Bestellungen) -- (Bestellabwicklung.center);
       % }}}
 
       % Speisekartendaten {{{
       \draw [-umlportproviderREST]
-        (Speisekartendaten)
+        (Speisekartenverwaltung)
         --
-        ($(Speisekartendaten)!.5!(Gast-UI)$)
+        ($(Speisekartenverwaltung)!.5!(Gast-UI)$)
           node[n_api] (skr) {};
       % }}}
 
       % Restaurantdaten {{{
       \draw [-umlportproviderREST]
-        (Restaurantdaten)
+        (Restaurantverwaltung)
         --
-        ($(Restaurantdaten)!.5!(Bestellabwicklung)$)
+        ($(Restaurantverwaltung)!.5!(Bestellabwicklung)$)
           node[n_api] (rdr) {};
       % }}}
 
       % Gerichtsdaten {{{
       \draw [-umlportproviderREST]
-        (Gerichtsdaten)
+        (Gerichte)
         --
-        ($(Gerichtsdaten)!.5!(Koch-UI)$)
+        ($(Gerichte)!.5!(Koch-UI)$)
           node[n_api] (gdr) {};
       % }}}
 
@@ -104,7 +109,7 @@
       \draw [-umlportproviderREST]
         (rvw)
         --
-        ($(rvw)!.5!(Restaurantdaten)$)
+        ($(rvw)!.5!(Restaurantverwaltung)$)
           node[n_api] (rvr) {};
       % }}}
 
@@ -112,7 +117,7 @@
       \draw [-umlportproviderREST]
         (lvw)
         --
-        ($(lvw)!.5!(Gerichtsdaten)$)
+        ($(lvw)!.5!(Gerichte)$)
           node[n_api] (lvr) {};
       % }}}
 
@@ -131,7 +136,7 @@
       \draw [-umlportcaller]
         (Gast-UI.350)
         -|
-        ($(Gast-UI)!.5!(Restaurantdaten)$)
+        ($(Gast-UI)!.5!(Restaurantverwaltung)$)
         |-
         ($(rdr.west)-(0,.15)$);
 
@@ -152,7 +157,7 @@
       \draw [-umlportcaller]
         (Koch-UI.190)
         -|
-        ($(Koch-UI)!.5!(Restaurantdaten)$)
+        ($(Koch-UI)!.5!(Restaurantverwaltung)$)
         |-
         ($(rdr.east)-(0,.15)$);
 
@@ -167,17 +172,17 @@
       % }}}
 
       % Gerichtsdaten {{{
-      \draw [-umlportcaller] (Gerichtsdaten) -- (lvr);
+      \draw [-umlportcaller] (Gerichte) -- (lvr);
 
       \draw [-umlportcaller]
-        (Gerichtsdaten.220)
+        (Gerichte.220)
         |-
         ($(rvr.east)-(0,.15)$);
       % }}}
 
       % Speisekartendaten {{{
       \draw [-umlportcaller]
-        (Speisekartendaten)
+        (Speisekartenverwaltung)
         |-
         ($(rvr.west)-(0,.15)$);
       % }}}

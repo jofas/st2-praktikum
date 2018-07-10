@@ -1,14 +1,35 @@
 \section{Meilenstein 4 $-$ Microservices}
 
+Da es auf unserer Seite zu Missverst\"andnissen bez\"uglich
+der Entities der Context Map gekommen ist, haben wir die
+Context Map mit den Entities aus unserem logischen
+Datenmodell anstelle der des fachlichen Datenmodells
+gef\"ullt und unsere weitere Arbeit auf dieser
+Map durchgef\"uhrt, was, unserer Meinung nach, sowohl f\"ur
+die Aggregates als auch f\"ur das Modell besser ist, da es
+n\"aher an der tats\"achlichen Implementierung ist und
+somit auch der Vergleich zum monolitischen Modell aus
+Meilenstein 2 (vgl. \ref{ms2_3}) besser m\"oglich macht, da
+beide Modelle auf den selben Entities (vgl. \ref{ldgo})
+beruhen.
+
+Um konsistent mit Meilenstein 2 (Kapitel \ref{ms2}) zu
+bleiben, gehen wir auch hier von der von uns get\"atigten
+Annahme aus, dass es ein Subsystem Buchhaltung gibt.
+
 % Teilaufgabe 1 {{{
-\subsection{Teilaufgabe 1: Context Map}
+\subsection*{Teilaufgabe 1: Context Map (Entities aus
+  unserem fachlichen Datenmodell)}
+
+\subsubsection*{Diese Map und diese Tabelle wurden
+  nachtr\"aglich hinzugef\"ugt.}
 
 \textbf{Anmerkung:} im Folgenden ist der Ausdruck Subsytem
 equivalent zum Ausdruck Dom\"ane.
 
 % Map {{{
 \subsubsection{Context Map}
-\input{ms4/context_map}
+\input{ms4/context_map2}
 % }}}
 
 % Tabelle {{{
@@ -22,41 +43,115 @@ Entity &\"Uberlappung mit anderer Dom\"ane
 % }}}
 % Bestellung {{{
 \hline
-Bestellung &Buchhaltung &Conformist (unser Subsystem als
-  Eigent\"umer) &Die Buchhaltung ruft die Bestellungsdaten
-  bei uns ab. Hier wurde Conformist anstelle von Customer /
-  Suplier gew\"ahlt, da es sich bei dem Buchhaltungssystem
-  wahrscheinlich nicht um eine Hausentwicklung handelt,
-  sondern um ein propriet\"ares System mit unbekannten
-  Schnittstellen, weshalb eine Zusammenarbeit auf
-  Augenh\"ohe nicht unbedingt m\"oglich ist. \\
+Bestellung &Buchhaltung &Customer / Supplier (unser
+  Subsystem als Eigent\"umer) &Die Buchhaltung ruft die
+  Bestellungsdaten bei uns ab. Da wir der Eigent\"umer der
+  Entity sind und wir nicht wissen wie komplex die Anbinung
+  unserer Schnittstelle an die Buchhaltungssoftware
+  (wahrscheinlich propriet\"are Anwendung) ist, Seperate
+  Ways (der Verzicht auf den Aufruf unserer Schnittstelle
+  auf Seiten der Buchhaltung) allerdings im Kontext
+  unm\"oglich ist, haben wir uns f\"ur Customer / Supplier
+  entschieden. \\
 % }}}
 % Gericht {{{
 \hline
-Gericht &Rezeptver\-waltung &Customer / Suplier
+Gericht &Rezeptver\-waltung &Customer / Supplier
   (Rezeptverwaltung als Eigent\"umer) &Wir rufen
   die Gerichte beim Subsystem Rezeptverwaltung ab. Das
   Subsystem Rezeptverwaltung ist der Eigent\"umer und wir
   haben (brauchen) nur lesenden Zugriff auf das Entity
-  Gericht. Customer / Suplier, da wir auf Augenh\"ohe mit
+  Gericht. Customer / Supplier, da wir auf Augenh\"ohe mit
   der Rezeptverwaltung sind uns eine enge Zusammenarbeit
   m\"oglich ist. \\
 % }}}
 % Speisekarte {{{
 \hline
-Speisekar\-te &Rezeptver\-waltung &Customer / Suplier
+Speisekar\-te &Rezeptver\-waltung &Customer / Supplier
   (Rezeptverwaltung als Eigent\"umer) &vgl. Entity Gericht.
   \\
 % }}}
 % Zubereitungsanleitung {{{
 \hline
 Zuberei\-tungsanlei\-tung &Rezeptver\-waltung &
-  Customer / Suplier (Rezeptverwaltung als Eigent\"umer)
+  Customer / Supplier (Rezeptverwaltung als Eigent\"umer)
   &vgl. Entity Gericht. \\
 % }}}
 % Zutat {{{
 \hline
-Zutat &Lagerver\-waltung &Customer / Suplier
+Gast &Tischreser\-vierung &Shared Kernel &Gast hat keinen
+  klaren Eigent\"umer, beide Subsysteme sind
+  gleichberechtigt und eine enge Zusammenarbeit ist
+  m\"oglich, ergo Shared Kernel. \\
+% }}}
+\hline
+\end{tabu}
+% }}}
+
+\subsection{Teilaufgabe 1: Context Map (Entities aus
+  unserem logischen Datenmodell)}
+
+\subsubsection*{Auf dieser Map und dieser Tabelle
+  beruhen die nachfolgenden Kapitel.}
+
+\textbf{Anmerkung:} im Folgenden ist der Ausdruck Subsytem
+equivalent zum Ausdruck Dom\"ane.
+
+% Map {{{
+\subsubsection{Context Map}
+\input{ms4/context_map}
+% }}}
+
+\newpage
+
+% Tabelle {{{
+\subsubsection{Tabelle der \"Uberlappungstypen}
+
+\begin{longtabu} to \linewidth {p{1.8cm}|p{2.2cm}|X|X}
+% Headerzeile {{{
+\hline\rowcolor{codebordercolor}
+Entity &\"Uberlappung mit anderer Dom\"ane
+  &\"Uberlappungstyp &Begr\"undung \\
+% }}}
+% Bestellung {{{
+\hline
+Bestellung &Buchhaltung &Customer / Supplier (unser
+  Subsystem als Eigent\"umer) &Die Buchhaltung ruft die
+  Bestellungsdaten bei uns ab. Da wir der Eigent\"umer der
+  Entity sind und wir nicht wissen wie komplex die Anbinung
+  unserer Schnittstelle an die Buchhaltungssoftware
+  (wahrscheinlich propriet\"are Anwendung) ist, Seperate
+  Ways (der Verzicht auf den Aufruf unserer Schnittstelle
+  auf Seiten der Buchhaltung) allerdings im Kontext
+  unm\"oglich ist, haben wir uns f\"ur Customer / Supplier
+  entschieden. \\
+% }}}
+% Gericht {{{
+\hline
+Gericht &Rezeptver\-waltung &Customer / Supplier
+  (Rezeptverwaltung als Eigent\"umer) &Wir rufen
+  die Gerichte beim Subsystem Rezeptverwaltung ab. Das
+  Subsystem Rezeptverwaltung ist der Eigent\"umer und wir
+  haben (brauchen) nur lesenden Zugriff auf das Entity
+  Gericht. Customer / Supplier, da wir auf Augenh\"ohe mit
+  der Rezeptverwaltung sind uns eine enge Zusammenarbeit
+  m\"oglich ist. \\
+% }}}
+% Speisekarte {{{
+\hline
+Speisekar\-te &Rezeptver\-waltung &Customer / Supplier
+  (Rezeptverwaltung als Eigent\"umer) &vgl. Entity Gericht.
+  \\
+% }}}
+% Zubereitungsanleitung {{{
+\hline
+Zuberei\-tungsanlei\-tung &Rezeptver\-waltung &
+  Customer / Supplier (Rezeptverwaltung als Eigent\"umer)
+  &vgl. Entity Gericht. \\
+% }}}
+% Zutat {{{
+\hline
+Zutat &Lagerver\-waltung &Customer / Supplier
   (Lagerverwaltung als Eigent\"umer) &Zutat ist in unserem
   Fall einfach die Menge der Zutat, welche im Lager
   zur Verf\"ugung steht und wird mit der Lagerverwaltung
@@ -64,12 +159,27 @@ Zutat &Lagerver\-waltung &Customer / Suplier
 % }}}
 % Zutatenposition {{{
 \hline
-Zutaten\-position &Rezeptver\-waltung &Customer / Suplier
+Zutaten\-position &Rezeptver\-waltung &Customer / Supplier
   (Rezeptverwaltung als Eigent\"umer) &vgl. Entity Gericht.
   \\
 % }}}
+% Sitzplatz {{{
 \hline
-\end{tabu}
+Sitzplatz &Tischreser\-vierung &Separate Ways &Aus dem
+  einfachen Grund, dass Sitzplatz bei uns etwas v\"ollig
+  anderes ist, als beim Subsystem Tischreservierung, haben
+  wir hier Separate Ways gew\"ahlt. W\"ahrend bei der
+  Tischreservierung der physikalische Sitzplatz gemeint
+  ist, bezieht sich unsere Definition von Sitzplatz auf
+  die Instanz eines Gast-Clientprozesses, welches auf einem
+  Tablet im Restaurant l\"auft. Der Gast gibt mit Hilfe
+  dieses Programms seine Bestellungen auf. Da dies zwei
+  v\"ollig unterschiedliche Dinge sind und eigentlich nur
+  der Name der Entities gleich ist, haben wir uns hier
+  f\"ur Separate ways entschieden. \\
+% }}}
+\hline
+\end{longtabu}
 % }}}
 % }}}
 
@@ -120,7 +230,7 @@ Arbeitsplatz & & &Entity aus unserem logischen Datenmodell,
 % }}}
 % Sitzplatz {{{
 \hline
-Sitzplatz & & &vgl. Aggregate Arbeitsplatz. \\
+Sitzplatz & & &vgl. Aggregate Bestellung. \\
 % }}}
 \hline
 \end{tabu}
@@ -140,25 +250,26 @@ Service &Bildet ab &Kommentar \\
 % }}}
 % Bestellung {{{
 \hline
-Bestellungsdaten &Bestellung &Dient als API Gateway, da
+Bestellungen &Bestellung &Dient als API Gateway, da
   unser Subsystem ein Supplier f\"ur die Bestelldaten ist.
   \\
 % }}}
 % Gericht {{{
 \hline
-Gerichtsdaten &Gericht (vgl. \ref{ms3_aggregates})
+Gerichte &Gericht (vgl. \ref{ms3_aggregates})
   &Adapterservice, da unser Subsystem ein Customer f\"ur
   die Gerichtsdaten ist.\\
 % }}}
 % Speisekarte {{{
 \hline
-Speisekartendaten &Speisekarte &Adapterservice, da unser
-  Subsystem ein Customer f\"ur die Speisekartendaten ist.\\
+Speisekartenverwaltung &Speisekarte &Adapterservice, da
+  unser Subsystem ein Customer f\"ur die Speisekartendaten
+  ist.\\
 % }}}
 % Restaurant {{{
 \hline
-Restaurantdaten &Sitzplatz, Arbeitsplatz &Service der die
-  Sitz- und Arbeitspl\"atze der Standorte verwaltet. \\
+Restaurantverwaltung &Sitzplatz, Arbeitsplatz &Service der
+  die Sitz- und Arbeitspl\"atze der Standorte verwaltet. \\
 % }}}
 % Gast-UI {{{
 \hline
@@ -195,26 +306,26 @@ Service &Entspricht / bildet ab auf Komponente aus MS 2 \\
 % }}}
 % Bestellung {{{
 \hline
-Bestellungsdaten &Bestelldaten: Datenkomponente,
+Bestellungen &Bestelldaten: Datenkomponente,
   Buchhaltungs-Api: Fassadenkomponente,
   Bestellabwicklung: Logikkomponente
   \\
 % }}}
 % Gericht {{{
 \hline
-Gerichtsdaten &Gerichtsdaten: Datenkomponente,
+Gerichte &Gerichtsdaten: Datenkomponente,
   Rezeptadapter: Adapterkomponente,
   Lagerverwaltungsadapter: Adapterkomponente
   \\
 % }}}
 % Speisekarte {{{
 \hline
-Speisekartendaten &Entspricht Tei der Gerichtsdaten:
+Speisekartenver\-waltung &Entspricht Tei der Gerichtsdaten:
   Datenkomponente, Rezeptadapter: Adapterkomponente \\
 % }}}
 % Restaurant {{{
 \hline
-Restaurantdaten &Standortdaten: Datenkomponente \\
+Restaurantver\-waltung &Standortdaten: Datenkomponente \\
 % }}}
 % Gast-UI {{{
 \hline
@@ -233,8 +344,8 @@ Koch-UI &An-/Abmeldungs-UI: Dialogkomponente,
 \end{tabu}
 % }}}
 
-\subsubsection*{Was sind aus Ihrer der einen oder anderen
-  Architektur?}
+\subsubsection*{Was sind aus Ihrer Sicht die Vorteile der
+  einen oder anderen Architektur?}
 
 Unserer Meinung nach hat die Microservice-Architektur den
 Vorteil der \"Ubersichtlichkeit und der losen Kopplung.

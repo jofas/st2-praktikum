@@ -1,0 +1,144 @@
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[
+  zub/.style={
+    draw,rounded corners,outer color=yellow!25,
+    inner color=white
+  },
+  buc/.style={
+    draw, rounded corners, outer color=black!25,
+    inner color=white
+  },
+  rvw/.style={
+    draw, rounded corners, outer color=green!25,
+    inner color=white
+  },
+  trv/.style={
+    draw, rounded corners, outer color=blue!25,
+    inner color=white
+  }
+]
+
+% Zubereitung {{{
+
+\node[zub] at (0,0) (tm) {Thekenmitarbeiter};
+
+  \node[zub, right=1 of tm] (gst) {Gast};
+
+    \node[zub, right=1 of gst] (bst) {Bestellung};
+
+      \node[zub, right=1 of bst] (k) {Koch};
+
+  \node[zub, below=3 of tm] (sk) {Speisekarte};
+
+      \node[zub, right=1 of sk] (g) {Gericht};
+
+        \node[zub, right=1 of g] (za) {%
+          Zubereitungsanleitung
+        };
+
+          \node[zub, right=1 of za] (ap) {Arbeitsplatz};
+
+
+  % Conns {{{
+  \draw (tm) -- (gst);
+  \draw (tm) -- ($(tm)+(0,1)$) -| (k);
+
+  \draw (gst) -- (bst);
+  \draw (gst) |- ($(gst)!.4!(sk)$) -| (sk);
+
+  \draw (bst) |- ($(bst)!.6!(g)$) -| (g);
+
+  \draw (k) |- ($(k)!.5!(ap)$) -| (ap);
+
+  \draw (sk) -- (g);
+
+  \draw (g) -- (za);
+
+  \draw (za) -- (ap);
+  % }}}
+
+\draw[dashed]
+  ($(sk.south west) - (1,1)$)
+  --
+  ($(ap.south east) - (-1,1)$)
+  |-
+  node[below left] {Subsystem Zubereitung}
+  ($(bst.north) + (0,1)$)
+  -|
+  cycle;
+% }}}
+
+% Tischreservierung {{{
+\node[trv,above=3 of gst] (trv_gst) {Gast}
+  edge node[fill=orange] {SK} (gst);
+
+\draw[dashed]
+  ($(trv_gst.south west) - (4,1)$)
+  --
+  ($(trv_gst.south east) - (-1,1)$)
+  |-
+  ($(trv_gst.north) + (0,1)$)
+  -|
+  node[below right] {Subsystem Tischreservierung}
+  cycle;
+% }}}
+
+% Buchhaltung {{{
+\node[buc,above=6 of bst] (buc_bst) {Bestellung}
+  edge[->,dashed] node[fill=yellow!50] {C/S} (bst);
+
+\draw[dashed]
+  ($(buc_bst.south west) - (2,1)$)
+  --
+  ($(buc_bst.south east) - (-2,1)$)
+  |-
+  ($(buc_bst.north) + (0,1)$)
+  node[below] {Subsystem Buchhaltung}
+  -|
+  cycle;
+% }}}
+
+% Rezeptverwaltung {{{
+\node[rvw, below=3 of sk] (rvw_sk) {Speisekarte}
+  edge[<-,dashed] node[fill=yellow!50] {C/S} (sk);
+
+\node[rvw, below=3 of g] (rvw_g) {Gericht}
+  edge[<-,dashed] node[fill=yellow!50] {C/S} (g);
+
+\node[rvw, below=3 of za] (rvw_za) {Zubereitungsanleitung}
+  edge[<-,dashed] node[fill=yellow!50] {C/S} (za);
+
+\draw[dashed]
+  ($(rvw_sk.south west) - (1,1)$)
+  node[above right] {Subsystem Rezeptverwaltung}
+  --
+  ($(rvw_za.south east) - (-1,1)$)
+  |-
+  ($(rvw_g.north) + (0,1)$)
+  -|
+  cycle;
+% }}}
+
+\end{tikzpicture}
+\end{center}
+\caption{Context Map (fachliches Datenmodell)}
+\end{figure}
+
+% Legende {{{
+\begin{itemize}[label={}]
+  \item \tikz[baseline={-3pt}]{
+    \node[fill=yellow!50,inner ysep=3pt]
+      {C/S};
+  }: Customer / Supplier
+
+  \item \tikz[baseline={-3pt}]{
+    \node[fill=orange,inner ysep=3pt]{SK};
+  }: Shared Kernel
+
+  \item \tikz[baseline={-3pt}]{
+    \draw[->,dashed] (0,0) -- (.8,0);
+  }: Customer $\rightarrow$ Supplier (Pfeilspitze auf
+     Eigent\"umer gerichtet)
+\end{itemize}
+% }}}

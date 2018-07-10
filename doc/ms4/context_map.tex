@@ -13,6 +13,10 @@
     draw, rounded corners, outer color=green!25,
     inner color=white
   },
+  trv/.style={
+    draw, rounded corners, outer color=red!25,
+    inner color=white
+  },
   lvw/.style={
     draw, rounded corners, outer color=blue!25,
     inner color=white
@@ -49,37 +53,50 @@
 % }}}
 
 % Buchhaltung {{{
-\node[buc, above=4 of best] (buc_best) {Bestellung}
-  edge[->,dashed] node[fill=green!50] {CON} (best);
+\node[buc, above=3 of best] (buc_best) {Bestellung}
+  edge[->,dashed] node[fill=yellow!50] {C/S} (best);
 
 \draw[dashed]
-  ($(sk.south west) + (-1,7.5)$)
-  --
-  ($(z.south east) + (1,7.5)$)
-  |-
+  ($(buc_best.south west)-(1,1)$)
+  rectangle
+  ($(buc_best.north east)+(2,1)$)
   node[below left] {Subsystem Buchhaltung}
-  ($(buc_best.north) + (0,1)$)
-  -|
-  cycle;
+  ;
+% }}}
 
+% Tischreservierung {{{
+\node[trv,left=4 of buc_best] (trv_sp) {Sitzplatz};
+
+\draw
+  (trv_sp)
+  |-
+  ($(trv_sp)!.5!(sp)$) node[fill=green!75] {SW}
+  -|
+  (sp);
+
+\draw[dashed]
+  ($(trv_sp.north west)-(2,-1)$)
+  node[below right] {Subsystem Tischreservierung}
+  rectangle
+  ($(trv_sp.south east)+(2,-1)$)
+  ;
 % }}}
 
 % Rezeptverwaltung {{{
-\node [rvw, below=4 of sk] (rvw_sk) {Speisekarte}
+\node [rvw, below=3 of sk] (rvw_sk) {Speisekarte}
   edge[<-,dashed] node[fill=yellow!50] {C/S} (sk);
-\node [rvw, below=4 of g] (rvw_g) {Gericht}
+\node [rvw, below=3 of g] (rvw_g) {Gericht}
   edge[<-,dashed] node[fill=yellow!50] {C/S} (g);
-\node [rvw, below=4 of za] (rvw_za) {Zubereitungsanleitung}
+\node [rvw, below=3 of za] (rvw_za) {Zubereitungsanleitung}
   edge[<-,dashed] node[fill=yellow!50] {C/S} (za);
-\node [rvw, below=4 of zp] (rvw_zp) {Speisekarte}
+\node [rvw, below=3 of zp] (rvw_zp) {Zutatenposition}
   edge[<-,dashed] node[fill=yellow!50] {C/S} (zp);
 
 \draw[dashed]
-  ($(sk.south west) - (1,5.5)$)
+  ($(rvw_sk.south west) - (1,1)$)
   --
-  node[above]
-    {Subsystem Rezeptverwaltung}
-  ($(z.south east) - (2,5.5)$)
+  node[above]{Subsystem Rezeptverwaltung}
+  ($(rvw_zp.south east) - (-1,1)$)
   |-
   ($(rvw_za.north) + (0,1)$)
   -|
@@ -87,25 +104,38 @@
 % }}}
 
 % Lagerverwaltung {{{
-\node [lvw, below=7 of z] (lvw_z) {Zutat};
+\node [lvw, below=6 of z] (lvw_z) {Zutat};
 
 \draw[->,dashed]
   (z) -- node[fill=yellow!50] {C/S} (lvw_z);
 
 \draw[dashed]
-  ($(sk.south west) - (1,8)$)
-  --
-  ($(z.south east) - (-1,8)$)
-  |-
-  ($(lvw_z.north) + (0,1)$)
-  -|
-  node[below right]
-    {Subsystem Lagerverwaltung}
-  cycle;
+  ($(lvw_z.south west) - (4,1)$)
+  node[above right]{Subsystem Lagerverwaltung}
+  rectangle
+  ($(lvw_z.north east) + (1,1)$)
+  ;
 % }}}
 
 \end{tikzpicture}
 \end{center}
-\caption{Context Map}
+\caption{Context Map (logisches Datenmodell)}
 \end{figure}
 
+% Legende {{{
+\begin{itemize}[label={}]
+  \item \tikz[baseline={-3pt}]{
+    \node[fill=yellow!50,inner ysep=3pt]
+      {C/S};
+  }: Customer / Supplier
+
+  \item \tikz[baseline={-3pt}]{
+    \node[fill=green!75,inner ysep=3pt]{SW};
+  }: Separate Ways
+
+  \item \tikz[baseline={-3pt}]{
+    \draw[->,dashed] (0,0) -- (.8,0);
+  }: Customer $\rightarrow$ Supplier (Pfeilspitze auf
+     Eigent\"umer gerichtet)
+\end{itemize}
+% }}}
