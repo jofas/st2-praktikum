@@ -1,8 +1,8 @@
 {
-	"id": "abeb2288-501e-49ce-b6dd-8c8070db5f16",
+	"id": "9752698f-58a9-4d30-be6f-18939638eca3",
 	"name": "st-ms3",
 	"allTests": [],
-	"timestamp": "2018-06-12T10:52:41.412Z",
+	"timestamp": "2018-08-02T13:00:39.538Z",
 	"collection_id": "3e648a94-bfc7-470d-b709-ebe12e43249c",
 	"folder_id": 0,
 	"target_type": "collection",
@@ -72,15 +72,15 @@
 				}
 			},
 			"times": [
-				"176"
+				"170"
 			],
 			"allTests": [
 				{
 					"Gericht 'Erdbeerpudding' erstellt": true
 				}
 			],
-			"time": "176",
-			"totalRequestTime": "176",
+			"time": "170",
+			"totalRequestTime": "170",
 			"iterationResults": {}
 		},
 		{
@@ -97,11 +97,11 @@
 				}
 			},
 			"tests": {
-				"name": "Leere Rueckgabe",
+				"name": "Leere Rückgabe",
 				"status": "pass"
 			},
 			"testPassFailCounts": {
-				"Leere Rueckgabe": {
+				"Leere Rückgabe": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -111,7 +111,7 @@
 			],
 			"allTests": [
 				{
-					"Leere Rueckgabe": true
+					"Leere Rückgabe": true
 				}
 			],
 			"time": "20",
@@ -142,15 +142,15 @@
 				}
 			},
 			"times": [
-				"26"
+				"28"
 			],
 			"allTests": [
 				{
 					"Preis muss auf 12 geupdatet sein": true
 				}
 			],
-			"time": "26",
-			"totalRequestTime": "26",
+			"time": "28",
+			"totalRequestTime": "28",
 			"iterationResults": {}
 		},
 		{
@@ -177,15 +177,15 @@
 				}
 			},
 			"times": [
-				"5"
+				"4"
 			],
 			"allTests": [
 				{
 					"Gericht 'Erdbeerpudding' mit geupdateten Preis muss da sein": true
 				}
 			],
-			"time": "5",
-			"totalRequestTime": "5",
+			"time": "4",
+			"totalRequestTime": "4",
 			"iterationResults": {}
 		},
 		{
@@ -212,15 +212,15 @@
 				}
 			},
 			"times": [
-				"13"
+				"14"
 			],
 			"allTests": [
 				{
 					"Loeschen erfolgreich": true
 				}
 			],
-			"time": "13",
-			"totalRequestTime": "13",
+			"time": "14",
+			"totalRequestTime": "14",
 			"iterationResults": {}
 		},
 		{
@@ -247,15 +247,15 @@
 				}
 			},
 			"times": [
-				"3"
+				"4"
 			],
 			"allTests": [
 				{
 					"Gericht 'not found'": true
 				}
 			],
-			"time": "3",
-			"totalRequestTime": "3",
+			"time": "4",
+			"totalRequestTime": "4",
 			"iterationResults": {}
 		},
 		{
@@ -307,11 +307,11 @@
 				}
 			},
 			"tests": {
-				"name": "Gericht 'Grosse Portion Pommes' erstellt",
+				"name": "Gericht 'Große Portion Pommes' erstellt",
 				"status": "pass"
 			},
 			"testPassFailCounts": {
-				"Gericht 'Grosse Portion Pommes' erstellt": {
+				"Gericht 'Große Portion Pommes' erstellt": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -321,7 +321,7 @@
 			],
 			"allTests": [
 				{
-					"Gericht 'Grosse Portion Pommes' erstellt": true
+					"Gericht 'Große Portion Pommes' erstellt": true
 				}
 			],
 			"time": "5",
@@ -352,15 +352,15 @@
 				}
 			},
 			"times": [
-				"9"
+				"15"
 			],
 			"allTests": [
 				{
 					"Speise 'Pommes' erstellt": true
 				}
 			],
-			"time": "9",
-			"totalRequestTime": "9",
+			"time": "15",
+			"totalRequestTime": "15",
 			"iterationResults": {}
 		},
 		{
@@ -387,15 +387,15 @@
 				}
 			},
 			"times": [
-				"4"
+				"6"
 			],
 			"allTests": [
 				{
 					"Gericht 'Schnitzel' erstellt": true
 				}
 			],
-			"time": "4",
-			"totalRequestTime": "4",
+			"time": "6",
+			"totalRequestTime": "6",
 			"iterationResults": {}
 		},
 		{
@@ -422,15 +422,15 @@
 				}
 			},
 			"times": [
-				"11"
+				"15"
 			],
 			"allTests": [
 				{
 					"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' zugeordnet": true
 				}
 			],
-			"time": "11",
-			"totalRequestTime": "11",
+			"time": "15",
+			"totalRequestTime": "15",
 			"iterationResults": {}
 		},
 		{
@@ -457,15 +457,15 @@
 				}
 			},
 			"times": [
-				"9"
+				"8"
 			],
 			"allTests": [
 				{
 					"Gericht 'Schnitzel mit Pommes' Speise 'Schnitzel' zugeordnet": true
 				}
 			],
-			"time": "9",
-			"totalRequestTime": "9",
+			"time": "8",
+			"totalRequestTime": "8",
 			"iterationResults": {}
 		},
 		{
@@ -482,25 +482,25 @@
 				}
 			},
 			"tests": {
-				"name": "Gericht 'Grosse Portion Pommes' Speise 'Pommes' zugeordnet",
+				"name": "Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet",
 				"status": "pass"
 			},
 			"testPassFailCounts": {
-				"Gericht 'Grosse Portion Pommes' Speise 'Pommes' zugeordnet": {
+				"Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				"7"
+				"8"
 			],
 			"allTests": [
 				{
-					"Gericht 'Grosse Portion Pommes' Speise 'Pommes' zugeordnet": true
+					"Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet": true
 				}
 			],
-			"time": "7",
-			"totalRequestTime": "7",
+			"time": "8",
+			"totalRequestTime": "8",
 			"iterationResults": {}
 		},
 		{
@@ -527,15 +527,15 @@
 				}
 			},
 			"times": [
-				"6"
+				"7"
 			],
 			"allTests": [
 				{
 					"Gericht 1 besteht aus 2 Speisen und Gericht 2 aus einer Speise": true
 				}
 			],
-			"time": "6",
-			"totalRequestTime": "6",
+			"time": "7",
+			"totalRequestTime": "7",
 			"iterationResults": {}
 		},
 		{
@@ -552,25 +552,25 @@
 				}
 			},
 			"tests": {
-				"name": "erfolgreich Speisen ausgeben",
+				"name": "Speise 1 besteht aus 2 Gerichten und Speise 2 aus einem Gericht",
 				"status": "pass"
 			},
 			"testPassFailCounts": {
-				"erfolgreich Speisen ausgeben": {
+				"Speise 1 besteht aus 2 Gerichten und Speise 2 aus einem Gericht": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				"6"
+				"7"
 			],
 			"allTests": [
 				{
-					"erfolgreich Speisen ausgeben": true
+					"Speise 1 besteht aus 2 Gerichten und Speise 2 aus einem Gericht": true
 				}
 			],
-			"time": "6",
-			"totalRequestTime": "6",
+			"time": "7",
+			"totalRequestTime": "7",
 			"iterationResults": {}
 		},
 		{
@@ -587,25 +587,25 @@
 				}
 			},
 			"tests": {
-				"name": "Gericht 'Schnitzel mit Pommes' Speise 'Pommes' loeschen",
+				"name": "Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen",
 				"status": "pass"
 			},
 			"testPassFailCounts": {
-				"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' loeschen": {
+				"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				"8"
+				"7"
 			],
 			"allTests": [
 				{
-					"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' loeschen": true
+					"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen": true
 				}
 			],
-			"time": "8",
-			"totalRequestTime": "8",
+			"time": "7",
+			"totalRequestTime": "7",
 			"iterationResults": {}
 		},
 		{
@@ -623,37 +623,43 @@
 			},
 			"tests": {
 				"name": "Gerichte erfolgreich ausgeben",
-				"status": "pass"
+				"status": "pass",
+				"Gericht 'Schnitzel mit Pommes' hat jetzt nur noch Speise 'Schnitzel'": true
 			},
 			"testPassFailCounts": {
 				"Gerichte erfolgreich ausgeben": {
 					"pass": 1,
 					"fail": 0
+				},
+				"Gericht 'Schnitzel mit Pommes' hat jetzt nur noch Speise 'Schnitzel'": {
+					"pass": 1,
+					"fail": 0
 				}
 			},
 			"times": [
-				"6"
+				"5"
 			],
 			"allTests": [
 				{
-					"Gerichte erfolgreich ausgeben": true
+					"Gerichte erfolgreich ausgeben": true,
+					"Gericht 'Schnitzel mit Pommes' hat jetzt nur noch Speise 'Schnitzel'": true
 				}
 			],
-			"time": "6",
-			"totalRequestTime": "6",
+			"time": "5",
+			"totalRequestTime": "5",
 			"iterationResults": {}
 		}
 	],
-	"totalPass": 17,
+	"totalPass": 18,
 	"totalFail": 0,
-	"totalTime": 318,
+	"totalTime": 327,
 	"lifecycle": "done",
 	"requests": [
 		{
 			"name": "A1",
 			"id": "d11d5fba-1882-40e1-9df1-de60df3f1e7f",
 			"url": "localhost:8080/gerichte/",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 201,
 				"name": "Created",
@@ -673,7 +679,7 @@
 			"name": "A2",
 			"id": "6fde8dc6-fc64-4f1d-97dd-ac911102fc19",
 			"url": "localhost:8080/gerichte?search=preis>10",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -683,7 +689,7 @@
 				}
 			},
 			"testPassFailCounts": {
-				"Leere Rueckgabe": {
+				"Leere Rückgabe": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -693,7 +699,7 @@
 			"name": "A3",
 			"id": "4ebcfe3f-582a-4f90-8334-3559f78625a4",
 			"url": "localhost:8080/gerichte/1/preis",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -713,7 +719,7 @@
 			"name": "A4 ",
 			"id": "aefcecab-93de-4489-9a09-159f509bfc79",
 			"url": "localhost:8080/gerichte?search=preis>10",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -733,7 +739,7 @@
 			"name": "A5",
 			"id": "fc80748b-1a3c-4cf9-9566-278ede3bd721",
 			"url": "localhost:8080/gerichte/1",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -753,7 +759,7 @@
 			"name": "A6",
 			"id": "26a901b4-fa87-4eea-b480-ad13bad6d080",
 			"url": "localhost:8080/gerichte/1",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found",
@@ -773,7 +779,7 @@
 			"name": "BC1.1",
 			"id": "4975384e-2049-49db-a00b-1606a869e972",
 			"url": "localhost:8080/gerichte",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 201,
 				"name": "Created",
@@ -793,7 +799,7 @@
 			"name": "BC1.2",
 			"id": "5ad02235-c3c5-444b-843d-a8489fcf78db",
 			"url": "localhost:8080/gerichte",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 201,
 				"name": "Created",
@@ -803,7 +809,7 @@
 				}
 			},
 			"testPassFailCounts": {
-				"Gericht 'Grosse Portion Pommes' erstellt": {
+				"Gericht 'Große Portion Pommes' erstellt": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -813,7 +819,7 @@
 			"name": "BC2.1",
 			"id": "a4b4ed6f-c65b-431b-9ab4-089ba68c9cbb",
 			"url": "localhost:8080/speisen",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 201,
 				"name": "Created",
@@ -833,7 +839,7 @@
 			"name": "BC2.2",
 			"id": "5d49a771-0e87-4503-9085-4de4d8b26c4f",
 			"url": "localhost:8080/speisen",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 201,
 				"name": "Created",
@@ -853,7 +859,7 @@
 			"name": "BC3.1.1",
 			"id": "f32e6a6b-2718-4df5-955f-41ec12d4d33d",
 			"url": "localhost:8080/gerichte/2/speisen/1",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -873,7 +879,7 @@
 			"name": "BC3.1.2",
 			"id": "fdacd222-672a-4d25-a691-b4a5e3ab040c",
 			"url": "localhost:8080/gerichte/2/speisen/2",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -893,7 +899,7 @@
 			"name": "BC3.2",
 			"id": "f1944133-a5d2-447c-8fa5-250d8eff6174",
 			"url": "localhost:8080/gerichte/3/speisen/1",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -903,7 +909,7 @@
 				}
 			},
 			"testPassFailCounts": {
-				"Gericht 'Grosse Portion Pommes' Speise 'Pommes' zugeordnet": {
+				"Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -913,7 +919,7 @@
 			"name": "BC4",
 			"id": "620ca477-4487-44e9-880f-0a906e09b6f2",
 			"url": "localhost:8080/gerichte",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -933,7 +939,7 @@
 			"name": "BC5",
 			"id": "0022de17-02fa-4979-97c1-1d1e1b390b22",
 			"url": "localhost:8080/speisen",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -943,7 +949,7 @@
 				}
 			},
 			"testPassFailCounts": {
-				"erfolgreich Speisen ausgeben": {
+				"Speise 1 besteht aus 2 Gerichten und Speise 2 aus einem Gericht": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -953,7 +959,7 @@
 			"name": "BC6",
 			"id": "5a4f798c-fb95-4c32-b597-23f71214ff96",
 			"url": "localhost:8080/gerichte/2/speisen/1",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -963,7 +969,7 @@
 				}
 			},
 			"testPassFailCounts": {
-				"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' loeschen": {
+				"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' löschen": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -973,7 +979,7 @@
 			"name": "BC7",
 			"id": "e19483a7-7c07-4b6d-b10a-4b4da15bd0a9",
 			"url": "localhost:8080/gerichte",
-			"time": "2018-06-12T10:52:41.412Z",
+			"time": "2018-08-02T13:00:39.538Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -984,6 +990,10 @@
 			},
 			"testPassFailCounts": {
 				"Gerichte erfolgreich ausgeben": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Gericht 'Schnitzel mit Pommes' hat jetzt nur noch Speise 'Schnitzel'": {
 					"pass": 1,
 					"fail": 0
 				}
