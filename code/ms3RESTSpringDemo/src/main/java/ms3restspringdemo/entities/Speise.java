@@ -12,18 +12,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import ms3restspringdemo.serializers.CustomSetSerializer;
 
 
 
 @Entity
-@JsonIdentityInfo(
-  generator = ObjectIdGenerators.PropertyGenerator.class, 
-  property = "id",
-  scope = Speise.class)
 public class Speise {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -63,6 +63,7 @@ public class Speise {
 	
 	// Gerichte die Speise beinhalten sollen zurueckgegeben werden
 	@JsonProperty
+	@JsonSerialize(using = CustomSetSerializer.class)
 	public Set<Gericht> getGerichte() {
 		return Collections.unmodifiableSet(gerichte);
 	}
