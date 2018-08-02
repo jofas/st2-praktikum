@@ -1,0 +1,122 @@
+Vermeidung von Endlosschleifen bei der JSON-Ausgabe
+
+Um das Problem der Endlosserialisierung bei der m:n-Beziehung, die bei uns zwischen Gericht und Speise vorliegt, zu lösen, wurde 
+vorgeschlagen die Annotation '@JsonIdentityInfo' zu benutzen, mit der man die jeweiligen Klassen annotieren muss.
+Die Serialisierung funktioniert dann so, dass beim ersten Vorkommen einer Entität diese ganz serialisiert wird, beim zweiten Vorkommen, diese
+aber nur über die ID referenziert wird.
+
+Die Ausgabe aller Gerichte sieht dann bei uns so aus:
+
+[
+    {
+        "id": 2,
+        "name": "Schnitzel mit Pommes",
+        "details": "Der grandiose Klassiker!",
+        "preis": 12.5,
+        "speisen": [
+            {
+                "id": 2,
+                "name": "Schnitzel",
+                "gerichte": [
+                    2
+                ],
+            },
+            {
+                "id": 1,
+                "name": "Pommes",
+                "gerichte": [
+                    2,
+                    {
+                        "id": 3,
+                        "name": "Große Portion Pommes",
+                        "details": "Lecker fettig!",
+                        "preis": 6,
+                        "speisen": [
+                            1
+                        ]
+                    }
+                ],
+            }
+        ]
+    },
+    3
+]
+
+Nachteil daran ist, dass die Ausgabe sehr schlecht lesbar ist. 
+Zum Beispiel die '3' ganz unten steht für ein Gericht, das bei der Speise 'Pommes' schon als Gericht ausgeführt wurden ist.
+
+
+Eine andere Lösung, die wir gefunden haben, um das Problem zu lösen, ist ein Custom-Serialisierer.
+Hier können wir dann selbst bestimmen, wie die Serialisierung funktionieren soll.
+
+Hier haben wir uns dafür entschieden nur einen Serialisierer für die Gerichte, auf den die Speisen verweisen, zu programmieren,
+der anstatt die Gerichte in "Tiefe" zu serialisieren, nur die IDs der Gerichte auflistet. Damit wäre dann das Endloschleifen-Problem gelöst.
+
+Der Code dazu befindet sich in: ms3RESTSpringDemo\src\main\java\ms3restspringdemo\serializers\CustomSetSerializer.java
+
+Um den Serializer für die Gerichte einzusetzen, muss eine entsprechende Annotation mit dem Custom-Serialisierer beim dem Getter der Gerichte in der Klasse Speise angebracht werden:
+
+@JsonProperty
+@JsonSerialize(using = CustomSetSerializer.class)
+public Set<Gericht> getGerichte() {
+	return Collections.unmodifiableSet(gerichte);
+}
+
+Code: ms3RESTSpringDemo\src\main\java\ms3restspringdemo\entities\Speise (Z. 64 - 68)
+
+
+Mit dem Custom-Serialisierer sieht die Ausgabe dann wie folgt aus:
+
+[
+   {
+      "id":2,
+      "name":"Schnitzel mit Pommes",
+      "details":"Der grandiose Klassiker!",
+      "preis":12.5,
+      "speisen":[
+         {
+            "id":2,
+            "name":"Schnitzel",
+            "gerichte":[
+               2
+            ]
+         },
+         {
+            "id":1,
+            "name":"Pommes",
+            "gerichte":[
+               3,
+               2
+            ]
+         }
+      ]
+   },
+   {
+      "id":3,
+      "name":"Große Portion Pommes",
+      "details":"Lecker fettig!",
+      "preis":6,
+      "speisen":[
+         {
+            "id":1,
+            "name":"Pommes",
+            "gerichte":[
+               3,
+               2
+            ]
+         }
+      ]
+   }
+]
+
+Die Ausgabe ist viel besser lesbar und es ist einfacher mit ihr zu arbeiten.
+Bei den Speisen sehen wir die Gerichte nun als eine Liste von IDs.
+
+Nachteil zu der vorigen Lösung ist, dass Speisen mehrfach aufgeführt werden, wie z.B die 'Pommes', und die Ausgabe nicht,
+wie bei der vorigen Lösung redundantfrei ist.
+
+Meiner Meinung nach ist diese Lösung besser als die vorige, da aus meiner Sicht meistens eine wohl-formatierte Ausgabe wichtiger ist als Redundanzfreiheit.
+		
+
+ 
+
