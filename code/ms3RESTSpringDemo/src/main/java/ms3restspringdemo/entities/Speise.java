@@ -56,7 +56,7 @@ public class Speise {
 		return name;
 	}
 	
-	@JsonProperty
+	@JsonIgnore
 	public Zubereitungsanleitung getZubereitungsanleitung() {
 		return anleitung;
 	}

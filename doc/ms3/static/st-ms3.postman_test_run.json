@@ -1,8 +1,8 @@
 {
-	"id": "9752698f-58a9-4d30-be6f-18939638eca3",
+	"id": "67e40313-97ba-4c96-a5d0-8805dca6d289",
 	"name": "st-ms3",
 	"allTests": [],
-	"timestamp": "2018-08-02T13:00:39.538Z",
+	"timestamp": "2018-08-02T14:21:11.292Z",
 	"collection_id": "3e648a94-bfc7-470d-b709-ebe12e43249c",
 	"folder_id": 0,
 	"target_type": "collection",
@@ -72,15 +72,15 @@
 				}
 			},
 			"times": [
-				"170"
+				"171"
 			],
 			"allTests": [
 				{
 					"Gericht 'Erdbeerpudding' erstellt": true
 				}
 			],
-			"time": "170",
-			"totalRequestTime": "170",
+			"time": "171",
+			"totalRequestTime": "171",
 			"iterationResults": {}
 		},
 		{
@@ -107,15 +107,15 @@
 				}
 			},
 			"times": [
-				"20"
+				"18"
 			],
 			"allTests": [
 				{
 					"Leere Rückgabe": true
 				}
 			],
-			"time": "20",
-			"totalRequestTime": "20",
+			"time": "18",
+			"totalRequestTime": "18",
 			"iterationResults": {}
 		},
 		{
@@ -142,15 +142,15 @@
 				}
 			},
 			"times": [
-				"28"
+				"27"
 			],
 			"allTests": [
 				{
 					"Preis muss auf 12 geupdatet sein": true
 				}
 			],
-			"time": "28",
-			"totalRequestTime": "28",
+			"time": "27",
+			"totalRequestTime": "27",
 			"iterationResults": {}
 		},
 		{
@@ -177,15 +177,15 @@
 				}
 			},
 			"times": [
-				"4"
+				"5"
 			],
 			"allTests": [
 				{
 					"Gericht 'Erdbeerpudding' mit geupdateten Preis muss da sein": true
 				}
 			],
-			"time": "4",
-			"totalRequestTime": "4",
+			"time": "5",
+			"totalRequestTime": "5",
 			"iterationResults": {}
 		},
 		{
@@ -212,15 +212,15 @@
 				}
 			},
 			"times": [
-				"14"
+				"13"
 			],
 			"allTests": [
 				{
 					"Loeschen erfolgreich": true
 				}
 			],
-			"time": "14",
-			"totalRequestTime": "14",
+			"time": "13",
+			"totalRequestTime": "13",
 			"iterationResults": {}
 		},
 		{
@@ -317,15 +317,15 @@
 				}
 			},
 			"times": [
-				"5"
+				"4"
 			],
 			"allTests": [
 				{
 					"Gericht 'Große Portion Pommes' erstellt": true
 				}
 			],
-			"time": "5",
-			"totalRequestTime": "5",
+			"time": "4",
+			"totalRequestTime": "4",
 			"iterationResults": {}
 		},
 		{
@@ -387,15 +387,15 @@
 				}
 			},
 			"times": [
-				"6"
+				"5"
 			],
 			"allTests": [
 				{
 					"Gericht 'Schnitzel' erstellt": true
 				}
 			],
-			"time": "6",
-			"totalRequestTime": "6",
+			"time": "5",
+			"totalRequestTime": "5",
 			"iterationResults": {}
 		},
 		{
@@ -422,15 +422,15 @@
 				}
 			},
 			"times": [
-				"15"
+				"12"
 			],
 			"allTests": [
 				{
 					"Gericht 'Schnitzel mit Pommes' Speise 'Pommes' zugeordnet": true
 				}
 			],
-			"time": "15",
-			"totalRequestTime": "15",
+			"time": "12",
+			"totalRequestTime": "12",
 			"iterationResults": {}
 		},
 		{
@@ -492,15 +492,15 @@
 				}
 			},
 			"times": [
-				"8"
+				"7"
 			],
 			"allTests": [
 				{
 					"Gericht 'Große Portion Pommes' Speise 'Pommes' zugeordnet": true
 				}
 			],
-			"time": "8",
-			"totalRequestTime": "8",
+			"time": "7",
+			"totalRequestTime": "7",
 			"iterationResults": {}
 		},
 		{
@@ -637,7 +637,7 @@
 				}
 			},
 			"times": [
-				"5"
+				"6"
 			],
 			"allTests": [
 				{
@@ -645,21 +645,21 @@
 					"Gericht 'Schnitzel mit Pommes' hat jetzt nur noch Speise 'Schnitzel'": true
 				}
 			],
-			"time": "5",
-			"totalRequestTime": "5",
+			"time": "6",
+			"totalRequestTime": "6",
 			"iterationResults": {}
 		}
 	],
 	"totalPass": 18,
 	"totalFail": 0,
-	"totalTime": 327,
+	"totalTime": 320,
 	"lifecycle": "done",
 	"requests": [
 		{
 			"name": "A1",
 			"id": "d11d5fba-1882-40e1-9df1-de60df3f1e7f",
 			"url": "localhost:8080/gerichte/",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 201,
 				"name": "Created",
@@ -679,7 +679,7 @@
 			"name": "A2",
 			"id": "6fde8dc6-fc64-4f1d-97dd-ac911102fc19",
 			"url": "localhost:8080/gerichte?search=preis>10",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -699,7 +699,7 @@
 			"name": "A3",
 			"id": "4ebcfe3f-582a-4f90-8334-3559f78625a4",
 			"url": "localhost:8080/gerichte/1/preis",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -719,7 +719,7 @@
 			"name": "A4 ",
 			"id": "aefcecab-93de-4489-9a09-159f509bfc79",
 			"url": "localhost:8080/gerichte?search=preis>10",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -739,7 +739,7 @@
 			"name": "A5",
 			"id": "fc80748b-1a3c-4cf9-9566-278ede3bd721",
 			"url": "localhost:8080/gerichte/1",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -759,7 +759,7 @@
 			"name": "A6",
 			"id": "26a901b4-fa87-4eea-b480-ad13bad6d080",
 			"url": "localhost:8080/gerichte/1",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found",
@@ -779,7 +779,7 @@
 			"name": "BC1.1",
 			"id": "4975384e-2049-49db-a00b-1606a869e972",
 			"url": "localhost:8080/gerichte",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 201,
 				"name": "Created",
@@ -799,7 +799,7 @@
 			"name": "BC1.2",
 			"id": "5ad02235-c3c5-444b-843d-a8489fcf78db",
 			"url": "localhost:8080/gerichte",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 201,
 				"name": "Created",
@@ -819,7 +819,7 @@
 			"name": "BC2.1",
 			"id": "a4b4ed6f-c65b-431b-9ab4-089ba68c9cbb",
 			"url": "localhost:8080/speisen",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 201,
 				"name": "Created",
@@ -839,7 +839,7 @@
 			"name": "BC2.2",
 			"id": "5d49a771-0e87-4503-9085-4de4d8b26c4f",
 			"url": "localhost:8080/speisen",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 201,
 				"name": "Created",
@@ -859,7 +859,7 @@
 			"name": "BC3.1.1",
 			"id": "f32e6a6b-2718-4df5-955f-41ec12d4d33d",
 			"url": "localhost:8080/gerichte/2/speisen/1",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -879,7 +879,7 @@
 			"name": "BC3.1.2",
 			"id": "fdacd222-672a-4d25-a691-b4a5e3ab040c",
 			"url": "localhost:8080/gerichte/2/speisen/2",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -899,7 +899,7 @@
 			"name": "BC3.2",
 			"id": "f1944133-a5d2-447c-8fa5-250d8eff6174",
 			"url": "localhost:8080/gerichte/3/speisen/1",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -919,7 +919,7 @@
 			"name": "BC4",
 			"id": "620ca477-4487-44e9-880f-0a906e09b6f2",
 			"url": "localhost:8080/gerichte",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -939,7 +939,7 @@
 			"name": "BC5",
 			"id": "0022de17-02fa-4979-97c1-1d1e1b390b22",
 			"url": "localhost:8080/speisen",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -959,7 +959,7 @@
 			"name": "BC6",
 			"id": "5a4f798c-fb95-4c32-b597-23f71214ff96",
 			"url": "localhost:8080/gerichte/2/speisen/1",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
@@ -979,7 +979,7 @@
 			"name": "BC7",
 			"id": "e19483a7-7c07-4b6d-b10a-4b4da15bd0a9",
 			"url": "localhost:8080/gerichte",
-			"time": "2018-08-02T13:00:39.538Z",
+			"time": "2018-08-02T14:21:11.292Z",
 			"responseCode": {
 				"code": 200,
 				"name": "OK",
