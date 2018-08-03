@@ -344,6 +344,20 @@ Koch-UI &An-/Abmeldungs-UI: Dialogkomponente,
 \end{tabu}
 % }}}
 
+\subsubsection*{Erl\"auterung}
+
+Anstelle der Bestellabwicklung, eine Logikkomponente
+unseres monolitischen Modells (vgl. \ref{ms2_3}), die
+f\"ur die Vergabe von Bestellungen an die angemeldeten
+Arbeitspl\"atze und die Mitteilungsversendung an den Gast
+(dass seine Bestellung abholbereit ist) verantwortlich war
+haben wir eine Event-Schnittstelle an unseren Bestellungen-
+Service angebunden, welche Gast- und Koch-UI
+benachrichtigt, sobald entweder eine Bestellung eingeht
+und diese bearbeitet werden soll (Event f\"ur das Koch-UI)
+oder eine Bestellung fertig zubereitet und abholbereit ist
+(Event f\"ur das Gast-UI).
+
 \subsubsection*{Was sind aus Ihrer Sicht die Vorteile der
   einen oder anderen Architektur?}
 

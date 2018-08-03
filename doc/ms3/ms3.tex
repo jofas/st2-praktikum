@@ -36,7 +36,7 @@ unserem Klassendiagramm aus Meilenstein 1:
 
 \input{ms3/extract}
 
-\subsubsection*{Bemerkung}
+\subsubsection*{Erl\"auterung}
 
 Diese Schnittstelle w\"urde so in unserem Subsystem nicht
 implementiert, da die verwendeten Gesch\"aftsobjekte nicht
@@ -101,7 +101,7 @@ BC3, BC6 &/gerichte/\{gericht\_id\}/ speisen/\{speise\_id\}
 % }}}
 \end{tabu}
 
-\subsubsection*{Bemerkung}
+\subsubsection*{Erl\"auterung}
 
 Bei Szenario BC3 und BC6 haben wir uns entschieden, dass
 die Beziehung zwsichen einer Instanz von Gericht und einer
@@ -155,11 +155,193 @@ naheliegend wie unsere Variante gehalten haben.
 
 % }}}
 
+% Custom JSON Serializer {{{
+\subsubsection{Custom JSON Serializer}
+
+%Vermeidung von Endlosschleifen bei der JSON-Ausgabe
+
+Um das Problem der Endlosserialisierung bei der m:n-
+Beziehung, die bei uns zwischen Gericht und Speise
+vorliegt, zu l\"osen, wurde vorgeschlagen die Annotation
+"`@JsonIdentityInfo"' zu benutzen, mit der man die
+jeweiligen Klassen annotieren muss.
+
+Die Serialisierung funktioniert dann so, dass beim ersten
+Vorkommen einer Entit\"at diese ganz serialisiert wird,
+beim zweiten Vorkommen allerdings nur über die ID
+referenziert wird.
+
+% {{{
+\begin{mdframed}[style=codebox]
+\textbf{Beispielausgabe der Gerichte}
+\begin{lstlisting}
+[
+    {
+        "id": 2,
+        "name": "Schnitzel mit Pommes",
+        "details": "Der grandiose Klassiker!",
+        "preis": 12.5,
+        "speisen": [
+            {
+                "id": 2,
+                "name": "Schnitzel",
+                "gerichte": [
+                    2
+                ],
+            },
+            {
+                "id": 1,
+                "name": "Pommes",
+                "gerichte": [
+                    2,
+                    {
+                        "id": 3,
+                        "name": "Grosse Portion Pommes",
+                        "details": "Lecker fettig!",
+                        "preis": 6,
+                        "speisen": [
+                            1
+                        ]
+                    }
+                ],
+            }
+        ]
+    },
+    3
+]
+\end{lstlisting}
+\end{mdframed}
+% }}}
+
+Aus unserer Sicht ist die schlecht lesbare Ausgabe ein
+Nachteil.
+
+Ein Beispiel f\"ur die schlechte Lesbarkeit w\"are unserer
+Meinung nach die "`3"' ganz unten (vorletzte Zeile, s.o.),
+welche f\"ur das Gericht mit der ID 3 (Grosse Portion
+Pommes) steht, welches bereits zuvor aufgef\"uhrt wurde.
+
+Eine andere L\"osung, die wir gefunden haben ist ein
+Custom-Serialisierer.
+
+Hierbei k\"onnen wir dann selbst bestimmen, wie die
+Serialisierung funktionieren soll.
+
+Hier haben wir uns dafür entschieden nur einen
+Serialisierer für die Gerichte, auf den die Speisen
+verweisen, zu programmieren, der anstatt die Gerichte in
+die "`Tiefe"' zu serialisieren, nur die IDs der Gerichte
+auflistet. Damit w\"are dann das Endlosschleifen-Problem
+gel\"ost.
+
+Der Code dazu befindet sich in:
+\begin{mdframed}[style=codebox]
+\textbf{Relevanter Ausschnitt unseres Custom Serializers}
+\lstinputlisting[language=Java, firstline=30]
+{%
+  ../code/ms3RESTSpringDemo/src/main/java/%
+  ms3restspringdemo/serializers/CustomSetSerializer.java
+}
+\end{mdframed}
+
+Um den Serializer für die Gerichte einzusetzen, muss eine
+entsprechende Annotation mit dem Custom-Serialisierer beim
+der Getter-Methode der Gerichte in der Klasse Speise
+angebracht werden:
+
+\begin{mdframed}[style=codebox]
+\begin{lstlisting}
+@JsonProperty
+@JsonSerialize(using = CustomSetSerializer.class)
+public Set<Gericht> getGerichte() {
+	return Collections.unmodifiableSet(gerichte);
+}
+\end{lstlisting}
+\end{mdframed}
+
+% {{{
+\begin{mdframed}[style=codebox]
+\textbf{Beispielausgabe der Gerichte mit Custom Serializer}
+\begin{lstlisting}
+[
+   {
+      "id":2,
+      "name":"Schnitzel mit Pommes",
+      "details":"Der grandiose Klassiker!",
+      "preis":12.5,
+      "speisen":[
+         {
+            "id":2,
+            "name":"Schnitzel",
+            "gerichte":[
+               2
+            ]
+         },
+         {
+            "id":1,
+            "name":"Pommes",
+            "gerichte":[
+               3,
+               2
+            ]
+         }
+      ]
+   },
+   {
+      "id":3,
+      "name":"Grosse Portion Pommes",
+      "details":"Lecker fettig!",
+      "preis":6,
+      "speisen":[
+         {
+            "id":1,
+            "name":"Pommes",
+            "gerichte":[
+               3,
+               2
+            ]
+         }
+      ]
+   }
+]
+\end{lstlisting}
+\end{mdframed}
+% }}}
+
+Die Ausgabe ist, unserer Meinung nach, viel besser lesbar
+und es ist einfacher mit ihr zu arbeiten.
+
+Bei den Speisen sehen wir die Gerichte nun als eine Liste
+von IDs.
+
+Nachteil zu der vorigen L\"osung ist, dass Speisen mehrfach
+aufgef\"uhrt werden, wie z.B "`Pommes"', weshalb die
+Ausgabe mit dem Custom Serializer nicht redundanzfrei ist.
+
+Trozdem ist unserer Meinung nach die Ausgabe des Custom
+Serializers besser als die Ausgabe von
+"`@JsonIdentityInfo"', da aus unserer Sicht eine wohl-
+formatierte Ausgabe wichtiger ist als Redundanzfreiheit.
+% }}}
+
+\newpage
+
 % Nachweis der Lauffaehigkeit {{{
 \subsubsection{Nachweis der Lauff\"ahigkeit}
 
-Ausgaben der Postman Logs sind in Anhang A zu finden.
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics{ms3/static/postman_collection.PNG}
+  \end{center}
+  \caption{Postman Collection}
+\end{figure}
 
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics{ms3/static/postman_test.PNG}
+  \end{center}
+  \caption{Postman Test}
+\end{figure}
 % }}}
 
 % }}}
