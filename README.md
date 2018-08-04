@@ -1,4 +1,2 @@
-TODO
-----
-- bidirektionale Beziehung
-- Entity Zutatenangabe umbenennen zu Zutatenmenge (Code und neuer Screenshot)
+# Projekt für Softwaretechnik 2 - TH Köln Bachelor Informatik
+SS 2018
