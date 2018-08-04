@@ -113,8 +113,8 @@ zur Verf\"ugung.
 Zus\"atzlich haben wir eine Schnittstelle f\"ur die Buchhaltung angelegt.
 Diese ist zwar kein explizites Subsystem, wird aber, unserer Meinung nach,
 im Betriebsumfeld h\"ochstwahrscheinlich als eigenes Subsystem existieren
-und unsere Schnittstelle zu den Bestellungen (im Endeffekt der Unternehmens\-
-umsatz aus dem Hauptgesch\"aft) nutzen wollen.
+und unsere Schnittstelle zu den Bestellungen (im Endeffekt der Unternehmensumsatz 
+aus dem Hauptgesch\"aft) nutzen wollen.
 % }}}
 
 % }}}
@@ -136,7 +136,7 @@ Datenkomponente &Zugeordnete Gesch\"aftsobjekte &Erkl\"arung \\
 % }}}
 % Bestellungskomponente {{{
 \hline
-Bestelldaten &Bestellung &Die einzigen Daten die in diesem Subsystem tas\"achlich generiert
+Bestelldaten &Bestellung &Die einzigen Daten die in diesem Subsystem tats\"achlich generiert
   werden. Da die Bestellungen sehr wichtig f\"ur das Hauptgesch\"aft der Firma ist, es das einzige
   Datenobjekt mit Implementierung eines Create-Interfaces (Factory) ist und auch sonst nicht in unsere
   sonstigen Datenkomponenten passt, wird die Bestellung, unserer Meinung nach, in einer eigenen
@@ -229,7 +229,7 @@ Umsystem/Schnittstelle &Eigene Fassadenkomponente sinnvoll? &Erkl\"arung \\
 % Buchhaltung {{{
 \hline
 Buchhaltung &Ja &Da die Buchhaltung lesenden Zugriff auf
-  usere Bestellungen haben soll, ist es notwendig eine spezialisierte Komponente
+  unsere Bestellungen haben soll, ist es notwendig eine spezialisierte Komponente
   hierf\"ur anzulegen und nicht, wie intern in unserem Subsystem, den Zugriff
   \"uber die Bestelldatenkomponente zu regeln.\\
 % }}}
