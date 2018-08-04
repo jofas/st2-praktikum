@@ -36,9 +36,13 @@ public class SpeiseRestController {
 	ResponseEntity<?> add( @RequestBody Speise input ) {
     	// Die Zubereitungsanleitung erst mal leer lassen
     	Speise s = new Speise(input.getName(), null);
-    	speiseRepository.save(s);
-    	URI location = ServletUriComponentsBuilder.fromCurrentRequestUri()
+    	// speichern
+      speiseRepository.save(s);
+    	// location der neuen Speise
+      URI location = ServletUriComponentsBuilder.fromCurrentRequestUri()
 				.path("/{id}").buildAndExpand( s.getId() ).toUri();
+    	// 201 mit der location im Header und als Body die
+      // neue Speise
     	return ResponseEntity.created( location ).body( s );
     }
 

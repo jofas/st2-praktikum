@@ -31,7 +31,7 @@ public class GerichtRestController {
     private SpeiseRepository speiseRepository;
 
 
-    // BC4,BC7: Alle Gerichte ausgeben
+    // BC4,BC7: Alle Gerichte ausgeben.
     @GetMapping
     public ResponseEntity<?> getAllGerichte(@RequestParam(value="search", required = false) String query) {
     	if(query == null)
@@ -65,18 +65,23 @@ public class GerichtRestController {
     @GetMapping("/{id}")
 	public ResponseEntity<?> getKundeById(@PathVariable("id") int id ) {
 		Gericht g = gerichtRepository.findOne(id);
-		if ( g == null ) return ResponseEntity.notFound().build();
-		else return ResponseEntity.ok().body(g);
+		// werfe 404 wenn Gericht nicht existiert
+    if ( g == null ) return ResponseEntity.notFound().build();
+		// gib Gericht zurueck
+    else return ResponseEntity.ok().body(g);
 	}
 
 
     // A5: Ein Gericht loeschen
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteGericht(@PathVariable("id") int id) {
-		if ( gerichtRepository.exists(id) ) {
+		// gib leeren 200 zurueck, falls loeschen erfolgreich
+    if ( gerichtRepository.exists(id) ) {
+      // eigentliches loeschen
 			gerichtRepository.delete(id);
 		    return ResponseEntity.ok().build();
 		}
+    // 404
 		else return ResponseEntity.notFound().build();
     }
 
@@ -84,10 +89,14 @@ public class GerichtRestController {
     // A1,BC1: Ein Gericht neu anlegen
     @PostMapping
 	ResponseEntity<?> add( @RequestBody Gericht input ) {
-    	Gericht g = gerichtRepository.save(input);
-    	URI location = ServletUriComponentsBuilder.fromCurrentRequestUri()
+    	// lege neues Gericht mit Repository der Gerichtsentitaet an
+      Gericht g = gerichtRepository.save(input);
+    	// location des neuen Gerichts
+      URI location = ServletUriComponentsBuilder.fromCurrentRequestUri()
 				.path("/{id}").buildAndExpand( g.getId() ).toUri();
-    	return ResponseEntity.created( location ).body( g );
+    	// 201 mit der location im Header und als Body das
+      // neue Gericht
+      return ResponseEntity.created( location ).body( g );
     }
 
 
@@ -95,10 +104,13 @@ public class GerichtRestController {
     @PutMapping("/{id}/preis")
 	ResponseEntity<?> change( @PathVariable("id") int id, @RequestBody double preis) {
 		Gericht g = gerichtRepository.findOne(id);
-		if ( g == null ) return ResponseEntity.notFound().build();
+		// 404
+    if ( g == null ) return ResponseEntity.notFound().build();
 		else {
+      // neuen Preis speichern
 			g.setPreis(preis);
 			gerichtRepository.save(g);
+      // 200 mit dem neuen Gericht im Body
 			return ResponseEntity.ok().body(g);
 		}
     }
@@ -107,22 +119,28 @@ public class GerichtRestController {
     // BC3,BC6: Speisen einem Gericht hinzufuegen
     @PutMapping("/{gericht_id}/speisen/{speise_id}")
     ResponseEntity<?> addSpeise(@PathVariable("gericht_id") int gericht_id, @PathVariable("speise_id") int speise_id) {
-    	Gericht g = gerichtRepository.findOne(gericht_id);
+    	// als erstes wird das Gericht mit gericht_id aus der Datenbank geholt
+      Gericht g = gerichtRepository.findOne(gericht_id);
+      // 404 wenn das Gericht nicht existiert
     	if(g == null) return ResponseEntity.notFound().build();
-    	Speise s = speiseRepository.findOne(speise_id);
-    	if(s == null) return ResponseEntity.notFound().build();
-    	g.addSpeise(s);
+    	// dann die Speise mit speise_id
+      Speise s = speiseRepository.findOne(speise_id);
+    	// auch hier 404 falls Speise nicht vorhanden
+      if(s == null) return ResponseEntity.notFound().build();
+    	// Referenzen fuer beide setzen und beide speichern
+      g.addSpeise(s);
     	s.addGericht(g);
     	gerichtRepository.save(g);
     	speiseRepository.save(s);
-
+      // 200 mit dem upgedatetem Gericht
     	return ResponseEntity.ok().body(g);
     }
 
     // BC6: Speise (Verbindung) fuer ein Gericht loeschen
     @DeleteMapping("/{gericht_id}/speisen/{speise_id}")
     ResponseEntity<?> removeSpeise(@PathVariable("gericht_id") int gericht_id, @PathVariable("speise_id") int speise_id) {
-    	Gericht g = gerichtRepository.findOne(gericht_id);
+    	// vgl. addSpeise
+      Gericht g = gerichtRepository.findOne(gericht_id);
     	if(g == null) return ResponseEntity.notFound().build();
     	Speise s = speiseRepository.findOne(speise_id);
     	if(s == null) return ResponseEntity.notFound().build();
